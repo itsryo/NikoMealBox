@@ -205,6 +205,24 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Images\bento\日光原燒純牛漢堡排便當.jpeg" />
+    <Content Include="Assets\Images\bento\日光和風極嫩薄鹽雞柳便當.jpeg" />
+    <Content Include="Assets\Images\bento\日光和風極嫩薄鹽雞胸便當.jpeg" />
+    <Content Include="Assets\Images\bento\日光和風牛肉漢堡排便當.jpeg" />
+    <Content Include="Assets\Images\bento\日光和風香蒜牛肉漢堡排便當.jpeg" />
+    <Content Include="Assets\Images\bento\日光拾貳香蒜蝦仁鮮蔬沙拉.jpeg" />
+    <Content Include="Assets\Images\bento\日光拾貳鮮蔬沙拉.jpeg" />
+    <Content Include="Assets\Images\bento\日光拾貳鮮蔬烤雞沙拉.jpeg" />
+    <Content Include="Assets\Images\bento\日光拾貳鮮蔬薄鹽雞柳沙拉.jpeg" />
+    <Content Include="Assets\Images\bento\日光拾貳鮮蔬薄鹽雞胸沙拉.jpeg" />
+    <Content Include="Assets\Images\bento\日光拾貳鮮蔬黎麥酪梨沙拉.jpeg" />
+    <Content Include="Assets\Images\bento\日光熟成南蠻雞腿肉便當.jpeg" />
+    <Content Include="Assets\Images\bento\日光熟成茄汁漢堡肉便當.jpeg" />
+    <Content Include="Assets\Images\bento\日光熟成茄汁雞腿肉便當.jpeg" />
+    <Content Include="Assets\Images\bento\日光熟成薑燒雞腿肉便當.jpeg" />
+    <Content Include="Assets\Images\bento\日光熟成雞腿排便當.jpeg" />
+    <Content Include="Assets\Images\bento\日光熟成韓式雞腿肉便當.jpeg" />
+    <Content Include="Assets\Images\bento\日光熟成鹽蔥雞腿肉便當.jpeg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
