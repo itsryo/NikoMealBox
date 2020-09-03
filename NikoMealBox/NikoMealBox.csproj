@@ -181,7 +181,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="DataAccess\ProductDAO.cs" />
+    <Compile Include="DataAccess\Interface\IRepository.cs" />
+    <Compile Include="DataAccess\Repository\GenericRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
