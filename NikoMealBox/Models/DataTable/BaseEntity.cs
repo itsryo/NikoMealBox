@@ -14,7 +14,8 @@ namespace NikoMealBox.Models.DataTable
         public int Id { get; set; }
 
         /// <summary>
-        /// 是否刪除
+        /// 邏輯刪除
+        /// 前端完全不出現
         /// </summary>
         public bool IsDelete { get; set; }
 
