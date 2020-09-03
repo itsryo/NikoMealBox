@@ -151,7 +151,7 @@ namespace NikoMealBox.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name=model.Name,Mobile=model.Mobile,Height=model.Height,Weight=model.Weight};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
