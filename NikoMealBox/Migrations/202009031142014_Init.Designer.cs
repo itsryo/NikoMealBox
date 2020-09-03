@@ -7,13 +7,13 @@ namespace NikoMealBox.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class updateFormTest01 : IMigrationMetadata
+    public sealed partial class Init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updateFormTest01));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009021459258_updateFormTest01"; }
+            get { return "202009031142014_Init"; }
         }
         
         string IMigrationMetadata.Source

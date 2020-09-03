@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using NikoMealBox.Models.DataTable;
 
 namespace NikoMealBox.Models
 {
@@ -11,9 +12,7 @@ namespace NikoMealBox.Models
     {
         public string Name { get; set; }
         public int Mobile { get; set; }
-
         public int Height { get; set; }
-
         public decimal Weight { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -32,6 +31,12 @@ namespace NikoMealBox.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        public virtual DbSet<Categories> Categories { get; set; }
+        public virtual DbSet<OrderDetails> OrderDetails { get; set; }
+        public virtual DbSet<Orders> Orders { get; set; }
+        public virtual DbSet<Products> Products { get; set; }
+        public virtual DbSet<OrderStatus> OrderStatus { get; set; }
 
         public static ApplicationDbContext Create()
         {

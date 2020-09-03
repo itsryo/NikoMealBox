@@ -1,0 +1,202 @@
+﻿@model NikoMealBox.Models.DataTable.Products
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Products</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CategoryId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UnitPrice)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UnitsInStock)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UnitsInStock)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Materials)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Materials)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Calories)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Calories)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Carbohydrate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Carbohydrate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Protein)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Protein)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Fat)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Fat)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SaturatedFat)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SaturatedFat)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TransFat)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TransFat)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Sugar)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Sugar)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Sodium)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Sodium)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ImagePath)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsOvolacto)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsOvolacto)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsEnable)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsEnable)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsDelete)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsDelete)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreateUser)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreateUser)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreateTime)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreateTime)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.EditUser)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EditUser)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.EditTime)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EditTime)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

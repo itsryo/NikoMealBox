@@ -5,16 +5,21 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 using NikoMealBox.DataAccess.Interface;
+using NikoMealBox.Models;
 using NikoMealBox.Models.DataTable;
 
 namespace NikoMealBox.DataAccess.Repository
 {
     public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
-        public  DbContext Context;
+        public DbContext Context;
 
         public DbSet<TEntity> Set => Context.Set<TEntity>();
 
+        public GenericRepository()
+        {
+            Context = new ApplicationDbContext();
+        }
 
         public GenericRepository(DbContext context)
         {

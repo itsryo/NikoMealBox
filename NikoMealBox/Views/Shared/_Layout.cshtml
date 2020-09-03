@@ -29,19 +29,11 @@
                 <div class="collapse navbar-collapse col-md-6 col-sm-12" id="navbarTogglerDemo02">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <a href="#" class="text-decoration-none">
-                                <img src="~/Assets/Images/HomePage/member.png" alt="" width="5%">
-                            </a>
-                            <a href="#">
-                                <img src="~/Assets/Images/HomePage/cart.png" alt="" width="5%">
-                            </a>
-
+                            @Html.Partial("_LoginPartial")
                         </div>
 
                         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 col-lg-12">
                             <li class="nav-item">
-                                @*@Html.ActionLink("應用程式名稱", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                                @Html.ActionLink("首頁", "Index", "Home", new { @class = "nav-link" })*@
                                 <a class="nav-link text-nowrap" href="News.html" id="navbarDropdown" role="button"
                                    aria-haspopup="true" aria-expanded="false">
                                     關於光光
@@ -92,7 +84,6 @@
                 </div>
             </nav>
         </div>
-        @*@Html.Partial("_LoginPartial")*@
     </div>
         
         @*<div class="container body-content">*@
