@@ -31,6 +31,6 @@ namespace NikoMealBox.Models.DataTable
         /// <summary>
         /// Á`§é¦©
         /// </summary>
-        public float Discount { get; set; }
+        public decimal Discount { get; set; }
     }
 }
