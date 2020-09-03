@@ -52,7 +52,7 @@ namespace NikoMealBox.Models.DataTable
         /// 電話分機
         /// </summary>
         [StringLength(8)]
-        public string Extention { get; set; }
+        public string TelephoneExtension { get; set; }
 
         /// <summary>
         /// 運費
