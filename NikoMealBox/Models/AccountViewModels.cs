@@ -79,6 +79,16 @@ namespace NikoMealBox.Models
         [Display(Name = "確認密碼")]
         [Compare("Password", ErrorMessage = "密碼和確認密碼不相符。")]
         public string ConfirmPassword { get; set; }
+        [Required]
+        [Display(Name="姓名")]
+        public string Name { get; set; }
+
+        [Display(Name ="行動號碼")]
+        public int Mobile { get; set; }
+        [Display(Name = "身高")]
+        public int Height { get; set; }
+        [Display(Name = "體重")]
+        public decimal Weight { get; set; }
     }
 
     public class ResetPasswordViewModel
