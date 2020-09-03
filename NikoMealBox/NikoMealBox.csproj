@@ -186,6 +186,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009021459258_updateFormTest01.cs" />
+    <Compile Include="Migrations\202009021459258_updateFormTest01.Designer.cs">
+      <DependentUpon>202009021459258_updateFormTest01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009021533587_pdateRegisterForm.cs" />
+    <Compile Include="Migrations\202009021533587_pdateRegisterForm.Designer.cs">
+      <DependentUpon>202009021533587_pdateRegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009021546488_updateFromHeightAndWeight.cs" />
+    <Compile Include="Migrations\202009021546488_updateFromHeightAndWeight.Designer.cs">
+      <DependentUpon>202009021546488_updateFromHeightAndWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DataTable\BaseEntity.cs" />
     <Compile Include="Models\DataTable\Categories.cs" />
@@ -289,6 +302,17 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202009021459258_updateFormTest01.resx">
+      <DependentUpon>202009021459258_updateFormTest01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009021533587_pdateRegisterForm.resx">
+      <DependentUpon>202009021533587_pdateRegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009021546488_updateFromHeightAndWeight.resx">
+      <DependentUpon>202009021546488_updateFromHeightAndWeight.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
