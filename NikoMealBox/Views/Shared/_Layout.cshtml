@@ -11,22 +11,22 @@
     @*<link href="@Url.Content("~/Content/HomePage/NicoHome.css")"  type="text/css"/>*@
     <link href="~/Content/HomePage/NicoHome.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
-    
+    @RenderSection("productscss",false)
 
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <nav class="navbar navbar-expand-lg navbar-light text-center">
-                <a class="logo col-md-6 col-sm-6 text-left" href="#">
+            <nav class="navbar navbar-expand-lg navbar-light text-center d-flex flex-nowrap">
+                <a class="logo  col-md-6 col-sm-6 text-left" href="#">
                     <img src="~/Assets/Images/HomePage/logo.png" alt="" width="50%">
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                <button class="navbar-toggler  text-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
                         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse col-md-6 col-sm-12" id="navbarTogglerDemo02">
+                <div class="collapse navbar-collapse col-md-6 col-sm-12 " id="navbarTogglerDemo02">
                     <div class="row">
                         <div class="col-md-12 text-right">
                             @Html.Partial("_LoginPartial")

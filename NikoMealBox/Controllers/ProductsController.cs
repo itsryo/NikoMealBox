@@ -17,7 +17,8 @@ namespace NikoMealBox.Controllers
     public class ProductsController : Controller
     {
         private ApplicationDbContext db;
-        private IRepository<Products> _repository;
+        private ProductRepository _repository;
+
 
         public ProductsController()
         {
@@ -29,12 +30,31 @@ namespace NikoMealBox.Controllers
         // GET: Products
         public ActionResult Index()
         {
+            //var orderDetails = db.OrderDetails.Where(x => x.OrderId == 1).AsEnumerable();
+            //foreach (var item in orderDetails)
+            //{
+            //    //取得一筆訂單內有幾個產品
+            //    db.Products.FirstOrDefault(x => x.Id == item.ProductId);
+            //    _repository.Get(x => x.Id == item.ProductId);
+            //}
+            //db.Products.ToList();
+
+           
             return View(_repository.GetAll().Select(x => new ProductViewModels.Index
             {
                 Name = x.ProductName,
                 UnitPrice = x.UnitPrice,
-                Description = x.Description
+                Description = x.Description,
+                ImagePath = x.ImagePath
             }).AsEnumerable());
+        }
+
+        [HttpPost]
+        public ActionResult Index(string keyWord)
+        {
+            _repository.Search(keyWord);
+
+            return View();
         }
 
         // GET: Products/Details/5

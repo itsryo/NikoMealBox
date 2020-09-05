@@ -192,6 +192,10 @@
     <Compile Include="Migrations\202009031142014_Init.Designer.cs">
       <DependentUpon>202009031142014_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009041140370_productsAddtoTable.cs" />
+    <Compile Include="Migrations\202009041140370_productsAddtoTable.Designer.cs">
+      <DependentUpon>202009041140370_productsAddtoTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DataTable\BaseEntity.cs" />
@@ -249,6 +253,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\HomePage\NicoHome.css" />
+    <Content Include="Content\ProductsPage\products.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -325,6 +330,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009031142014_Init.resx">
       <DependentUpon>202009031142014_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009041140370_productsAddtoTable.resx">
+      <DependentUpon>202009041140370_productsAddtoTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

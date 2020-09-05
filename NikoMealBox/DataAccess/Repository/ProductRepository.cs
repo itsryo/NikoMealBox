@@ -8,6 +8,10 @@ namespace NikoMealBox.DataAccess.Repository
 {
     public class ProductRepository : GenericRepository<Products>
     {
-
+       public IEnumerable<Products> Search(string keyWord)
+        {
+            return GetAll().Where(x => x.ProductName.Contains(keyWord));
+        }
+       
     }
 }

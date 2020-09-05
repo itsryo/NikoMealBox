@@ -12,9 +12,12 @@ namespace NikoMealBox.DataAccess.Repository
 {
     public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
+        /// <summary>
+        /// 與資料庫連線(橋梁)
+        /// </summary>
         public DbContext Context;
 
-        public DbSet<TEntity> Set => Context.Set<TEntity>();
+        private DbSet<TEntity> Set => Context.Set<TEntity>();
 
         public GenericRepository()
         {

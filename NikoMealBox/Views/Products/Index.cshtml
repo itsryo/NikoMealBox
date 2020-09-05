@@ -1,8 +1,57 @@
 ﻿@model IEnumerable<NikoMealBox.ViewModels.ProductViewModels.Index>
 
-
-
-<!DOCTYPE html>
+@section productscss{
+    <link href="~/Content/ProductsPage/products.css" rel="stylesheet" />
+    }
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-12 col-md-6 col-lg-6 col-xl-6 my-3">
+                <div class="card">
+                    <img src="@item.ImagePath">
+                    <div class="row">
+                        <div class="col-7">
+                            <div class="card-body">
+                                <h3 class="card-title">@item.Name</h3>
+                                <h5 class="card-subtitle">@item.UnitPrice / 一份</h5>
+                                <p class="card-text">@item.Description</p>
+                            </div>
+                        </div>
+                        <div class="col-5 ">
+                            <div class="row kit-area mt-3 w-100">
+                                <div class="input-group mb-3 w-75">
+                                    <!-- <div class="input-group-prepend " id="button-addon3"> -->
+                                    <label for="btn-group">數量</label>
+                                    <div id="btn-group" class="btn-group w-100">
+                                        <button id="btn-left" class="text-center btn btn-right btn-outline-secondary "
+                                                type="button">
+                                            -
+                                        </button>
+                                        <input id="quantity" type="text" value="1" step="1" min="1" max="59"
+                                               name="quantity" class="form-control text-center " placeholder=""
+                                               aria-label="Example text with two button addons"
+                                               aria-describedby="button-addon3">
+                                        <button id="btn-right"
+                                                class="text-center mr-3 btn btn-left btn-outline-secondary"
+                                                type="button">
+                                            +
+                                        </button>
+                                    </div>
+                                    <!-- </div> -->
+                                </div>
+                                <a href="#" class="mt-1 btn btn-secondary rounded-pill">
+                                    <i class="fas fa-shopping-cart"></i> 加入購物車
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+</div>
+@*<!DOCTYPE html>
 
 <html>
 <head>
@@ -49,4 +98,4 @@
 
     </table>
 </body>
-</html>
+</html>*@

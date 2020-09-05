@@ -18,6 +18,7 @@ namespace NikoMealBox.Models.DataTable
         /// <summary>
         /// 商品種類
         /// </summary>
+        [Required]
         public int CategoryId { get; set; }
 
         /// <summary>
@@ -28,6 +29,7 @@ namespace NikoMealBox.Models.DataTable
         /// <summary>
         /// 商品庫存
         /// </summary>
+        [Required]
         public int UnitsInStock { get; set; }
 
         /// <summary>
@@ -102,6 +104,8 @@ namespace NikoMealBox.Models.DataTable
         /// </summary>
         public bool IsEnable { get; set; }
 
-
+        
     }
+
+    
 }
