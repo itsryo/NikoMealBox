@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.breadandpic{
+    overflow: hidden;
+}
+.bannerbackground {
+    /* background: url("Pic/HomeBackground.png") no-repeat center; */
+    background-image: url('/Assets/Images/AboutPage/HomeBackground.png');
+    ('/Assets/Images/HomePage/product.jpeg') margin-top: 105px;
+    padding: 20px 0;
+    /* background-size: cover; */
+}
+.bannerbackground .breadandpic li:first-child{
+    position: relative;
+}
+.bannerbackground .breadandpic li:first-child::before{
+    content: '';
+    position: absolute;
+    height: 15px;
+    border-bottom: 1px solid #333;
+    right: 100%;
+    width: 1000px;
+    
+}
+.bannerbackground .breadandpic li a{
+    text-decoration: none;
+    color:#717071;
+    padding: 5px;
+}
+.bannerbackground .breadandpic li+li::before {
+    content: '/';
+
+}
+
+.bannerbackground .pic {
+    height: 30vh;
+    padding: 100px;
+}
+
+.content {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.content .pic img {
+    width: 100%;
+}
+
+.sectiontwo {
+    padding: 0 5px;
+}
+
+.family {
+    background-attachment: fixed;
+}
+
+.family .txt p {
+    margin: 20px 0;
+}
+
+.cauliflower {
+    position: relative;
+}
+
+.Process {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 100vh;
+    
+}
+
+
