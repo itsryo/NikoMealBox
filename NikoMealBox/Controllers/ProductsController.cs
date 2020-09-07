@@ -30,24 +30,19 @@ namespace NikoMealBox.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            //var orderDetails = db.OrderDetails.Where(x => x.OrderId == 1).AsEnumerable();
-            //foreach (var item in orderDetails)
-            //{
-            //    //取得一筆訂單內有幾個產品
-            //    db.Products.FirstOrDefault(x => x.Id == item.ProductId);
-            //    _repository.Get(x => x.Id == item.ProductId);
-            //}
-            //db.Products.ToList();
+            //_repository.Select();
 
-           
             return View(_repository.GetAll().Select(x => new ProductViewModels.Index
             {
+                Id = x.Id,
                 Name = x.ProductName,
                 UnitPrice = x.UnitPrice,
+                UnitsInStock = x.UnitsInStock,
                 Description = x.Description,
                 ImagePath = x.ImagePath
             }).AsEnumerable());
         }
+
 
         [HttpPost]
         public ActionResult Index(string keyWord)

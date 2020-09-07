@@ -12,13 +12,11 @@
     <link href="~/Content/HomePage/NicoHome.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
 
-    @RenderSection("productscss", false)
-    @RenderSection("aboutcss", false)
 
-    @RenderSection("topCSS", false)
     @RenderSection("topJS", false)
 
-
+    @RenderSection("topCSS", required: false)
+    @RenderSection("registercss", false)
 
 </head>
 <body>
@@ -171,8 +169,11 @@
     @RenderSection("scripts", required: false)
 
 
-    @RenderSection("endCSS", false)
-    @RenderSection("endJS", false)
+
+  
     @*@RenderSection("NicoHome", required: false)*@
+
+        @RenderSection("endJS", required:false)
+
 </body>
 </html>
