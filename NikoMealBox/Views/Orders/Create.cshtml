@@ -1,0 +1,28 @@
+﻿@model NikoMealBox.Models.DataTable.Orders
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>下訂單</h2>
+
+<form action="Create" method="post">
+    <div>
+        <label for="GetProductDate">Get Product Date 預計取餐時間</label>
+        <input type="date" name="GetProductDate" value="" id="GetProductDate">
+    </div>
+    <div>
+        <label for="CreateUser">Create User 你的姓名</label>
+        <input type="text" name="CreateUser" value="" id="CreateUser">
+    </div>
+    <div>
+        <label for="ContactPhone">Contact Phone 聯絡電話</label>
+        <input type="tel" name="ContactPhone" value="" id="ContactPhone">
+    </div>
+
+    <input type="submit" name="Submit" value="提交">
+</form>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
