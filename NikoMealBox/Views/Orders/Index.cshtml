@@ -1,0 +1,19 @@
+﻿@*@model IEnumerable<NikoMealBox.Models.DataTable.Orders>*@
+@model IEnumerable<NikoMealBox.ViewModels.OrderViewModel.Index>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+@foreach (var item in Model)
+{
+    <p>品項名稱:@item.Name </p>
+    <p>價錢:@item.UnitPrice </p>
+
+
+}
+
