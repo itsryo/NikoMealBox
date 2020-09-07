@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace NikoMealBox.Models
 {
@@ -89,6 +90,13 @@ namespace NikoMealBox.Models
         public int Height { get; set; }
         [Display(Name = "體重")]
         public decimal Weight { get; set; }
+        [Display(Name ="姓別")]
+        public string Gender { get; set; }
+        [Display(Name ="出生日期")]
+        [DataType(DataType.Date)]
+        public DateTime Birthday { get; set; }
+        [Display(Name = "住址")]
+        public string Address { get; set; }
     }
 
     public class ResetPasswordViewModel

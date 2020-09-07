@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Windows;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -149,9 +150,12 @@ namespace NikoMealBox.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+           
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name=model.Name,Mobile=model.Mobile,Height=model.Height,Weight=model.Weight};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,
+                    Name=model.Name,Mobile=model.Mobile,Height=model.Height,Weight=model.Weight,
+                    Gender=model.Gender,Birthday=model.Birthday,Address=model.Address};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
