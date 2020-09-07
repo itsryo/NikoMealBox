@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using NikoMealBox.Models.DataTable;
+using System;
 
 namespace NikoMealBox.Models
 {
@@ -14,6 +15,11 @@ namespace NikoMealBox.Models
         public int Mobile { get; set; }
         public int Height { get; set; }
         public decimal Weight { get; set; }
+
+        public string Gender { get; set; }
+
+        public DateTime Birthday { get; set; }
+        public string Address { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

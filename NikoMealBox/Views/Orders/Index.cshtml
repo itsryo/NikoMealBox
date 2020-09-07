@@ -1,19 +1,111 @@
-﻿@*@model IEnumerable<NikoMealBox.Models.DataTable.Orders>*@
-@model IEnumerable<NikoMealBox.ViewModels.OrderViewModel.Index>
+﻿@model IEnumerable<NikoMealBox.Models.DataTable.Orders>
+
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
-@foreach (var item in Model)
-{
-    <p>品項名稱:@item.Name </p>
-    <p>價錢:@item.UnitPrice </p>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderStatusId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GetProductDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FinishDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PickUpCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PickUpRegion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PickUpAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelephoneExtension)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShippingFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDelete)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditTime)
+        </th>
+        <th></th>
+    </tr>
 
-
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderStatusId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GetProductDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FinishDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PickUpCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PickUpRegion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PickUpAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelephoneExtension)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShippingFee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDelete)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditTime)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
 }
 
+</table>

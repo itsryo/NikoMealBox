@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
+    <title>Niko Meal Box-@ViewBag.Title</title>
     @*@Styles.Render("~/Content/css")*@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
@@ -12,16 +12,16 @@
     <link href="~/Content/HomePage/NicoHome.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
 
-    @*@RenderSection("productscss", false)*@
-    @*@RenderSection("aboutcss", false)*@
+
     @RenderSection("topCSS", required: false)
+    @RenderSection("registercss", false)
 </head>
 <body>
     <div class="container">
         <div class="header">
             <nav class="navbar navbar-expand-lg navbar-light text-center">
-                <a class="logo col-md-6 col-sm-6 text-left" href="@Url.Action("Index","Home")">
-                    <img src="~/Assets/Images/HomePage/logo.png" alt="" width="50%">
+                <a class="navbar-brand col-md-6 col-sm-6 col-6 text-left" href="@Url.Action("Index","Home")">
+                    <img src="~/Assets/Images/HomePage/logo.png" alt="" class="img-fluid">
                 </a>
                 <button class="navbar-toggler  text-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
                         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,11 +30,17 @@
 
                 <div class="collapse navbar-collapse col-md-6 col-sm-12 " id="navbarTogglerDemo02">
                     <div class="row">
-                        <div class="col-md-12 text-right">
+                        <div class="col-md-12 col-lg-12 col-xl-12 text-right">
                             @Html.Partial("_LoginPartial")
                         </div>
 
-                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 col-lg-12">
+                        <ul class="navbar-nav my-auto mt-2 mt-lg-0 col-lg-12 offset-xl-1 col-xl-9">
+                            <li class="nav-item">
+                                <a class="nav-link text-nowrap" href="@Url.Action("Index","Home")" id="navbarDropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    首頁
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link text-nowrap" href="@Url.Action("About","Home")" id="navbarDropdown" role="button"
                                    aria-haspopup="true" aria-expanded="false">
