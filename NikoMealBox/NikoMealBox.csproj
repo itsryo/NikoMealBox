@@ -309,13 +309,19 @@
     <Content Include="Assets\Images\HomePage\logo.png" />
     <Content Include="Assets\Images\HomePage\member.png" />
     <Content Include="Assets\Images\HomePage\product.jpeg" />
+    <Content Include="Assets\Images\LoginPage\img_sign-in.png" />
+    <Content Include="Assets\Images\LoginPage\img_sign-in_text.png" />
     <Content Include="Content\AboutPage\About.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\HomePage\NicoHome.css" />
+<<<<<<< Updated upstream
     <Content Include="Content\MemberCenterPage\MemeberCenter.css" />
+=======
+    <Content Include="Content\LoginPage\Login.css" />
+>>>>>>> Stashed changes
     <Content Include="Content\ProductsPage\productdetail.css" />
     <Content Include="Scripts\ProductsPage\productdetail.js" />
     <Content Include="Content\ProductsPage\products.css" />
