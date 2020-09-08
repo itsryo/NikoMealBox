@@ -384,7 +384,6 @@
     <Content Include="Views\Orders\Details.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
-    <Content Include="Views\ShoppingCar\Index.cshtml" />
     <Content Include="Views\Account\MemeberCenter.cshtml" />
   </ItemGroup>
   <ItemGroup>
