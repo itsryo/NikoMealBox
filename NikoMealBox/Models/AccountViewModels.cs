@@ -90,7 +90,7 @@ namespace NikoMealBox.Models
         public int Height { get; set; }
         [Display(Name = "體重")]
         public decimal Weight { get; set; }
-        [Display(Name ="姓別")]
+        [Display(Name ="性別")]
         public string Gender { get; set; }
         [Display(Name ="出生日期")]
         [DataType(DataType.Date)]
