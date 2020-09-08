@@ -9,9 +9,20 @@
     height: 100px;
     overflow: hidden;
 }
-
-@media screen and (min-width:1280px){
-    *cardimg img {
-        width: 100%;
-    }
+.card .pic {
+    overflow: hidden;
 }
+.card img {
+    transform: scale(1,1);
+    transition: all 1s ease-out;
+}
+.card img:hover {
+    transform: scale(1.1,1.1);
+    /*transition: all 1s ease-out;*/
+}
+
+    @media screen and (min-width:1280px) {
+        *cardimg img {
+            width: 100%;
+        }
+    }
