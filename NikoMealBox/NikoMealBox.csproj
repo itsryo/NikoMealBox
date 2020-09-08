@@ -215,7 +215,6 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Controllers\ShoppingCarController.cs" />
     <Compile Include="DataAccess\Interface\IRepository.cs" />
     <Compile Include="DataAccess\Repository\GenericRepository.cs" />
     <Compile Include="DataAccess\Repository\OrderRepository.cs" />
@@ -234,6 +233,10 @@
     <Compile Include="Migrations\202009071101363_updateTable.cs" />
     <Compile Include="Migrations\202009071101363_updateTable.Designer.cs">
       <DependentUpon>202009071101363_updateTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009081432079_updateuserId.cs" />
+    <Compile Include="Migrations\202009081432079_updateuserId.Designer.cs">
+      <DependentUpon>202009081432079_updateuserId.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -312,6 +315,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\HomePage\NicoHome.css" />
+    <Content Include="Content\MemberCenterPage\MemeberCenter.css" />
     <Content Include="Content\ProductsPage\productdetail.css" />
     <Content Include="Scripts\ProductsPage\productdetail.js" />
     <Content Include="Content\ProductsPage\products.css" />
@@ -381,6 +385,7 @@
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\ShoppingCar\Index.cshtml" />
+    <Content Include="Views\Account\MemeberCenter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -407,6 +412,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009071101363_updateTable.resx">
       <DependentUpon>202009071101363_updateTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009081432079_updateuserId.resx">
+      <DependentUpon>202009081432079_updateuserId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

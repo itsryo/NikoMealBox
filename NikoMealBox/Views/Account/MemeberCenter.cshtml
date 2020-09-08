@@ -1,0 +1,59 @@
+﻿@model NikoMealBox.Models.ResetPasswordViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "MemeberCenter";
+}
+@section topCSS{
+
+    <link href="~/Content/MemberCenterPage/MemeberCenter.css" rel="stylesheet" />
+}
+
+<h2>MemeberCenter</h2>
+<div class="container">
+    <div class="row">
+        <div class=" col-sm-12 col-md-12 d-flex ">
+            <a class="hyper  nav-link border rounded-pill  d-inline-block border-info " href="#">盒餐訂單 </a>
+            <a class="hyper ml-2 nav-link border rounded-pill  d-inline-block border-info " href="#">會員資料維護</a>
+            <a class="hyper ml-2 nav-link border rounded-pill  d-inline-block border-info " href="#">密碼變更</a>
+            <a class="hyper ml-2 nav-link border rounded-pill  d-inline-block bg-danger text-white" href="#"> 登出 <span class="sr-only">(current)</span></a>
+        </div>
+    </div>
+    <div class="sectionarea mt-2">
+        <h4 class="subtitle">填寫個人資料</h4>
+        <hr />
+        <form>
+            @using (Html.BeginForm("MemeberCenter", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>重設密碼。</h4>
+                <hr />
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Code)
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-default" value="重設" />
+                    </div>
+                </div>
+            }
+
+        </form>
+    </div>
+</div>
