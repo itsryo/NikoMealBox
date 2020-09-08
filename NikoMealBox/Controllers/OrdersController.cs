@@ -24,12 +24,6 @@ namespace NikoMealBox.Controllers
             _repository = new OrderRepository();
         }
 
-       //GET: Orders
-        public ActionResult Index()
-        {
-            return RedirectToAction("Create");
-        }
-
         // GET: Orders/Create
         [Authorize]
         public ActionResult Create()
