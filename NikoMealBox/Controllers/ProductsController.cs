@@ -30,17 +30,9 @@ namespace NikoMealBox.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            //_repository.Select();
+           var products =  _repository.Select();
 
-            return View(_repository.GetAll().Select(x => new ProductViewModels.Index
-            {
-                Id = x.Id,
-                Name = x.ProductName,
-                UnitPrice = x.UnitPrice,
-                UnitsInStock = x.UnitsInStock,
-                Description = x.Description,
-                ImagePath = x.ImagePath
-            }).AsEnumerable());
+            return View(products);
         }
 
 
@@ -52,6 +44,7 @@ namespace NikoMealBox.Controllers
             return View();
         }
 
+        //產品id傳入
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
@@ -59,11 +52,8 @@ namespace NikoMealBox.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Products products = _repository.Get(x => x.Id == id);
-            if (products == null)
-            {
-                return HttpNotFound();
-            }
+            var products = _repository.ProductDetail(id);
+
             return View(products);
         }
 
