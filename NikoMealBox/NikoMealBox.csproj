@@ -211,13 +211,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="DataAccess\Interface\IRepository.cs" />
-    <Compile Include="DataAccess\Repository\CartRepository.cs" />
     <Compile Include="DataAccess\Repository\GenericRepository.cs" />
     <Compile Include="DataAccess\Repository\OrderRepository.cs" />
     <Compile Include="DataAccess\Repository\ProductRepository.cs" />
@@ -236,6 +234,10 @@
     <Compile Include="Migrations\202009071101363_updateTable.Designer.cs">
       <DependentUpon>202009071101363_updateTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009081432079_updateuserId.cs" />
+    <Compile Include="Migrations\202009081432079_updateuserId.Designer.cs">
+      <DependentUpon>202009081432079_updateuserId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DataTable\BaseEntity.cs" />
@@ -248,7 +250,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\Cart\CartViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModels.cs" />
     <Compile Include="ViewModels\ProductViewModels.cs" />
@@ -308,12 +309,16 @@
     <Content Include="Assets\Images\HomePage\logo.png" />
     <Content Include="Assets\Images\HomePage\member.png" />
     <Content Include="Assets\Images\HomePage\product.jpeg" />
+    <Content Include="Assets\Images\LoginPage\img_sign-in.png" />
+    <Content Include="Assets\Images\LoginPage\img_sign-in_text.png" />
     <Content Include="Content\AboutPage\About.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\HomePage\NicoHome.css" />
+    <Content Include="Content\MemberCenterPage\MemeberCenter.css" />
+    <Content Include="Content\LoginPage\Login.css" />
     <Content Include="Content\ProductsPage\productdetail.css" />
     <Content Include="Scripts\ProductsPage\productdetail.js" />
     <Content Include="Content\ProductsPage\products.css" />
@@ -381,11 +386,11 @@
     <Content Include="Views\Orders\Delete.cshtml" />
     <Content Include="Views\Orders\Details.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
-    <Content Include="Views\Shared\_CartPartial.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Account\MemeberCenter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -409,6 +414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009071101363_updateTable.resx">
       <DependentUpon>202009071101363_updateTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009081432079_updateuserId.resx">
+      <DependentUpon>202009081432079_updateuserId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

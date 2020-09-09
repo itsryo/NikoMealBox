@@ -10,7 +10,7 @@
             @Html.ActionLink("您好 " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">登出</a></li>
-        <li><a href="@Url.Action("Index","Orders")"><img src="~/Assets/Images/HomePage/cart.png" alt="" width="5%"></a></li>
+        <li><a href="@Url.Action("Create","Orders")"><img src="~/Assets/Images/HomePage/cart.png" alt="" width="5%"></a></li>
     </ul>
     }
 }

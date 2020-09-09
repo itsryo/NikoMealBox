@@ -12,7 +12,7 @@ namespace NikoMealBox.Models
     public class ApplicationUser : IdentityUser
     {
         public string Name { get; set; }
-        public int Mobile { get; set; }
+        public string Mobile { get; set; }
         public int Height { get; set; }
         public decimal Weight { get; set; }
 
