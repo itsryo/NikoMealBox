@@ -211,11 +211,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="DataAccess\Interface\IRepository.cs" />
+    <Compile Include="DataAccess\Repository\CartRepository.cs" />
     <Compile Include="DataAccess\Repository\GenericRepository.cs" />
     <Compile Include="DataAccess\Repository\OrderRepository.cs" />
     <Compile Include="DataAccess\Repository\ProductRepository.cs" />
@@ -250,6 +252,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CartItemViewModels.cs" />
+    <Compile Include="ViewModels\CartViewModels.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModels.cs" />
     <Compile Include="ViewModels\ProductViewModels.cs" />
@@ -388,6 +392,7 @@
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Account\MemeberCenter.cshtml" />
+    <Content Include="Views\Shared\_CartPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
