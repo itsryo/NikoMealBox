@@ -24,12 +24,29 @@ namespace NikoMealBox.Controllers
             _repository = new OrderRepository();
         }
 
+
+
+        //點購物車判斷是否有登入
+        //有登入就跳購物車畫面
+        //沒有登入就跳modal-->然後到登入畫面
+        public ActionResult Login(string Id)
+        {
+            if (Id == null)
+            {
+                 return RedirectToAction("Login", "Account");
+            }
+
+            return View();
+        }
+
+
         // GET: Orders/Create
         //[Authorize]
         public ActionResult Create()
         {
             return View();
         }
+
 
         // POST: Orders/Create
         // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
