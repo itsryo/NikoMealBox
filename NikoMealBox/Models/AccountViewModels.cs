@@ -65,7 +65,8 @@ namespace NikoMealBox.Models
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage ="請輸入Email")]
+        [DataType(DataType.EmailAddress)]
         [EmailAddress]
         [Display(Name = "電子郵件")]
         public string Email { get; set; }
@@ -81,16 +82,18 @@ namespace NikoMealBox.Models
         [Compare("Password", ErrorMessage = "密碼和確認密碼不相符。")]
         public string ConfirmPassword { get; set; }
         [Required]
+        [StringLength(20,MinimumLength =3,ErrorMessage ="最少須3個字元")]
         [Display(Name="姓名")]
         public string Name { get; set; }
-
+        [Required]
+        [RegularExpression(@"^\d{4}\-?\d{3}\-?\d{3}$",ErrorMessage ="需為09xx-xxx-xxx")]
         [Display(Name ="行動號碼")]
-        public int Mobile { get; set; }
+        public string Mobile { get; set; }
         [Display(Name = "身高")]
         public int Height { get; set; }
         [Display(Name = "體重")]
         public decimal Weight { get; set; }
-        [Display(Name ="姓別")]
+        [Display(Name ="性別")]
         public string Gender { get; set; }
         [Display(Name ="出生日期")]
         [DataType(DataType.Date)]
@@ -127,4 +130,6 @@ namespace NikoMealBox.Models
         [Display(Name = "電子郵件")]
         public string Email { get; set; }
     }
+
+   
 }

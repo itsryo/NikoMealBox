@@ -1,202 +1,49 @@
-﻿@model NikoMealBox.Models.DataTable.Products
+﻿@model NikoMealBox.ViewModels.ProductViewModels.Detail
 
-@{
-    Layout = null;
+@section topCSS{
+    <link href="~/Content/ProductsPage/productdetail.css" rel="stylesheet" />
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>Products</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.ProductName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.CategoryId)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.CategoryId)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.UnitPrice)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.UnitPrice)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.UnitsInStock)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.UnitsInStock)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Materials)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Materials)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Calories)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Calories)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Carbohydrate)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Carbohydrate)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Protein)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Protein)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Fat)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Fat)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.SaturatedFat)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.SaturatedFat)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.TransFat)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.TransFat)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Sugar)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Sugar)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Sodium)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Sodium)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.ImagePath)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.ImagePath)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.IsOvolacto)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.IsOvolacto)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.IsEnable)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.IsEnable)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.IsDelete)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.IsDelete)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.CreateUser)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.CreateUser)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.CreateTime)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.CreateTime)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.EditUser)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.EditUser)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.EditTime)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.EditTime)
-            </dd>
-    
-        </dl>
+@section endJS{
+    <script src="~/Scripts/ProductsPage/productdetail.js"></script>
+}
+<div class="content">
+    <div class="container d-flex">
+        <div class="col-8">
+            <img src="@Model.ImagePath" alt="">
+        </div>
+        <div class="text col-4">
+            <h3>NT @Model.UnitPrice</h3>
+            <h2>@Model.Name</h2>
+            <p>@Model.Description</p>
+            <hr>
+            <span>數量</span>
+            <form>
+                <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+                <input type="number" id="number" value="0" />
+                <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+            </form>
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+    <div class="Introduction text-center">
+        <h2>【營養標示】</h2>
+        <ul class="text-left container">
+            @*@Model.ImagePath*@
+            <li>商品材料 : @Model.Materials</li>
+            <li>熱量 : @Model.Calories</li>
+            <li>碳水化合物 : @Model.Carbohydrate</li>
+            <li>蛋白質 : @Model.Protein</li>
+            <li>脂肪 : @Model.Fat</li>
+            <li>飽和脂肪 : @Model.SaturatedFat</li>
+            <li>反式脂肪 : @Model.TransFat</li>
+            <li>糖 : @Model.Sugar</li>
+            <li>納 : @Model.Sodium</li>
+            <li>蛋奶素 : @Model.IsOvolacto</li>
+        </ul>
+    </div>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

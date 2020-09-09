@@ -1,5 +1,10 @@
 ﻿@model NikoMealBox.Models.RegisterViewModel
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section topCSS{
+    <link href="~/Content/RegisterPage/register.css" />
+
 }
 
 
@@ -8,112 +13,84 @@
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
-        <h4>建立帳戶</h4>
-
+        <h3 class="subtitle"style="color:#008A84;">帳號密碼設定</h3>
         <hr />
         @Html.ValidationSummary("", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-            <div class="col-md-4">
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+
+        <div class="form-group row  col-12  ">
+            @Html.LabelFor(m => m.Email, new { @class = "mt-2 col-3 text-center text-justify control-label" })
+            <div class=" col-9">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control text-center text-justify rounded-pill" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-            <div class="col-md-4">
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        <div class="form-group row col-12">
+            @Html.LabelFor(m => m.Password, new { @class = "mt-2 col-3 text-center text-justify control-label" })
+            <div class="col-9">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control text-center text-justify rounded-pill" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-            <div class="col-md-4">
-                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        <div class="form-group  row col-12">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "mt-2 col-3 text-center text-justify control-label" })
+            <div class="col-9">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control text-center text-justify rounded-pill" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
-            <div class="col-md-4">
-                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        <h3 class="subtitle"style="color:#008A84;">填寫個人資料</h3>
+        <hr />
+        <div class="form-group row col-12">
+            @Html.LabelFor(m => m.Name, new { @class = "mt-2 col-3 text-center text-justify control-label" })
+            <div class="col-9">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control text-center text-justify rounded-pill" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Mobile, new { @class = "col-md-2 control-label" })
-            <div class="col-md-4">
-                @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control" })
+        <div class="form-group row col-12">
+            @Html.LabelFor(m => m.Mobile, new { @class = "mt-2 col-3 text-center text-justify control-label" })
+            <div class="col-9">
+                @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control text-center text-justify rounded-pill" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Height, new { @class = "col-md-2 control-label" })
-            <div class="col-md-4">
-                @Html.TextBoxFor(m => m.Height, new { @class = "form-control" })
+        <div class="form-group row col-12 ">
+            @Html.LabelFor(m => m.Height, new { @class = "mt-2 col-3 text-center text-justify control-label " })
+            <div class="col-9">
+                @Html.TextBoxFor(m => m.Height, new { @class = "form-control text-center text-justify rounded-pill" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Weight, new { @class = "col-md-2 control-label" })
-            <div class="col-md-4">
-                @Html.TextBoxFor(m => m.Weight, new { @class = "form-control" })
+        <div class="form-group  row col-12 ">
+            @Html.LabelFor(m => m.Weight, new { @class = "mt-2 col-3 text-center text-justify control-label " })
+            <div class="col-9">
+                @Html.TextBoxFor(m => m.Weight, new { @class = "form-control text-center text-justify rounded-pill" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        <div class="form-group row col-12">
+            @Html.LabelFor(m => m.Gender, new { @class = "mt-2 col-3 text-center text-justify control-label" })
+            <div class="col-9">
+                @Html.TextBoxFor(m => m.Gender, new { @class = "form-control text-center text-justify rounded-pill" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        <div class="form-group row col-12">
+            @Html.LabelFor(m => m.Birthday, new { @class = "mt-2 col-3 text-center text-justify control-label" })
+            <div class="col-9">
+                @Html.TextBoxFor(m => m.Birthday, new { @class = "form-control text-center text-justify rounded-pill" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        <div class="form-group row col-12">
+            @Html.LabelFor(m => m.Address, new { @class = "mt-2 col-3 text-center text-justify control-label" })
+            <div class="col-9">
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control text-center text-justify rounded-pill" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Gender, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Birthday, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Birthday, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Mobile, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Height, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Height, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Weight, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Weight, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
+        <div class="form-group d-flex justify-content-center text-center">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" class="btn btn-default btn-danger" value="註冊" />
+                <a href="@Url.Action("Register","Account")"><input type="button" id="clean" class="btn btn-default btn-success" value="重新填寫" /></a>
+                <a href="@Url.Action("Index","Home")"><input type="button" id="back" class="btn btn-default btn-primary" value="回主頁" /></a>
             </div>
         </div>
     }
-    </div>
+</div>
+@section endJS{
+
+    
+    }
 
 
