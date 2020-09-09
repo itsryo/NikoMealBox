@@ -13,7 +13,6 @@ namespace NikoMealBox.DataAccess.Repository
         public CartViewModel cartVM = new CartViewModel();
         private ProductRepository _repository = new ProductRepository();
 
-
         [WebMethod(EnableSession = true)] //啟用Session
         public static CartViewModel GetCurrentCart() //取得目前Session中的Cart物件
         {
@@ -33,7 +32,7 @@ namespace NikoMealBox.DataAccess.Repository
             {
                 throw new InvalidOperationException("空的請檢查");
             }
-            
+
         }
 
         public bool AddProduct(int ProductId)
@@ -63,7 +62,8 @@ namespace NikoMealBox.DataAccess.Repository
             }
             return true;
         }
-        private bool AddProduct(Products products)
+
+        public bool AddProduct(Products products)
         {
             var cartItem = new ViewModels.Cart.CartItem()
             {

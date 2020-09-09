@@ -20,7 +20,7 @@ namespace NikoMealBox.Controllers
         {
             //CartRepository cartRepository = new CartRepository();
             var currentCart = CartRepository.GetCurrentCart();
-           // currentCart.AddProduct(id);
+            //currentCart.AddProduct(id);
             return PartialView("_CartPartial");
         }
     }

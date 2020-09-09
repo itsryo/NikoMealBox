@@ -1,15 +1,20 @@
 ﻿using NikoMealBox.DataAccess.Repository;
+using NikoMealBox.Models.DataTable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 
 namespace NikoMealBox.ViewModels.Cart
 {
     [Serializable]
     public class CartViewModel : IEnumerable<CartItem>
     {
-        //private ProductRepository _repository = new ProductRepository();
+        private ProductRepository _repository = new ProductRepository();
+        private CartRepository _Cartrepository = new CartRepository();
+
+        public CartViewModel cartVM = new CartViewModel();
         //建構值
         public CartViewModel()
         {
@@ -52,6 +57,7 @@ namespace NikoMealBox.ViewModels.Cart
         }
 
         #endregion
+        
     }
     public class CartItem
     {
@@ -67,4 +73,4 @@ namespace NikoMealBox.ViewModels.Cart
             }
         }
     }
-    }
+}
