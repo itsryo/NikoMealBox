@@ -1,9 +1,7 @@
 ﻿@section topCSS{
     <link href="~/Content/ShoppingCarPage/shop.css" rel="stylesheet" />
 }
-
-
-
+@model IEnumerable<NikoMealBox.ViewModels.CartItemViewModels>
 
 <div class="shopping-process">
     <div class="container">
@@ -24,29 +22,42 @@
             </ul>
         </div>
 
-        <div class="row">
-            <div class="hint-bar">
-                <p>訂購金額未滿$600 無法外送</p>
-            </div>
+        <div class="hint-bar">
+            <p>訂購金額未滿$600 無法外送</p>
         </div>
 
-
-        <div class="ordered-items justify-content-between  d-flex w-100 px-2">
-            <span>訂購品項</span>
-            <span class="e">品名</span>
-            <span class="e">單價NT$</span>
-            <span class="e">數量</span>
-            <span class="e">規格</span>
-            <span class="e">小計NT$</span>
-            <span class="e">刪除</span>
+        @*TODO: controller從session送入CartItemViewModels*@
+        @*刪除功能*@
+        <div class="ordered-items d-flex w-100 px-2">
+            <div class="ordered-items-title">
+                <div>訂購品項</div>
+                <div>品名</div>
+                <div>單價NT$</div>
+                <div>數量</div>
+                <div>小計NT$</div>
+                <div>刪除</div>
+            </div>
+            @*先用假資料*@
+            @foreach(var food in Model)
+            {
+                <div>@food.ImagePath</div>
+                <div>@food.Name</div>
+                <div>@food.UnitPrice</div>
+            }
         </div>
 
         <div style="margin-top:20px;" class="row">
             <div class="col-12 col-md-4 delivery_date">
-                <p>送達日期<input type="date"></p>
+                <p>
+                    送達日期
+                    <input type="date">
+                </p>
             </div>
             <div class="col-12 col-md-8 delivery_time">
-                <p>送達時段<input type="time"></p>
+                <p>
+                    送達時段
+                    <input type="time">
+                </p>
             </div>
         </div>
 
@@ -54,7 +65,10 @@
             <div class="col-md-12 d-flex  justify-content-between">
                 <button class="btn-1">繼續選購光光商品</button>
                 <div class="total">
-                    <p class="">購物金額 $0+運費 $0=總計 <span>$0</span></p>
+                    <p class="">
+                        購物金額 $0+運費 $0=總計
+                        <span>$0</span>
+                    </p>
                 </div>
             </div>
         </div>
