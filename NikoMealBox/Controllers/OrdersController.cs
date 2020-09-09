@@ -41,7 +41,7 @@ namespace NikoMealBox.Controllers
 
 
         // GET: Orders/Create
-        [Authorize]
+        //[Authorize]
         public ActionResult Create()
         {
             return View();

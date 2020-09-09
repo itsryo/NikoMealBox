@@ -1,0 +1,47 @@
+﻿
+@{
+
+    //取得當前購物車所有內容
+    var currentCart = NikoMealBox.DataAccess.Repository.CartRepository.GetCurrentCart();
+    //var currentCart = NikoMealBox.Models.Cart.Operation.GetCurrentCart();
+    //ViewBag.Title = "_CartPartial";
+}
+<a id="CartDropDown" class="dropdown-toggle" data-toggle="dropdown">
+    @*共500元(3)*@
+    @String.Format("共{0}元({1})",currentCart.TotalAmount, currentCart.Count)
+    <span class="caret"></span>
+</a>
+<ul class="dropdown-menu" role="menu" aria-labelledby="CartDropDown">
+    @*@foreach (var cartitem in currentCart)
+        {
+            <li><a>@cartitem.Name <span>@cartitem.UnitPrice 元 x @cartitem.UnitsInStock</span></a></li>
+        }*@
+    @*<li><a>可愛鉛筆<span>100元x1</span></a></li>
+        <li><a>可愛橡皮擦<span>50元x2</span></a></li>
+        <li><a>可愛墊板<span>150元x2</span></a></li>*@
+    @*<li class="divider"></li>
+    <li><a class="btn btn-default text-center" href="#">結帳去</a></li>*@
+
+    @if (currentCart.Count > 0)
+    {
+        foreach (var cartitem in currentCart)
+        {
+            <li class="col-xs-12">
+                <span class="col-xs-10">@cartitem.Name @cartitem.UnitPrice 元 x @cartitem.UnitsInStock</span>
+                <span class="btn btn-danger col-xs-2" onclick="RemoveFromCart('@cartitem.Id')">
+                    x
+                </span>
+            </li>
+            
+        }
+        <li class="divider"></li>
+        <li>
+            <a class="btn btn-success text-center col-xs-5" href="#">結帳去</a>
+            <a class="btn btn-danger text-center col-xs-5" onclick="ClearCart()">清空</a>
+        </li>
+    }
+    else
+    {
+        <li><a class="btn btn-default text-center" href="#">購物車無任何商品</a></li>
+    }
+</ul>
