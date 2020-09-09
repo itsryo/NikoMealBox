@@ -5,6 +5,7 @@ let addprodCart = document.querySelectorAll("#addProd");
 let card = document.querySelectorAll(".card")
 let titlename = document.querySelectorAll('.card-title')
 let orderbtn = document.querySelector("#order");
+let cartbtn = document.querySelector("#addProd");
 let x = quantityInput.value;
 
 
@@ -41,27 +42,28 @@ function saveProd(titlename, price, quantity, key) {
 
 //寫在購物車頁(泉切的)
 //下單
-orderbtn.addEventListener('click', function () {
-    var prodlenthjson = localStorage.length;
-    //取localstorage資料
-    var prodAryjson = localStorage.getItem("product" + prodlenthjson-1);
-    $.ajax({
-        url: '/Orders/Index', //資料要傳去的網址
-        type: 'POST', //請求方式，POST/GET。(預設為GET)
-        data: {  //要傳入的參數NAME(KEY)&VALUE 傳送到server的資料
-            //prodAryjson
-            prodName: "雞肉便當",
-            price: 50,
-            //quantity: prodAry.quantity
-        },
-        dataType: 'json',//預期Server傳回的資料類型 
-        async: false,//請求同步
-        success: function (result) {//成功時Dosomething (程式只要可以執行成功)
-            alert(result)
+//cartbtn.addEventListener('click', function () {
+//    var prodlenthjson = localStorage.length;
+//    //取localstorage資料
+//    var prodAryjson = localStorage.getItem("product" + prodlenthjson-1);
+//    $.ajax({
+//        url: '/Orders/Create', //資料要傳去的網址
+//        type: 'Get', //請求方式，POST/GET。(預設為GET)
+//        //data: {  //要傳入的參數NAME(KEY)&VALUE 傳送到server的資料
+//        //    //prodAryjson
+//        //    id:"product0",
+//        //    prodName: "雞肉便當",
+//        //    price: 50,
+//        //    quantity:8
+//        //},
+//        dataType: 'json',//預期Server傳回的資料類型 
+//        async: false,//請求同步
+//        success: function (result) {//成功時Dosomething (程式只要可以執行成功)
+//            alert(result)
 
-        }
-    })
-})
+//        }
+//    })
+//})
 
 
 

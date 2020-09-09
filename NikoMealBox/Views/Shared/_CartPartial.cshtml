@@ -1,0 +1,27 @@
+﻿@{
+    //取得當前購物車所有內容
+    var currentCart = NikoMealBox.DataAccess.Repository.CartRepository.GetCurrentCart();
+}
+<a id="CartDropDown" class="dropdown-toggle" data-toggle="dropdown">
+    @*共500元(3)*@
+    @String.Format("共{0}元({1})", currentCart.TotalAmount, currentCart.Count)
+    <span class="caret"></span>
+</a>
+<ul class="dropdown-menu" role="menu" aria-labelledby="CartDropDown">
+    <li class="divider"></li>
+    <li><a class="btn btn-default text-center" href="#">結帳去</a></li>
+
+    @if (currentCart.Count > 0)
+    {
+        foreach (var cartitem in currentCart)
+        {
+            <li><a>@cartitem.Name<span>@cartitem.UnitPrice 元 x @cartitem.UnitsInStock</span></a></li>
+        }
+        <li class="divider"></li>
+        <li><a class="btn btn-default text-center" href="#">結帳去</a></li>
+    }
+    else
+    {
+        <li><a class="btn btn-default text-center" href="#">購物車無任何商品</a></li>
+    }
+</ul>
