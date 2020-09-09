@@ -20,6 +20,11 @@ namespace NikoMealBox.DataAccess.Repository
         //}
 
         //ProductViewModels.Index prodViewM = new ProductViewModels.Index();
+        
+        /// <summary>
+        /// 取得所有產品
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<ProductViewModels.Index> Select()
         {
             var products = GetAll().Select(x => new ProductViewModels.Index
@@ -63,6 +68,7 @@ namespace NikoMealBox.DataAccess.Repository
             };
             return prodDetailVM;
         }
+
 
 
 

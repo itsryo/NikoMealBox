@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using NikoMealBox.DataAccess.Repository;
 using NikoMealBox.Models;
 using NikoMealBox.Models.DataTable;
+using NikoMealBox.ViewModels;
 
 namespace NikoMealBox.Controllers
 {
@@ -16,8 +17,7 @@ namespace NikoMealBox.Controllers
     {
         private ApplicationDbContext db;
         private OrderRepository _repository;
-
-
+        
         public OrdersController()
         {
             db = new ApplicationDbContext();
@@ -25,27 +25,29 @@ namespace NikoMealBox.Controllers
         }
 
 
-
-        //點購物車判斷是否有登入
-        //有登入就跳購物車畫面
-        //沒有登入就跳modal-->然後到登入畫面
-        public ActionResult Login(string Id)
+        // GET: Orders/Create
+        // 判斷是否有登入
+        public ActionResult Create(string Id)
         {
             if (Id == null)
             {
+<<<<<<< HEAD
               
+=======
+>>>>>>> 2d912d82a26d375db7f1da768c767de920e452ef
                 return RedirectToAction("Login", "Account");
             }
-
-            return View();
-        }
-
-
-        // GET: Orders/Create
-        //[Authorize]
-        public ActionResult Create()
-        {
-            return View();
+            // 假資料
+            CartItemViewModels food = new CartItemViewModels()
+            {
+                ImagePath = "pork.jpg",
+                Name = "豬肉便當",
+                UnitPrice = 100,
+                Count = 10,
+            };
+            List<CartItemViewModels> foods = new List<CartItemViewModels>();
+            foods.Add(food);
+            return View(foods);
         }
 
 
