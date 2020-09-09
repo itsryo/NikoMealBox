@@ -40,5 +40,19 @@ namespace NikoMealBox.Controllers
             currentCart.AddProduct(id);
             return PartialView("_CartPartial");
         }
+
+        public ActionResult RemoveFromCart(int id)
+        {
+            var currentCart = CartRepository.GetCurrentCart();
+            currentCart.RemoveProduct(id);
+            return PartialView("_CartPartial");
+        }
+
+        public ActionResult ClearCart()
+        {
+            var currentCart = CartRepository.GetCurrentCart();
+            currentCart.ClearCart();
+            return PartialView("_CartPartial");
+        }
     }
 }

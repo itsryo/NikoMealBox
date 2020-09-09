@@ -97,5 +97,31 @@ namespace NikoMealBox.ViewModels
         }
 
         #endregion
+
+
+        public bool RemoveProduct(int ProductId)
+        {
+            var findItem = this.cartItems
+                .Where(s => s.Id == ProductId)
+                .Select(s => s)
+                .FirstOrDefault();
+
+            if(findItem == default(CartItemViewModels))
+            {
+                //不存在購物車內，不須做任何動作
+            }
+            else
+            {
+                //存在購物車內，將商品移除
+                this.cartItems.Remove(findItem);
+            }
+            return true;
+        }
+
+        public bool ClearCart()
+        {
+            this.cartItems.Clear();
+            return true;
+        }
     }
 }
