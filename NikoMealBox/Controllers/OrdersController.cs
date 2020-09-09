@@ -25,25 +25,15 @@ namespace NikoMealBox.Controllers
         }
 
 
-
-        //點購物車判斷是否有登入
-        //有登入就跳購物車畫面
-        //沒有登入就跳modal-->然後到登入畫面
-        public ActionResult Login(string Id)
+        // GET: Orders/Create
+        // 判斷是否有登入
+        public ActionResult Create(string Id)
         {
             if (Id == null)
             {
-                 return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Account");
             }
 
-            return View();
-        }
-
-
-        // GET: Orders/Create
-        //[Authorize]
-        public ActionResult Create()
-        {
             return View();
         }
 
