@@ -33,7 +33,8 @@ namespace NikoMealBox.Controllers
         {
             if (Id == null)
             {
-                 return RedirectToAction("Login", "Account");
+              
+                return RedirectToAction("Login", "Account");
             }
 
             return View();
