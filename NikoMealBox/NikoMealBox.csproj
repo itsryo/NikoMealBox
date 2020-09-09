@@ -317,11 +317,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\HomePage\NicoHome.css" />
-<<<<<<< Updated upstream
     <Content Include="Content\MemberCenterPage\MemeberCenter.css" />
-=======
     <Content Include="Content\LoginPage\Login.css" />
->>>>>>> Stashed changes
     <Content Include="Content\ProductsPage\productdetail.css" />
     <Content Include="Scripts\ProductsPage\productdetail.js" />
     <Content Include="Content\ProductsPage\products.css" />
