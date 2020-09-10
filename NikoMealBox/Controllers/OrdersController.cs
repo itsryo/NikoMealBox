@@ -31,10 +31,7 @@ namespace NikoMealBox.Controllers
         {
             if (Id == null)
             {
-<<<<<<< HEAD
-              
-=======
->>>>>>> 2d912d82a26d375db7f1da768c767de920e452ef
+
                 return RedirectToAction("Login", "Account");
             }
 

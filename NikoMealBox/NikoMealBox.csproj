@@ -390,10 +390,8 @@
     <Content Include="Views\Orders\Delete.cshtml" />
     <Content Include="Views\Orders\Details.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
-    <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Account\MemeberCenter.cshtml" />
     <Content Include="Views\Shared\_CartPartial.cshtml" />
-    <Content Include="Views\Orders\Login.cshtml" />
     <Content Include="Views\Orders\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
