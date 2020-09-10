@@ -11,14 +11,13 @@ namespace NikoMealBox.ViewModels
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal UnitPrice { get; set; }
-        public int Count { get; set; }
+        public int UnitsInStock { get; set; }
         public decimal Amount
         {
             get
             {
-                return this.UnitPrice * this.Count;
+                return this.UnitPrice * this.UnitsInStock;
             }
         }
-        public string ImagePath { get; set; }
     }
 }
