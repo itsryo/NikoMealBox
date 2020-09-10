@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -10,6 +11,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using NikoMealBox.Models;
+
 
 namespace NikoMealBox.Controllers
 {
@@ -23,7 +25,7 @@ namespace NikoMealBox.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -35,9 +37,9 @@ namespace NikoMealBox.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -54,34 +56,68 @@ namespace NikoMealBox.Controllers
         }
 
         [Authorize]
-        public ActionResult MemeberCenter()
+        public async Task<ActionResult> MemeberCenter()
         {
-            return View();
+
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            MemberCenterViewModel result = new MemberCenterViewModel
+            {
+                Name = user.Name,
+                Address = user.Address,
+                Birthday = user.Birthday,
+                Mobile = user.Mobile,
+                Gender = user.Gender,
+                Height = user.Height,
+                Weight = user.Weight
+            };
+            return View(result);
+
         }
 
-        //
-        // POST: /Account/ResetPassword
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> MemeberCenter(ResetPasswordViewModel model)
+        public async Task<ActionResult> MemeberCenter(MemeberCenterViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-            var user = await UserManager.FindByNameAsync(model.Email);
-            if (user == null)
-            {
-                // 不顯示使用者不存在
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
-            }
-            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+
+            // Get the current application user
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+            user.Name = model.Name;
+            user.Address = model.Address;
+            user.Mobile = model.Mobile;
+            user.Height = model.Height;
+            user.Weight = model.Weight;
+
+            // Update the details\
+            var result=UserManager.Update(user);
+
             if (result.Succeeded)
             {
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
+                MessageBox.Show("Update Succeeded");
+
+                return RedirectToAction("Index", "Home");
             }
-            AddErrors(result);
-            return View();
+            return View("MemeberCenter");
+
+
+            //if (!ModelState.IsValid)
+            //{
+            //    return View(model);
+            //}
+            //var user = await UserManager.FindByNameAsync(model.Email);
+            //if (user == null)
+            //{
+            //    // 不顯示使用者不存在
+            //    return RedirectToAction("Login", "Account");
+            //}
+            //var result = await UserManager.ResetPasswordAsync(user.Id, model.Password);
+            //if (result.Succeeded)
+            //{
+            //    return RedirectToAction("ResetPasswordConfirmation", "Account");
+            //}
+            //AddErrors(result);
+            //return View();
         }
 
         //
@@ -93,8 +129,8 @@ namespace NikoMealBox.Controllers
             return View();
         }
 
-        
-          
+
+
 
         //
         // POST: /Account/Login
@@ -155,7 +191,7 @@ namespace NikoMealBox.Controllers
             // 如果使用者輸入不正確的代碼來表示一段指定的時間，則使用者帳戶 
             // 會有一段指定的時間遭到鎖定。 
             // 您可以在 IdentityConfig 中設定帳戶鎖定設定
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -184,17 +220,26 @@ namespace NikoMealBox.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-           
+
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,
-                    Name=model.Name,Mobile=model.Mobile,Height=model.Height,Weight=model.Weight,
-                    Gender=model.Gender,Birthday=model.Birthday,Address=model.Address};
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Name = model.Name,
+                    Mobile = model.Mobile,
+                    Height = model.Height,
+                    Weight = model.Weight,
+                    Gender = model.Gender,
+                    Birthday = model.Birthday,
+                    Address = model.Address
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // 如需如何進行帳戶確認及密碼重設的詳細資訊，請前往 https://go.microsoft.com/fwlink/?LinkID=320771
                     // 傳送包含此連結的電子郵件
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

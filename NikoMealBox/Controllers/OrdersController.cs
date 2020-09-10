@@ -12,6 +12,7 @@ using NikoMealBox.Models.DataTable;
 
 namespace NikoMealBox.Controllers
 {
+    //[Authorize]
     public class OrdersController : Controller
     {
         private ApplicationDbContext db;
@@ -31,7 +32,6 @@ namespace NikoMealBox.Controllers
         {
             if (Id == null)
             {
-
                 return RedirectToAction("Login", "Account");
             }
 
