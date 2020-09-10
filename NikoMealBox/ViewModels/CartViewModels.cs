@@ -66,7 +66,7 @@ namespace NikoMealBox.ViewModels
             }
             else
             {   //存在購物車內，則將商品數量累加
-                findItem.Count += 1;
+                findItem.UnitsInStock += 1;
             }
             return true;
         }
@@ -77,7 +77,7 @@ namespace NikoMealBox.ViewModels
                 Id = products.Id,
                 Name = products.ProductName,
                 UnitPrice = products.UnitPrice,
-                Count = 1
+                UnitsInStock = 1
             };
 
             this.cartItems.Add(cartItem);

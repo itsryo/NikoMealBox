@@ -1,0 +1,12 @@
+.modal-footer{
+    border-top:none;
+}
+
+.modal-title{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.btn{
+    margin-left: 20px;
+}

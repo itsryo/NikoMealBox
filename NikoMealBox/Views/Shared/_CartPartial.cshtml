@@ -27,7 +27,7 @@
         foreach (var cartitem in currentCart)
         {
             <li class="col-xs-12">
-                <span class="col-xs-10">@cartitem.Name @cartitem.UnitPrice 元 x @cartitem.Count</span>
+                <span class="col-xs-10">@cartitem.Name @cartitem.UnitPrice 元 x @cartitem.UnitsInStock</span>
                 <span class="btn btn-danger col-xs-2" onclick="RemoveFromCart('@cartitem.Id')">
                     x
                 </span>
