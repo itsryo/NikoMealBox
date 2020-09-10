@@ -82,7 +82,7 @@ addprodCart.forEach(function (element, index) {
 
 btnLeft.forEach(function (element, index) {
     element.addEventListener('click', function () {
-        if (quantityInput[index].value == 0) {
+        if (quantityInput[index].value == 1) {
             return
         }
         quantityInput[index].value = parseInt(quantityInput[index].value) - 1;
@@ -94,5 +94,17 @@ btnRight.forEach(function (element, index) {
         quantityInput[index].value = parseInt(quantityInput[index].value) + 1;
     })
 });
+
+function GetQuantity() {
+    addprodCart.forEach(function (element, index) {
+        element.addEventListener('click', function () {
+            let getquantity = quantityInput[index].value;
+            console.log(getquantity);//取得數量value
+        })
+    })
+    return getquantity;
+}
+
+
 
 init()

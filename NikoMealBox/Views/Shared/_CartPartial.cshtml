@@ -27,7 +27,7 @@
         foreach (var cartitem in currentCart)
         {
             <li class="col-xs-12">
-                <span class="col-xs-10">@cartitem.Name @cartitem.UnitPrice 元 x @cartitem.Count</span>
+                <span class="col-xs-10"> @cartitem.Name @cartitem.UnitPrice 元 x @cartitem.Count</span>
                 <span class="btn btn-danger col-xs-2" onclick="RemoveFromCart('@cartitem.Id')">
                     x
                 </span>
@@ -36,7 +36,7 @@
         }
         <li class="divider"></li>
         <li>
-            <a class="btn btn-success text-center col-xs-5" href="#">結帳去</a>
+            <a class="btn btn-success text-center col-xs-5" href="@Url.Action("Index","CartAll",new { })">結帳去</a>
             <a class="btn btn-danger text-center col-xs-5" onclick="ClearCart()">清空</a>
         </li>
     }

@@ -211,6 +211,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartAllController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -324,6 +325,7 @@
     <Content Include="Content\MemberCenterPage\MemeberCenter.css" />
     <Content Include="Content\LoginPage\Login.css" />
     <Content Include="Content\ProductsPage\productdetail.css" />
+    <Content Include="Content\ShoppingCarPage\cart.css" />
     <Content Include="Scripts\ProductsPage\productdetail.js" />
     <Content Include="Content\ProductsPage\products.css" />
     <Content Include="Content\RegisterPage\register.css" />
@@ -392,6 +394,7 @@
     <Content Include="Views\Account\MemeberCenter.cshtml" />
     <Content Include="Views\Shared\_CartPartial.cshtml" />
     <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\CartAll\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

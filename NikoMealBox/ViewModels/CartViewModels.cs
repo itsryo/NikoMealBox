@@ -77,7 +77,8 @@ namespace NikoMealBox.ViewModels
                 Id = products.Id,
                 Name = products.ProductName,
                 UnitPrice = products.UnitPrice,
-                Count = 1
+                Count = 1,
+                ImagePath =products.ImagePath
             };
 
             this.cartItems.Add(cartItem);
