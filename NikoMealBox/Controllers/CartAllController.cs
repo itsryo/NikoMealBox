@@ -10,6 +10,7 @@ namespace NikoMealBox.Controllers
     public class CartAllController : Controller
     {
         // GET: CartAll
+        [Authorize]
         public ActionResult Index()
         {
             return View();
