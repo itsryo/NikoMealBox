@@ -66,7 +66,7 @@ namespace NikoMealBox.ViewModels
             }
             else
             {   //存在購物車內，則將商品數量累加
-                findItem.Count += 1;
+                findItem.Count += quantity;
             }
             return true;
         }
