@@ -52,10 +52,10 @@
 
                                 @* 驗證碼 *@
                                 @*<div class="form-group">
-                                <input type="text" class="form-control code" name="captcha" placeholder="輸入驗證碼" required="required">
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", name = "password", placeholder = "會員密碼", required = "" })
-                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                                </div>*@
+                                    <input type="text" class="form-control code" name="captcha" placeholder="輸入驗證碼" required="required">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", name = "password", placeholder = "會員密碼", required = "" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    </div>*@
 
                                 @* 登入/註冊按鈕 *@
                                 <div class="function_wrap">

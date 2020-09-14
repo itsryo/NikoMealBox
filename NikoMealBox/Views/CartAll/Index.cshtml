@@ -1,15 +1,11 @@
-﻿
+﻿@section topCSS{
+
+    <link href="~/Content/ShoppingCarPage/cart.css" rel="stylesheet" />
+}
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Index";
+    var cart = NikoMealBox.DataAccess.Repository.CartRepository.GetCurrentCart();
 }
-
-
-@section topCSS{
-    <link href="~/Content/ShoppingCarPage/shop.css" rel="stylesheet" />
-}
-
-
-
 
 <div class="shopping-process">
     <div class="container">
@@ -30,14 +26,11 @@
             </ul>
         </div>
 
-        <div class="row">
-            <div class="hint-bar">
-                <p>訂購金額未滿$600 無法外送</p>
-            </div>
+        <div class="hint-bar">
+            <p>訂購金額未滿$600 無法外送</p>
         </div>
 
-
-        <div class="ordered-items justify-content-between  d-flex w-100 px-2">
+        <div class="ordered-items justify-content-around d-flex w-100 px-2">
             <span>訂購品項</span>
             <span class="e">品名</span>
             <span class="e">單價NT$</span>
@@ -45,8 +38,40 @@
             <span class="e">規格</span>
             <span class="e">小計NT$</span>
             <span class="e">刪除</span>
+
+            @*@foreach (var pd in cart)
+            {
+                <div><img src="@pd.ImagePath" width="50" height="50" /></div>
+                <div>@pd.Name</div>
+                <div>@pd.UnitPrice</div>
+                <div>@pd.Count</div>
+                <div>@pd.Amount</div>
+            }*@
+            @*<td>@cart.TotalAmount</td>*@
         </div>
 
+        <div class="varvalue" id="varvalue">
+
+            @foreach (var pd in cart)
+            {
+                <div class="ordered-products justify-content-around d-flex my-5 mx-4">
+                    <div class="pic mr-5">
+                        <img src="@pd.ImagePath" width="200" height="150" />
+                    </div>
+
+                    <ul class="group d-flex justify-content-around w-100 my-2">
+
+                        <li>@pd.Name</li>
+                        <li>@pd.UnitPrice</li>
+                        <li>@pd.Count</li>
+                        <li>-</li>
+                        <li>@pd.Amount</li>
+                        <li><span onclick="RemoveFromCart('@pd.Id')"> <i class="fas fa-trash-alt"></i></span></li>
+
+                    </ul>
+                </div>
+            }
+        </div>
         <div style="margin-top:20px;" class="row">
             <div class="col-12 col-md-4 delivery_date">
                 <p>送達日期<input type="date"></p>
@@ -60,11 +85,10 @@
             <div class="col-md-12 d-flex  justify-content-between">
                 <button class="btn-1">繼續選購光光商品</button>
                 <div class="total">
-                    <p class="">購物金額 $0+運費 $0=總計 <span>$0</span></p>
+                    <p class="">購物金額 @cart.TotalAmount + 運費 $0=  <span>@cart.TotalAmount</span></p>
                 </div>
             </div>
         </div>
-
 
 
         <div class="step-bars-two">
@@ -84,6 +108,7 @@
             </ul>
         </div>
 
+
         <div class="row">
             <div class="col-12 col-md-8 my-2">
                 <div class="login-1">
@@ -99,7 +124,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="row">
             <div class="col-md-3 col-6">
@@ -126,7 +150,6 @@
                        placeholder="請輸入您的電子信箱,以作為會員登入帳號。">
             </div>
         </div>
-
 
 
         <div class="row mt-3">
@@ -164,8 +187,6 @@
             </div>
         </div>
 
-
-
         <div class="form-check">
             <form>
                 <input style="margin-top: 15px;margin-left: -10px;" class="form-check-input" type="radio"
@@ -178,8 +199,6 @@
             </form>
         </div>
 
-
-
         <div class="form-check">
             <input style="margin-top: 15px;margin-left: -10px;" class="form-check-input" type="radio"
                    name="exampleRadios" id="exampleRadios1" value="option1" checked>
@@ -187,7 +206,6 @@
                 我同意接受光光盒餐<span class="c">會員條款</span>和<span class="d">隱私權政策</span>
             </label>
         </div>
-
 
         <div class="form-check">
             <input style="margin-top: 15px;margin-left: -10px;" class="form-check-input" type="radio"
@@ -198,8 +216,6 @@
                 如果您已經建立過帳號，可直接在網頁上方登入。
             </label>
         </div>
-
-
 
         <div class="row password">
             <div class="col-md-4">
@@ -219,12 +235,6 @@
         </div>
 
 
-
-
-
-
-
-
         <div class="step-bars-three">
             <ul>
                 <li>
@@ -241,7 +251,6 @@
                 </li>
             </ul>
         </div>
-
 
         <div class="row ml-4">
             <div class="col-md-2 my-1">
@@ -260,23 +269,31 @@
                 <div class="form-group d-flex ">
                     <label for="inputEmail3" class="form-label d-flex align-items-end">公司統編</label>
                     <div class="col-8 ">
-                        <input type="" class="form-control border rounded-pill " id="inputEmail3">
+                        <input type="email" class="form-control border rounded-pill " id="inputEmail3">
                     </div>
                     </form>
                 </div>
             </div>
         </div>
 
-
-
-
-
-
-
         <div class="row ml-2 my-3">
             <button class="btn-4">下單購買</button>
         </div>
+
+
     </div>
+</div>
+<script type="text/javascript">
+    function RemoveFromCart(productId) {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("RemoveFromCart","CartAll")',
+                data: { id: productId }
+            })
+                .done(function (msg) {
+                    $('div#varvalue').html(msg);
+                });
+        }
 
-
-
+</script>
+    <script src="https://kit.fontawesome.com/05c128ff7b.js" crossorigin="anonymous"></script>

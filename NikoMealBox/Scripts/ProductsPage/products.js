@@ -12,11 +12,10 @@ let productId = document.querySelectorAll("#ProductId");
 let x = quantityInput.value;
 
 
-
-function init() {//每一項產品加入id
+//每一項產品加入id
+function init() {
     card.forEach(function (element, index) {
         element.setAttribute('id', "product" + index)
-        console.log(element);
     })
 }
 
@@ -84,7 +83,7 @@ addprodCart.forEach(function (element, index) {
 
 btnLeft.forEach(function (element, index) {
     element.addEventListener('click', function () {
-        if (quantityInput[index].value == 0) {
+        if (quantityInput[index].value == 1) {
             return
         }
         quantityInput[index].value = parseInt(quantityInput[index].value) - 1;
