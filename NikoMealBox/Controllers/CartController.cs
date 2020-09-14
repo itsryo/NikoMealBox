@@ -35,10 +35,10 @@ namespace NikoMealBox.Controllers
         //}
 
         //以id加入Product至購物車，並回傳購物車頁面
-        public ActionResult AddToCart(int id)
+        public ActionResult AddToCart(int id,int quantity)
         {
             var currentCart = CartRepository.GetCurrentCart();
-            currentCart.AddProduct(id);
+            currentCart.AddProduct(id, quantity);
             return PartialView("_CartPartial");
         }
 

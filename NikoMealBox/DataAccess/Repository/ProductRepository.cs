@@ -10,24 +10,14 @@ namespace NikoMealBox.DataAccess.Repository
 {
     public class ProductRepository : GenericRepository<Products>
     {
-        //private ApplicationDbContext db;
-        private ProductRepository _repository;
 
-        //public ProductRepository()
-        //{
-        //    //db = new ApplicationDbContext();
-        //    _repository = new ProductRepository();
-        //}
-
-        //ProductViewModels.Index prodViewM = new ProductViewModels.Index();
-        
         /// <summary>
         /// 取得所有產品
         /// </summary>
         /// <returns></returns>
         public IEnumerable<ProductViewModels.Index> Select()
         {
-            var products = GetAll().Select(x => new ProductViewModels.Index
+            var products = GetAll().Where(x=>!x.IsDelete && x.IsEnable).Select(x => new ProductViewModels.Index
             {
                 Id = x.Id,
                 Name = x.ProductName,
@@ -71,11 +61,24 @@ namespace NikoMealBox.DataAccess.Repository
 
 
 
-
+        /// <summary>
+        /// 搜尋商品
+        /// </summary>
+        /// <param name="keyWord"></param>
+        /// <returns></returns>
         public IEnumerable<Products> Search(string keyWord)
         {
             return GetAll().Where(x => x.ProductName.Contains(keyWord));
         }
 
+        /// <summary>
+        /// 管理頁查詢商品
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Products> SelectAllProducts()
+        {
+            var product = GetAll();
+            return product;
+        }
     }
 }

@@ -211,6 +211,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartAllController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\GetDisplayNameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -256,7 +258,7 @@
     <Compile Include="ViewModels\CartItemViewModels.cs" />
     <Compile Include="ViewModels\CartViewModels.cs" />
     <Compile Include="ViewModels\ProductViewModels.cs" />
-    <Compile Include="WebAPI\ProductController.cs" />
+    <Compile Include="Controllers\WebAPI\ProductController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Images\AboutPage\Aboutbanner.png" />
@@ -325,6 +327,7 @@
     <Content Include="Content\LoginPage\Login.css" />
     <Content Include="Content\ProductsPage\productdetail.css" />
     <Content Include="Content\ShoppingCarPage\cart.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="Scripts\ProductsPage\productdetail.js" />
     <Content Include="Content\ProductsPage\products.css" />
     <Content Include="Content\RegisterPage\register.css" />
@@ -350,6 +353,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\ProductsPage\products.js" />
+    <Content Include="Scripts\scripts.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -383,7 +387,6 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
@@ -393,7 +396,11 @@
     <Content Include="Views\Shared\_CartPartial.cshtml" />
     <Content Include="Views\Orders\Create.cshtml" />
     <Content Include="Views\CartAll\Index.cshtml" />
-    <Content Include="Views\Account\LogOff.cshtml" />
+    <Content Include="Views\Orders\Login.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
