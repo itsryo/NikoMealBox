@@ -43,7 +43,7 @@ namespace NikoMealBox.ViewModels
             }
         }
 
-        public bool AddProduct(int ProductId)
+        public bool AddProduct(int ProductId,int quantity)
         {
             var findItem = this.cartItems
                 .Where(x => x.Id == ProductId)
@@ -60,7 +60,7 @@ namespace NikoMealBox.ViewModels
                
                     if (product != default(Products))
                     {
-                        this.AddProduct(product);
+                        this.AddProduct(product, quantity);
                     }
 
             }
@@ -70,14 +70,14 @@ namespace NikoMealBox.ViewModels
             }
             return true;
         }
-        private bool AddProduct(Products products)
+        private bool AddProduct(Products products,int quantity)
         {
             var cartItem = new ViewModels.CartItemViewModels()
             {
                 Id = products.Id,
                 Name = products.ProductName,
                 UnitPrice = products.UnitPrice,
-                UnitsInStock = 1
+                UnitsInStock = quantity
             };
 
             this.cartItems.Add(cartItem);

@@ -10,8 +10,8 @@
 
     @*<link href="@Url.Content("~/Content/HomePage/NicoHome.css")"  type="text/css"/>*@
     <link href="~/Content/HomePage/NicoHome.css" rel="stylesheet" />
-    @Scripts.Render("~/bundles/modernizr")
-
+    @*@Scripts.Render("~/bundles/modernizr")*@
+    
 
     @RenderSection("topJS", false)
 
@@ -175,7 +175,7 @@
             console.log("ready!");
         });
 
-        function AddToCart(productId) {
+        @*function AddToCart(productId) {
             $.ajax({
                 type: 'POST',
                 url: '@Url.Action("AddToCart","Cart")',
@@ -184,7 +184,7 @@
                 .done(function (msg) {
                     $('li#Cart').html(msg);
                 });
-        }
+        }*@
 
         function RemoveFromCart(productId) {
             $.ajax({

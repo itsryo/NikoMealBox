@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niko Meal Box-@ViewBag.Title</title>
+
+    @*@Styles.Render("~/Content/css")*@
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS -->
+    @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">*@
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+          crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    @*@Scripts.Render("~/bundles/scripts")*@
+    @*@Scripts.Render("~/bundles/modernizr")*@
+    @Styles.Render("~/Content/styles.css")
+
+
+    @RenderSection("topCSS", required: false)
+    @RenderSection("topJS", required: false)
+
+
+
+
+</head>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">NikoMealBox</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
+            <i class="fas fa-bars"></i>
+        </button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search"
+                       aria-describedby="basic-addon2" />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+        <!-- Navbar (小人頭)-->
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="#">設定</a>
+                    <a class="dropdown-item" href="#">Activity Log</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="login.html">登出</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="index.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
+                        </a>
+                        <div class="sb-sidenav-menu-heading">管理區</div>
+                        <!-- 網頁管理 -->
+                        <div class="page">
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#page"
+                               aria-expanded="false" aria-controls="page">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                網頁管理
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="page" aria-labelledby="headingOne"
+                                 data-parent="#sidenavAccordion">
+                                <!-- 網頁管理 -->
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="layout-static.html">行銷活動</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">首頁</a>
+                                </nav>
+
+                            </div>
+                        </div>
+                        <!-- 商品管理 -->
+                        <div class="product">
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse"
+                               data-target="#ProductManage" aria-expanded="false" aria-controls="ProductManage">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                商品管理
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="ProductManage" aria-labelledby="headingOne"
+                                 data-parent="#sidenavAccordion">
+                                <!-- 商品管理 -->
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" @*href="layout-static.html"*@ id="selectProduct" onclick="selectProd()">查詢商品</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">新增商品</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">修改商品</a>
+                                </nav>
+                            </div>
+                        </div>
+                        <!-- 會員管理 -->
+                        <div class="Member">
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse"
+                               data-target="#MemberManage" aria-expanded="false" aria-controls="MemberManage">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                會員管理
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="MemberManage" aria-labelledby="headingOne"
+                                 data-parent="#sidenavAccordion">
+                                <!-- 會員管理 -->
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="layout-static.html">查詢會員</a>
+                                    <a class="nav-link" href="layout-sidenav-light.html">刪除會員</a>
+                                </nav>
+                            </div>
+                        </div>
+                        <!-- 訂單管理 -->
+                        <div class="Order">
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse"
+                               data-target="#OrderManage" aria-expanded="false" aria-controls="OrderManage">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                訂單管理
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="OrderManage" aria-labelledby="headingOne"
+                                 data-parent="#sidenavAccordion">
+                                <!-- 訂單管理 -->
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="layout-static.html">訂單狀態</a>
+                                </nav>
+                            </div>
+                        </div>
+                        <!-- 財務管理 -->
+                        <div class="Finance">
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse"
+                               data-target="#FinanceManage" aria-expanded="false" aria-controls="FinanceManage">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                財務管理
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="FinanceManage" aria-labelledby="headingOne"
+                                 data-parent="#sidenavAccordion">
+                                <!-- 財務管理 -->
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="layout-static.html">產品銷售量</a>
+                                    <a class="nav-link" href="layout-static.html">產品銷售額</a>
+                                </nav>
+                            </div>
+                        </div>
+
+
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                            Pages
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                    Authentication
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="login.html">Login</a>
+                                        <a class="nav-link" href="register.html">Register</a>
+                                        <a class="nav-link" href="password.html">Forgot Password</a>
+                                    </nav>
+                                </div>
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                    Error
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="401.html">401 Page</a>
+                                        <a class="nav-link" href="404.html">404 Page</a>
+                                        <a class="nav-link" href="500.html">500 Page</a>
+                                    </nav>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading">Addons</div>
+                        <a class="nav-link" href="charts.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Charts
+                        </a>
+                        <a class="nav-link" href="tables.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Tables
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sb-sidenav-footer">
+                    <div class="small">Logged in as:</div>
+                    Start Bootstrap
+                </div>
+            </nav>
+        </div>
+        @RenderBody()
+    </div>
+
+
+
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+
+    @*<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>*@
+
+    <script src="~/Scripts/scripts.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    @RenderSection("endCSS", required: false)
+    @RenderSection("endJS", required: false)
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            console.log("ready!");
+        });
+
+        //let selectProd = document.getElementById("selectProduct")
+        function selectProd() {
+            alert("進來了")
+            $.ajax({
+                url: "api/Product/SelectProducts",
+                type: "Get",
+                dataType: 'json',
+                success: function (result) {//回傳所有商品資料
+                    var message = JSON.stringify(result);
+                    alert(message);
+
+                },
+                error: function () {
+                    alert("有問題");
+                } 
+
+            });
+        }
+        //selectProd.addEventListener('click', function () {
+            
+        //})
+    </script>
+
+</body>
+</html>

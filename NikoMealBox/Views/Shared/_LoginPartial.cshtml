@@ -19,7 +19,7 @@ else
     <a href="@Url.Action("Login","Account")" class="text-decoration-none">
         <img src="~/Assets/Images/HomePage/member.png" alt="" width="5%">
     </a>
-    <a href="@Url.Action("Login","Orders", new { id = User.Identity.GetUserId()})">
+    <a  href="@Url.Action("Login","Orders", new { id = User.Identity.GetUserId()})">
         <img src="~/Assets/Images/HomePage/cart.png" alt="" width="5%">
     </a>
 }

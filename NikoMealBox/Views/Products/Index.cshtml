@@ -8,6 +8,8 @@
 
     <script src="~/Scripts/ProductsPage/products.js"></script>
 }
+
+
 <div class="container">
     <div class="row">
         @foreach (var item in Model)
@@ -17,7 +19,7 @@
                 <div class="col-12 col-md-6 col-lg-6 col-xl-6 my-3">
                     <div class="card">
                         <div class="pic">
-                            <a href="@Url.Action("Details", "Products" , new { id = item.Id })">
+                            <a href="@Url.Action("Details", "Products", new { id = item.Id })">
                                 <img src="@item.ImagePath">
                             </a>
                         </div>
@@ -55,10 +57,12 @@
                                         </div>
                                         <!-- </div> -->
                                     </div>
-                                    <a onclick="AddToCart('@item.Id')" href="javascript:void(0);" id="addProd"
+                                   
+                                    <a   href="javascript:void(0);" id="addProd"
                                        class="mt-1 btn btn-secondary rounded-pill">
                                         <i class="fas fa-shopping-cart"></i> 加入購物車
                                     </a>
+                                    <input type="hidden" id="ProductId" value="@item.Id" />
                                 </div>
                             </div>
                         </div>

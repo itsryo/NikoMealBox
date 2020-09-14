@@ -8,39 +8,39 @@ namespace NikoMealBox.ViewModels
 {
     public class ProductViewModels
     {
-        public class Index
+        public class ProductBase
         {
+            /// <summary>
+            /// 商品Id
+            /// </summary>
             public int Id { get; set; }
-            public string  Name { get; set; }
 
-            public decimal UnitPrice { get; set; }
-            public int UnitsInStock { get; set; }
-
-            public string Description { get; set; }
-            public string ImagePath { get; set; }
-        }
-        public class Detail
-        {
-            public int Id { get; set; }
             /// <summary>
             /// 商品名稱
             /// </summary>
-            [Required]
-            [StringLength(20)]
             public string Name { get; set; }
-
             /// <summary>
             /// 商品單價
             /// </summary>
             public decimal UnitPrice { get; set; }
-
             /// <summary>
             /// 商品簡述
             /// </summary>
-            [Required]
-            [StringLength(50)]
             public string Description { get; set; }
-
+            /// <summary>
+            /// 商品圖片路徑
+            /// </summary>
+            public string ImagePath { get; set; }
+        }
+        public class Index : ProductBase
+        {
+            /// <summary>
+            /// 商品庫存
+            /// </summary>
+            public int UnitsInStock { get; set; }
+        }
+        public class Detail : ProductBase
+        {
             /// <summary>
             /// 商品材料
             /// </summary>
@@ -89,16 +89,13 @@ namespace NikoMealBox.ViewModels
             public decimal Sodium { get; set; }
 
             /// <summary>
-            /// 商品圖片路徑
-            /// </summary>
-            [Required]
-            [StringLength(256)]
-            public string ImagePath { get; set; }
-
-            /// <summary>
             /// 蛋奶素
             /// </summary>
             public bool IsOvolacto { get; set; }
+        }
+        public class AdminIndex
+        {
+
         }
     }
 
