@@ -64,7 +64,8 @@
         <div class="form-group row col-12">
             @Html.LabelFor(m => m.Gender, new { @class = "mt-2 col-3 text-center text-justify control-label" })
             <div class="col-9">
-                @Html.TextBoxFor(m => m.Gender, new { @class = "form-control text-center text-justify rounded-pill" })
+                @Html.RadioButtonFor(m => m.Gender, "男性",new { @checked="checked",@class ="mr-2"}) 男性
+                @Html.RadioButtonFor(m => m.Gender, "女性" , new {  @class = "ml-2 mr-2" }) 女性
             </div>
         </div>
         <div class="form-group row col-12">
