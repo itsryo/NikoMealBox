@@ -255,8 +255,6 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CartItemViewModels.cs" />
     <Compile Include="ViewModels\CartViewModels.cs" />
-    <Compile Include="ViewModels\OrderViewModel.cs" />
-    <Compile Include="ViewModels\OrderViewModels.cs" />
     <Compile Include="ViewModels\ProductViewModels.cs" />
     <Compile Include="WebAPI\ProductController.cs" />
   </ItemGroup>
@@ -338,6 +336,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Assets\JSON\TaiwanAddress.json" />
     <None Include="Properties\PublishProfiles\nikoMealBox - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\NikoMealBox20200914014627 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

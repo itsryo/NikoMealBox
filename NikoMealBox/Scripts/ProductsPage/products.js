@@ -9,11 +9,10 @@ let cartbtn = document.querySelector("#addProd");
 let x = quantityInput.value;
 
 
-
-function init() {//每一項產品加入id
+//每一項產品加入id
+function init() {
     card.forEach(function (element, index) {
         element.setAttribute('id', "product" + index)
-        console.log(element);
     })
 }
 
@@ -39,41 +38,10 @@ function saveProd(titlename, price, quantity, key) {
     localStorage.setItem("product" + key, JSON.stringify(cartArray))
 }
 
-
-//寫在購物車頁(泉切的)
-//下單
-//cartbtn.addEventListener('click', function () {
-//    var prodlenthjson = localStorage.length;
-//    //取localstorage資料
-//    var prodAryjson = localStorage.getItem("product" + prodlenthjson-1);
-//    $.ajax({
-//        url: '/Orders/Create', //資料要傳去的網址
-//        type: 'Get', //請求方式，POST/GET。(預設為GET)
-//        //data: {  //要傳入的參數NAME(KEY)&VALUE 傳送到server的資料
-//        //    //prodAryjson
-//        //    id:"product0",
-//        //    prodName: "雞肉便當",
-//        //    price: 50,
-//        //    quantity:8
-//        //},
-//        dataType: 'json',//預期Server傳回的資料類型 
-//        async: false,//請求同步
-//        success: function (result) {//成功時Dosomething (程式只要可以執行成功)
-//            alert(result)
-
-//        }
-//    })
-//})
-
-
-
 //按下購物車 利用動態id 取得text內容
 addprodCart.forEach(function (element, index) {
     element.addEventListener('click', function () {
         let textElement = document.querySelector("#" + "product" + index + " .card-body .price")
-        console.log(textElement)
-        console.log(textElement.textContent);
-        console.log(quantityInput[index].value);
         saveProd(titlename[index].textContent, textElement.textContent, quantityInput[index].value, index);
     })
 })
@@ -94,17 +62,5 @@ btnRight.forEach(function (element, index) {
         quantityInput[index].value = parseInt(quantityInput[index].value) + 1;
     })
 });
-
-function GetQuantity() {
-    addprodCart.forEach(function (element, index) {
-        element.addEventListener('click', function () {
-            let getquantity = quantityInput[index].value;
-            console.log(getquantity);//取得數量value
-        })
-    })
-    return getquantity;
-}
-
-
 
 init()
