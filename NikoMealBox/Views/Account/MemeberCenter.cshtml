@@ -1,7 +1,7 @@
 ﻿@model NikoMealBox.Models.MemberCenterViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "MemeberCenter";
+    ViewBag.Title = "會員中心";
 }
 @section topCSS{
 
@@ -12,22 +12,22 @@
     <div class="row">
         <div class=" col-sm-12 col-md-12 d-flex ">
             <a class="hyper  nav-link border rounded-pill  d-inline-block border-info " href="#">盒餐訂單 </a>
-            <a class="hyper ml-2 nav-link border rounded-pill  d-inline-block border-info " href="#">會員資料維護</a>
-            <a class="hyper ml-2 nav-link border rounded-pill  d-inline-block border-info " href="#">密碼變更</a>
-            <a class="hyper ml-2 nav-link border rounded-pill  d-inline-block bg-danger text-white" href="#"> 登出 <span class="sr-only">(current)</span></a>
+            <a class="hyper ml-2 nav-link border rounded-pill  d-inline-block border-info " style="background-color:#008A84; color:#FFF;" href="#">會員資料維護</a>
+            <a class="hyper ml-2 nav-link border rounded-pill  d-inline-block border-info " href="@Url.Action("ChangePassword","Manage")">密碼變更</a>
+            <a class="hyper ml-2 nav-link border rounded-pill  d-inline-block bg-danger text-white" href="javascript:document.getElementById('logoutForm').submit()"> 登出 <span class="sr-only">(current)</span></a>
         </div>
     </div>
     <div class="sectionarea mt-2">
       
             <div class="container body-content">
-                <h2>@ViewBag.Title</h2>
+                @*<h2>@ViewBag.Title</h2>*@
                 @using (Html.BeginForm("MemeberCenter", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary("", new { @class = "text-danger" })
 
                 
-                    <h3 class="subtitle" style="color:#008A84;">填寫個人資料</h3>
+                    <h3 class="subtitle" style="color:#008A84;">會員資料</h3>
                     <hr />
                     <div class="form-group row col-12">
                         @Html.LabelFor(m => m.Name, new { @class = "mt-2 col-3 text-center text-justify control-label" })
