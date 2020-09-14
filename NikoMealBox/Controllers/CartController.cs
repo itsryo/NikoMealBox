@@ -21,7 +21,8 @@ namespace NikoMealBox.Controllers
         {
             _repository = new ProductRepository();
         }
-        // GET: Cart
+
+        [Authorize]
         public ActionResult Index()
         {
             return View();
