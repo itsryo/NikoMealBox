@@ -52,27 +52,9 @@
 
         <div class="varvalue" id="varvalue">
 
-            @foreach (var pd in cart)
-            {
-                <div class="ordered-products justify-content-around d-flex my-5 mx-4">
-                    <div class="pic mr-5">
-                        <img src="@pd.ImagePath" width="200" height="150" />
-                    </div>
-
-                    <ul class="group d-flex justify-content-around w-100 my-2">
-
-                        <li>@pd.Name</li>
-                        <li>@pd.UnitPrice</li>
-                        <li>@pd.Count</li>
-                        <li>-</li>
-                        <li>@pd.Amount</li>
-                        <li><span onclick="RemoveFromCart('@pd.Id')"> <i class="fas fa-trash-alt"></i></span></li>
-
-                    </ul>
-                </div>
-            }
+            @Html.Partial("_CartAllPartial")
         </div>
-        <div style="margin-top:20px;" class="row">
+        @*<div style="margin-top:20px;" class="row">
             <div class="col-12 col-md-4 delivery_date">
                 <p>送達日期<input type="date"></p>
             </div>
@@ -88,7 +70,7 @@
                     <p class="">購物金額 @cart.TotalAmount + 運費 $0=  <span>@cart.TotalAmount</span></p>
                 </div>
             </div>
-        </div>
+        </div>*@
 
 
         <div class="step-bars-two">
@@ -284,7 +266,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    function RemoveFromCart(productId) {
+    function RemoveFromCartAll(productId) {
             $.ajax({
                 type: 'POST',
                 url: '@Url.Action("RemoveFromCart","CartAll")',

@@ -133,25 +133,32 @@ namespace NikoMealBox.Models
 
     public class MemberCenterViewModel
     {
+        [Display(Name = "姓名")]
         public string Name { get; set; }
+        [Display(Name = "手機號碼")]
         public string Mobile { get; set; }
+        [Display(Name = "身高")]
         public int Height { get; set; }
-
+        [Display(Name = "體重")]
         public decimal Weight { get; set; }
-
+        [Display(Name = "性別")]
         public string Gender { get; set; }
-
+        [Display(Name = "生日")]
         public DateTime Birthday { get; set; }
-
+        [Display(Name = "會員住址")]
         public string Address { get; set; }
     }
     public class MemeberCenterViewModel
     {
+     
         public string Name { get; set; }
+       
         public string Mobile { get; set; }
+       
         public int Height { get; set; }
-
+       
         public decimal Weight { get; set; }
+        
         public string Address { get; set; }
     }
 
