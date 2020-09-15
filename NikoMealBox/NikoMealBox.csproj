@@ -214,7 +214,6 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartAllController.cs" />
     <Compile Include="Controllers\CartController.cs" />
-    <Compile Include="Controllers\GetDisplayNameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -406,7 +405,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\GetDisplayName\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
