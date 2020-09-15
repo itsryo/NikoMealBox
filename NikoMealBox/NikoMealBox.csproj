@@ -328,6 +328,7 @@
     <Content Include="Content\ProductsPage\productdetail.css" />
     <Content Include="Content\ShoppingCarPage\cart.css" />
     <Content Include="Content\styles.css" />
+    <Content Include="Scripts\BackendProduct\datatables-demo.js" />
     <Content Include="Scripts\ProductsPage\productdetail.js" />
     <Content Include="Content\ProductsPage\products.css" />
     <Content Include="Content\RegisterPage\register.css" />
@@ -401,11 +402,11 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\_ViewStart.cshtml" />
     <Content Include="Views\CartAll\Index.cshtml" />
+    <Content Include="Views\Admin\Admin_SelectProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\GetDisplayName\" />
-    <Folder Include="HtmlPages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

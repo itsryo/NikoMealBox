@@ -1,0 +1,99 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    @*<style>
+        #urlText {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        #result {
+            display: none;
+            border: 5px dashed black;
+        }
+
+        #urlText, #result {
+            font-size: 20px;
+        }
+    </style>*@
+</head>
+<body>
+    <!--<div class="container">
+        <div class="jumbotron alert-success">
+            <h3>api測試</h3>
+        </div>
+        <button class="btn btn-primary" id="ajax">哈哈希望成功</button>-->
+        <!--<button class="btn btn-success" id="post">以jQuery.post()呼叫遠端API</button>
+        <button class="btn btn-warning" id="get">以jQuery.get()呼叫遠端API</button>
+        <button class="btn btn-info" id="getJSON">以jQuery.getJSON()呼叫遠端API</button>-->
+        <!--<button class="btn btn-danger" id="reset">Reset</button>
+        <div id="urlText" class="alert alert-info"></div>
+        <div id="result" class="alert alert-danger"></div>
+    </div>-->
+
+
+    @*<script>
+        var result = document.getElementById("result");
+        //取消Ajax快取
+        $.ajaxSetup({ cache: false });
+        var apiUrl = "/Admin/Admin_SelectProducts";
+        $().ready(function () {
+            //$.ajax()
+            $("#ajax").click(function () {
+                $.ajax({
+                    url: apiUrl,
+                    type: "POST",
+                    dataType: "json",
+                    success: function (response) {
+                        //將JSON物件轉成文字
+                        jsonText = JSON.stringify(response);
+                        result.innerHTML = jsonText;
+                        result.style.display = "block";
+                        result.className = getAlertStyle();
+                    }
+                });
+            });
+            //$.post()
+            $("#post").click(function () {
+                $.post(apiUrl, function (response) {
+                    //顯示JSON資料
+                    showAjaxResult(response)
+                });
+            });
+            //$.get()
+            $("#get").click(function () {
+                $.get(apiUrl, function (response) {
+                    showAjaxResult(response)
+                });
+            });
+            //$.getJSON()
+            $("#getJSON").click(function () {
+                $.getJSON(apiUrl, function (response) {
+                    showAjaxResult(response)
+                });
+            });
+            //顯示API URL
+            $("#urlText").text("API URL : " + apiUrl);
+            //顯示JSON資料
+            function showAjaxResult(response) {
+                result.innerHTML = JSON.stringify(response);
+                result.className = getAlertStyle();
+                result.style.display = "block";
+            }
+            //Reset
+            $("#reset").click(function () {
+                result.style.display = "none";
+                result.innerHTML = "";
+            });
+        });
+    </script>*@
+</body>
+</html>
