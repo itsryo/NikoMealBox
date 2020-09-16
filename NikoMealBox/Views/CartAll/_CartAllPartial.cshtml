@@ -1,9 +1,7 @@
 ﻿@{
-
     //取得當前購物車所有內容
     var currentCart = NikoMealBox.DataAccess.Repository.CartRepository.GetCurrentCart();
 }
-
 
 @foreach (var pd in currentCart)
 {
@@ -24,21 +22,3 @@
         </ul>
     </div>
 }
-
-<div style="margin-top:20px;" class="row">
-    <div class="col-12 col-md-4 delivery_date">
-        <p>送達日期<input type="date"></p>
-    </div>
-    <div class="col-12 col-md-8 delivery_time">
-        <p>送達時段<input type="time"></p>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12 d-flex  justify-content-between">
-        <button class="btn-1">繼續選購光光商品</button>
-        <div class="total">
-            <p class="">購物金額 @currentCart.TotalAmount + 運費 $0=  <span>@currentCart.TotalAmount</span></p>
-        </div>
-    </div>
-</div>
