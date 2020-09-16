@@ -1,4 +1,6 @@
-﻿using NikoMealBox.DataAccess.Repository;
+﻿
+using NikoMealBox.DataAccess.Repository;
+using NikoMealBox.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +9,7 @@ using System.Web.Mvc;
 
 namespace NikoMealBox.Controllers
 {
+
     public class AdminController : Controller
     {
         private ProductRepository _repository;
@@ -15,6 +18,8 @@ namespace NikoMealBox.Controllers
 
             _repository = new ProductRepository();
         }
+
+
         // GET: Addmin
         public ActionResult Index()
         {
@@ -24,6 +29,7 @@ namespace NikoMealBox.Controllers
         {
             var products = _repository.Select();
             return Json(products, JsonRequestBehavior.AllowGet);
+
         }
     }
 }
