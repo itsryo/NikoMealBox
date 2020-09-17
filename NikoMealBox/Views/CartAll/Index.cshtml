@@ -8,7 +8,7 @@
 
 <div class="shopping-process">
     <div class="container">
-        <div class="step-bars">
+        <div class="step-bars" id="stepOne">
             <ul>
                 <li>
                     <span>1</span>
@@ -29,7 +29,7 @@
             <p>訂購金額未滿$600 無法外送</p>
         </div>
 
-        <div class="ordered-items justify-content-around d-flex w-100 px-2">
+        <div class="ordered-items-title">
             <span>訂購品項</span>
             <span class="e">品名</span>
             <span class="e">單價NT$</span>
@@ -39,7 +39,7 @@
             <span class="e">刪除</span>
         </div>
 
-        <div class="varvalue" id="varvalue">
+        <div class="ordered-items">
             @Html.Partial("_CartAllPartial")
         </div>
 
@@ -56,7 +56,7 @@
             </div>
         </div>
 
-        <div class="step-bars-two">
+        <div class="step-bars" id="stepTwo">
             <ul>
                 <li>
                     <span>1</span>
@@ -156,114 +156,89 @@
                     我同意接受光光盒餐<span class="c">會員條款</span>和<span class="d">隱私權政策</span>
                 </label>
             </div>
+
+            <div class="row password">
+                <div class="col-md-4">
+                    <label class="ml-2" for="customerName">設定密碼<span class="label_danger">*</span></label>
+                    <div>
+                        <input style="border-radius: 25px;" type="email" class="form-control" id="" placeholder="至少六個字元以上">
+                    </div>
+                </div>
+                <div class="col-md-4 ">
+                    <label class="ml-2" for="customerName">確認密碼<span class="label_danger">*</span></label>
+                    <div>
+                        <input style="border-radius: 25px" type="email" class="form-control" id="" placeholder="請再輸入一次密碼">
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:20px;" class="row">
+                <div class="col-12 col-md-4 delivery_date">
+                    <p>送達日期<input type="date"></p>
+                </div>
+                <div class="col-12 col-md-8 delivery_time">
+                    <p>送達時段<input type="time"></p>
+                </div>
+            </div>
+
+
+            <div class="step-bars" id="stepThree">
+                <ul>
+                    <li>
+                        <span>1</span>
+                        商品確認
+                    </li>
+                    <li>
+                        <span>2</span>
+                        資料確認
+                    </li>
+                    <li>
+                        <span>3</span>
+                        付款確認
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row ml-4">
+                <div class="col-md-2 my-1">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="" value="option1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        信用卡付款
+                    </label>
+                </div>
+                <div class="col-md-2 my-1 ">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="" value="option1" checked>
+                    <label class="form-check-label" for="">
+                        LINE Pay
+                    </label>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group d-flex ">
+                        <label for="inputEmail3" class="form-label d-flex align-items-end">公司統編</label>
+                        <div class="col-8 ">
+                            <input type="email" class="form-control border rounded-pill " id="inputEmail3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ml-2 my-3">
+                <button class="btn-4">下單購買</button>
+            </div>
         }
     </div>
 </div>
-<script type="text/javascript">
+
+<script>
     function RemoveFromCartAll(productId) {
             $.ajax({
             type: 'POST',
                 url: '@Url.Action("RemoveFromCart", "CartAll")',
                 data: { id: productId }
             })
-                .done(function (msg) {
-                    $('div#varvalue').html(msg);
+            .done(function (msg) {
+                $('div.ordered-items').html(msg);
             });
         }
-
 </script>
 <script src="https://kit.fontawesome.com/05c128ff7b.js" crossorigin="anonymous"></script>
-
-
-
-@*
-
-    <div class="form-check">
-                   <input style="margin-top: 15px;margin-left: -10px;" class="form-check-input" type="radio"
-                          name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                   <label style="margin-left: 12px;margin-top: 10px;" class="form-check-label" for="exampleRadios1">
-                       3秒鐘建立帳號！下次無須重新輸入個人資料，結帳更方便，並可查詢完整訂購資訊與電子報。</br>
-                       您輸入的Email即為帳號名稱，請在下方設定密碼，立即完成您的帳號建立。</ br >
-                       如果您已經建立過帳號，可直接在網頁上方登入。
-                       </ label >
-                   </ div >
-
-                   < div class="row password">
-                       <div class="col-md-4">
-                           <label class="ml-2" for="customerName">設定密碼<span class="label_danger">*</span></label>
-                           <div>
-                               <input style = "border-radius: 25px;" type="email" class="form-control" id=""
-                                      placeholder="至少六個字元以上">
-                           </div>
-                       </div>
-                       <div class="col-md-4 ">
-                           <label class="ml-2" for="customerName">確認密碼<span class="label_danger">*</span></label>
-                           <div>
-                               <input style = "border-radius: 25px" type="email" class="form-control" id=""
-                                      placeholder="請再輸入一次密碼">
-                           </div>
-                       </div>
-                   </div>
-
-                   <div style = "margin-top:20px;" class="row">
-                       <div class="col-12 col-md-4 delivery_date">
-                           <p>送達日期<input type="date"></p>
-                       </div>
-                       <div class="col-12 col-md-8 delivery_time">
-                           <p>送達時段<input type="time"></p>
-                       </div>
-                   </div>
-
-
-                   <div class="step-bars-three">
-                       <ul>
-                           <li>
-                               <span>1</span>
-                               商品確認
-                           </li>
-                           <li>
-                               <span>2</span>
-                               資料確認
-                           </li>
-                           <li>
-                               <span>3</span>
-                               付款確認
-                           </li>
-                       </ul>
-                   </div>
-
-                   <div class="row ml-4">
-                       <div class="col-md-2 my-1">
-                           <input class="form-check-input" type="radio" name="exampleRadios" id="" value="option1" checked>
-                           <label class="form-check-label" for="exampleRadios1">
-                               信用卡付款
-                           </label>
-                       </div>
-                       <div class="col-md-2 my-1 ">
-                           <input class="form-check-input" type="radio" name="exampleRadios" id="" value="option1" checked>
-                           <label class="form-check-label" for="">
-                               LINE Pay
-                           </label>
-                       </div>
-                       <div class="col-md-3">
-                           <div class="form-group d-flex ">
-                               <label for="inputEmail3" class="form-label d-flex align-items-end">公司統編</label>
-                               <div class="col-8 ">
-                                   <input type = "email" class="form-control border rounded-pill " id="inputEmail3">
-                               </div>
-                               </form>
-                           </div>
-                       </div>
-                   </div>
-
-                   <div class="row ml-2 my-3">
-                       <button class="btn-4">下單購買</button>
-                   </div>
-                   </div>
-
-
-               </div>
-
-
-
-*@
