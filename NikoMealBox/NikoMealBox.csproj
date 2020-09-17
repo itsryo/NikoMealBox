@@ -217,6 +217,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\WebAPI\ChartController.cs" />
     <Compile Include="DataAccess\Interface\IRepository.cs" />
     <Compile Include="DataAccess\Repository\CartRepository.cs" />
     <Compile Include="DataAccess\Repository\GenericRepository.cs" />
@@ -256,6 +257,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CartItemViewModels.cs" />
     <Compile Include="ViewModels\CartViewModels.cs" />
+    <Compile Include="ViewModels\ChartViewModels.cs" />
     <Compile Include="ViewModels\ProductViewModels.cs" />
     <Compile Include="Controllers\WebAPI\ProductController.cs" />
   </ItemGroup>
@@ -326,6 +328,7 @@
     <Content Include="Content\LoginPage\Login.css" />
     <Content Include="Content\ProductsPage\productdetail.css" />
     <Content Include="Content\ShoppingCarPage\cart.css" />
+    <Content Include="Content\ShoppingCarPage\ShoppingCar.css" />
     <Content Include="Content\styles.css" />
     <Content Include="Scripts\BackendProduct\datatables-demo.js" />
     <Content Include="Scripts\ProductsPage\productdetail.js" />
@@ -404,6 +407,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\ShoppingCarPage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
