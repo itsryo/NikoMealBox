@@ -9,11 +9,11 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using NikoMealBox.Models;
 using NikoMealBox.DataAccess.Repository;
-
+using System.Net;
 
 namespace NikoMealBox.Controllers
 {
-
+    [Authorize(Users = "Admin@gmail.com")]
     public class AdminController : Controller
     {
         private ApplicationSignInManager _signInManager;
