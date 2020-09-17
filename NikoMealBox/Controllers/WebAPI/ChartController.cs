@@ -25,18 +25,23 @@ namespace NikoMealBox.Controllers.WebAPI
 
 
         [AcceptVerbs("GET", "POST")]
-        public List<ChartViewModels.ProductsResult> Chart()
+        public ChartViewModels.ProductsResult Chart()
         {
-            var chartVM = new List<ChartViewModels.ProductsResult>();
+            var chartVM = new ChartViewModels.ProductsResult
+            {
+                ProductName = new List<string>(),
+                UnitStock = new List<int>()
+            };
             var source = _repository.GetAll();
             foreach (var item in source)
             {
-                chartVM.Add(new ChartViewModels.ProductsResult
-                {
-                    ProductName = item.ProductName,
-                    UnitStock = item.UnitsInStock
-                });
+                chartVM.ProductName.Add(item.ProductName);
+                chartVM.UnitStock.Add(item.UnitsInStock);
             }
+            //var list = new List<int>();
+            //list.Add(1);
+            //list.Add(2);
+
 
             return chartVM;
         }

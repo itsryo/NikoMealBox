@@ -10,8 +10,9 @@ namespace NikoMealBox.ViewModels
 
         public class ProductsResult
         {
-            public string ProductName { get; set; }
-            public int UnitStock { get; set; }
+            public List<string> ProductName { get; set; }
+            public List<int> UnitStock { get; set; }
+
 
         }
 
