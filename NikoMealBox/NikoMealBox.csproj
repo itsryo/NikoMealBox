@@ -401,7 +401,7 @@
     <Content Include="Views\CartAll\Index.cshtml" />
     <Content Include="Views\Admin\Admin_SelectProducts.cshtml" />
     <Content Include="Views\CartAll\_CartAllPartial.cshtml" />
-    <Content Include="Views\Manage\UsersWithRoles.cshtml" />
+    <Content Include="Views\Admin\UsersWithRoles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -50,40 +50,6 @@ namespace NikoMealBox.Controllers
                 _userManager = value;
             }
         }
-
-        public ActionResult UsersWithRoles()
-        {
-            var usersWithRoles = (from user in UserManager.Users
-                                  select new
-                                  {
-                                      UserId = user.Id,
-                                      Username = user.Name,
-                                      Email = user.Email,
-                                      Address = user.Address,
-                                      Birthday = user.Birthday,
-                                      Mobile = user.Mobile,
-                                      Gender = user.Gender,
-                                      Height = user.Height,
-                                      Weight = user.Weight,
-                                      
-                                  }).ToList().Select(p => new Users_in_Role_ViewModel()
-                                  {
-                                      Name = p.Username,
-                                      Address = p.Address,
-                                      Birthday = p.Birthday,
-                                      Mobile = p.Mobile,
-                                      Gender = p.Gender,
-                                      Height = p.Height,
-                                      Weight = p.Weight,
-                                      Email = p.Email
-                                  });
-
-
-            return View(usersWithRoles);
-        }
-
-        //
-        // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
