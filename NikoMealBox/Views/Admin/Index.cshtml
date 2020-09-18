@@ -607,4 +607,38 @@
             }
         });
     });
+
+
+
+
+
+    $(document).ready(function () {
+        console.log('hi')
+
+        $.ajax({
+            type: "Get",
+            url: "/api/chart/chart",
+            success: function (response) {
+                var ctxx = document.getElementById('myBarChart').getContext('2d');
+                var chartt = new Chart(ctxx, {
+                    // The type of chart we want to create
+                    type: 'bar',
+
+                    // The data for our dataset
+                    data: {
+                        labels: response.ProductName,
+                        datasets: [{
+                            label: 'My First dataset',
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: response.UnitStock
+                        }]
+                    },
+
+                    // Configuration options go here
+                    options: {}
+                });
+            }
+        });
+    });
 </script>

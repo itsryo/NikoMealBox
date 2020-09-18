@@ -16,6 +16,14 @@ namespace NikoMealBox.ViewModels
 
         }
 
+        public class ProductsYearResult
+        {
+            public List<string> ProductName { get; set; }
+            public List<int> UnitStock { get; set; }
+
+        }
+
+
     }
-   
+
 }
