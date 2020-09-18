@@ -86,20 +86,15 @@
 .ordered-items-title span {
     color: #fff;
     padding: 10px;
+    text-align:center;
 }
 
-.ordered-items-title span {
-    flex-grow: 3;
+.ordered-items-title span{
+    width: 13%;
 }
-
-.ordered-items-title span:first-child {
-    flex-grow: 9;
-    text-align: center;
+.ordered-items-title span:first-child{
+    width: 22%;
 }
-
-
-
-
 
 
 

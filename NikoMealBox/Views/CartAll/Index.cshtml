@@ -1,6 +1,6 @@
 ﻿@section topCSS{
 
-    <link href="~/Content/ShoppingCarPage/cart.css" rel="stylesheet" />
+    <link href="~/Content/CartPage/cart.css" rel="stylesheet" />
 }
 @{
     var currentCart = NikoMealBox.DataAccess.Repository.CartRepository.GetCurrentCart();
@@ -55,6 +55,7 @@
                 </div>
             </div>
         </div>
+        @*運費之後修*@
 
         <div class="step-bars" id="stepTwo">
             <ul>
@@ -139,8 +140,6 @@
 
             <div class="form-check">
                 <form>
-                    <input style="margin-top: 15px;margin-left: -10px;" class="form-check-input" type="radio"
-                           name="exampleRadios" id="exampleRadios1" value="option1" checked>
                     <label style="margin-left: 10px;margin-top: 10px;" class="form-check-label" for="exampleRadios1">
                         備註說明
                     </label>
@@ -226,6 +225,7 @@
                 <button class="btn-4">下單購買</button>
             </div>
         }
+        @*表單尾*@
     </div>
 </div>
 

@@ -1,24 +1,21 @@
-﻿@{
+﻿@Styles.Render("~/Content/CartPage/CartAllPartial.css")
+
+@{
     //取得當前購物車所有內容
     var currentCart = NikoMealBox.DataAccess.Repository.CartRepository.GetCurrentCart();
 }
 
 @foreach (var pd in currentCart)
 {
-    <div class="ordered-products justify-content-around d-flex my-5 mx-4">
-        <div class="pic mr-5">
-            <img src="@pd.ImagePath" width="200" height="150" />
-        </div>
-
-        <ul class="group d-flex justify-content-around w-100 my-2">
-
-            <li>@pd.Name</li>
-            <li>@pd.UnitPrice</li>
-            <li>@pd.Count</li>
-            <li>-</li>
-            <li>@pd.Amount</li>
-            <li><span onclick="RemoveFromCartAll('@pd.Id')"> <i class="fas fa-trash-alt"></i></span></li>
-
-        </ul>
+    <div class="ordered-products">
+        <img src="@pd.ImagePath" />
+        <li>@pd.Name</li>
+        <li>@pd.UnitPrice</li>
+        <li>@pd.Count</li>
+        <li>-</li>
+        <li>@pd.Amount</li>
+        <li>
+            <span onclick="RemoveFromCartAll('@pd.Id')"> <i class="fas fa-trash-alt"></i></span>
+        </li>
     </div>
 }

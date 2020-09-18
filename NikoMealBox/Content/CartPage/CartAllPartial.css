@@ -1,0 +1,18 @@
+﻿.ordered-products{
+    display:flex;
+    justify-content: space-around;
+}
+
+.ordered-products > *{
+    text-align:center;
+    padding: 10px;
+}
+
+.ordered-products > img{
+    width: 22%;
+}
+
+.ordered-products > li{
+    width: 13%;
+    margin-top: 80px;
+}
