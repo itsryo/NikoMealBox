@@ -218,6 +218,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\WebAPI\ChartController.cs" />
+    <Compile Include="Controllers\WebAPI\ImgurController.cs" />
     <Compile Include="DataAccess\Interface\IRepository.cs" />
     <Compile Include="DataAccess\Repository\CartRepository.cs" />
     <Compile Include="DataAccess\Repository\GenericRepository.cs" />
@@ -341,6 +342,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Assets\JSON\TaiwanAddress.json" />
     <None Include="Properties\PublishProfiles\nikoMealBox - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\NikoMealBox0914 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\NikoMealBox20200914014627 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

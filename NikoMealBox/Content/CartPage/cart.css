@@ -96,6 +96,40 @@
     width: 22%;
 }
 
+.ordered-items-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    padding-right: 20px;
+    margin-top: 15px;
+}
+
+.ordered-items-footer a {
+    background-color: #DB9B40;
+    border-radius: 35px;
+    padding: 5px 10px;
+    color: white;
+    text-decoration: none;
+    display:inline-block;
+    height: 50px;
+    padding: 12px 10px 0px 10px;
+}
+
+.ordered-items-footer a:hover {
+    box-shadow: 0px 2px 2px 0px #cccccc;
+    opacity: 0.85;
+}
+
+.ordered-items-footer p {
+    font-size: 20px;
+}
+
+.ordered-items-footer p span{
+    color: red;
+    font-weight: bold;
+}
+
+
 
 
 
@@ -117,20 +151,7 @@
 
 
 
-.btn-1 {
-    background-color: #DB9B40;
-    border-radius: 35px;
-    padding: 5px 10px;
-    color: white;
-    border: none;
-}
 
-
-    .btn-1:focus {
-        outline: 0;
-        background-color: rgb(230, 170, 114);
-        transition: 0.3s ease-out;
-    }
 
 
 

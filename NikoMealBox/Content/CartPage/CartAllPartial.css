@@ -1,6 +1,7 @@
 ﻿.ordered-products{
     display:flex;
     justify-content: space-around;
+    align-items:center;
 }
 
 .ordered-products > *{
@@ -14,5 +15,4 @@
 
 .ordered-products > li{
     width: 13%;
-    margin-top: 80px;
 }
