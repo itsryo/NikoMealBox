@@ -438,6 +438,12 @@
       <DependentUpon>202009081432079_updateuserId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LinePayClassLibrary\LinePayClassLibrary.csproj">
+      <Project>{39aef88e-bfe8-4cd5-9238-82fbc778ae75}</Project>
+      <Name>LinePayClassLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
