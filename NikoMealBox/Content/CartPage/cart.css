@@ -129,158 +129,105 @@
     font-weight: bold;
 }
 
-
-
-
-
-.delivery_date p {
-    color: gray;
+/* Form */
+/* 共用 */
+.input-area{
+    display:flex;
+    flex-direction: column;
 }
 
-
-
-.delivery_time p {
-    color: gray;
+.form-control{
+    border-radius: 25px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.total p {
-    font-size: 22px;
-}
-
-.total span {
-    font-size: 30px;
+.required::after{
+    content: "*";
     color: red;
 }
 
+.form-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+    margin-top: 10px;
+}
 
+/* mail */
+#order-mail{
+    flex-grow: 1;
+}
 
+/* sex */
+#order-sex{
+    padding-left: 30px;
+}
 
+/* phone */
+#order-phone{
+    padding: 0 30px;
+}
 
+/* address */
+#order-detail-address{
+    flex-grow: 5;
+}
 
-.btn-2 {
-    border: none;
-    border-radius: 30px;
-    width: 750px;
-    height: 50px;
-    background-color: rgb(182, 176, 176);
+#order-city,#order-district{
+    flex-grow: 1;
+}
+
+#order-district{
+    padding: 0 30px;
+}
+
+/* remark */
+#remark{
     width: 100%;
 }
 
-    .btn-2:focus {
-        outline: 0;
-    }
-
-.a {
-    font-size: 20px;
-    color: white;
+/* datetime */
+#datetime{
+    justify-content: start;
 }
 
-.b {
-    color: white;
-    margin-left: 5px;
+#datetime .input-area{
+     width: 20%;
+ }
+
+#delivery-time{
+    margin-left: 30px;
 }
 
-
-
-
-
-
-
-
-.btn-3 {
-    background-color: rgb(71, 71, 236);
-    border-radius: 30px;
-    color: white;
-    border: none;
-    padding: 11px 45px;
-    width: 100%;
+/* 付錢方式 */
+.payment-checkbox-group{
+    padding-left: 10px;
 }
 
-
-    .btn-3:focus {
-        outline: 0;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.deatail-address {
-    font-size: 17px;
+.payment-checkbox-group input:nth-child(2){
+    margin-left: 30px;
 }
 
-.label_danger {
-    color: red;
-    font-size: 13px;
+/* 提交 */
+.submit-btn {
+    margin: 20px 0 20px 10px;
+    border-radius: 25px;
+    border-width: 0;
+    padding: 5px 20px;
+    width: 15%;
+    background-color: #E94738;
+    color: #fff;
 }
 
-
-
-
-
-
-.form-check {
-    font-size: 15px;
+.submit-btn:focus{
+    outline: none;
 }
 
-    .form-check .c {
-        color: #008A84;
-    }
-
-
-    .form-check .d {
-        color: #008A84;
-    }
-
-
-
-.password {
-    margin-top: 15px;
+.submit-btn:hover {
+    box-shadow: 0px 2px 2px 0px #cccccc;
+    opacity: 0.85;
 }
 
-
-
-
-
-
-.btn-4 {
-    background-color: red;
-    border-radius: 30px;
-    width: 150px;
-    height: 40px;
-    color: white;
-    border: none;
+#submit{
+    justify-content: flex-end;
 }
 
-
-    .btn-4:focus {
-        outline: 0;
-        background-color: rgb(214, 67, 67);
-        transition: 0.3s ease-out;
-    }
