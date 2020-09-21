@@ -72,18 +72,18 @@
         </div>
 
         @*表單*@
-        <form action="~/Controllers/action" method="post">
+        <form action="~/CartAll/CreateOrder" method="post">
             <div class="form-row">
                 <div id="order-name" class="input-area">
-                    <label for="name" class="required">你的姓名</label>
-                    <input type="text" name="name" class="form-control" />
+                    <label for="username" class="required">你的姓名</label>
+                    <input type="text" name="username" class="form-control" />
                 </div>
 
                 <div id="order-sex" class="input-area">
                     <label for="sex" class="required">性別</label>
                     <select class="form-control" name="sex">
-                        <option value="male">男</option>
-                        <option value="female">女</option>
+                        <option value="男">男</option>
+                        <option value="女">女</option>
                     </select>
                 </div>
 
@@ -123,8 +123,8 @@
                 </div>
 
                 <div id="order-detail-address">
-                    <label for="detail-address" class="required">詳細地址</label>
-                    <input type="text" name="detail-address" class="form-control" />
+                    <label for="detailaddress" class="required">詳細地址</label>
+                    <input type="text" name="detailaddress" class="form-control" />
                 </div>
             </div>
 
@@ -137,13 +137,13 @@
 
             <div class="form-row" id="datetime">
                 <div class="input-area" id="delivery-date">
-                    <label for="delivery-date">送達日期</label>
-                    <input type="date" name="delivery-date" class="form-control" />
+                    <label for="deliverydate">送達日期</label>
+                    <input type="date" name="deliverydate" class="form-control" />
                 </div>
 
                 <div class="input-area" id="delivery-time">
-                    <label for="delivery-time">送達時段</label>
-                    <input type="time" name="delivery-time" class="form-control" />
+                    <label for="deliverytime">送達時段</label>
+                    <input type="time" name="deliverytime" class="form-control" />
                 </div>
             </div>
 
