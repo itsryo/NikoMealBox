@@ -296,6 +296,7 @@
     <Content Include="Assets\Images\bento\日光熟成雞腿排便當.jpeg" />
     <Content Include="Assets\Images\bento\日光熟成韓式雞腿肉便當.jpeg" />
     <Content Include="Assets\Images\bento\日光熟成鹽蔥雞腿肉便當.jpeg" />
+    <Content Include="Assets\Images\CartPage\check.png" />
     <Content Include="Assets\Images\HomePage\Carousel 01.jpeg" />
     <Content Include="Assets\Images\HomePage\Carousel 02.jpeg" />
     <Content Include="Assets\Images\HomePage\Carousel 03.jpeg" />
@@ -324,6 +325,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CartPage\CartAllPartial.css" />
+    <Content Include="Content\CartPage\CreateOrder.css" />
     <Content Include="Content\CartPage\OrderList.css" />
     <Content Include="Content\HomePage\NicoHome.css" />
     <Content Include="Content\MemberCenterPage\ChangePassword.css" />
@@ -409,6 +411,7 @@
     <Content Include="Views\Admin\UsersWithRoles.cshtml" />
     <Content Include="Views\Account\LogOff.cshtml" />
     <Content Include="Views\CartAll\OrderList.cshtml" />
+    <Content Include="Views\CartAll\CreateOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

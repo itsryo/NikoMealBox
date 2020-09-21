@@ -22,13 +22,13 @@
                 {
                     <div class="each-content">
                         @product.Name x @product.Count
-                        @{ 
+                        @{
                             var total = product.UnitPrice * product.Count;
                         }
-                        @total 元 
+                        @total 元
                     </div>
                 }
-            <div class="each-content">總計 @currentCart.TotalAmount</div>
+                <div class="each-content">總計 @currentCart.TotalAmount</div>
             </div>
         </div>
     </div>
@@ -63,13 +63,14 @@
     </div>
 
     <div class="step-button-group">
-        <button id="modify">修改訂單</button>
-        <button id="ensure-order">結賬付款</button>
+        <a id="modify" href="#">修改訂單</a>
+        @Html.ActionLink("結賬付款", "CreateOrder", "CartAll", new { }, new { @id = "ensure-order" })
     </div>
 </div>
 
 
 <script>
+    // 直接回上一頁XD
     var modifyBtn = document.getElementById('modify');
     modifyBtn.addEventListener('click', function () {
         history.back();
