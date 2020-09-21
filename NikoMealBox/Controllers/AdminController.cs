@@ -21,6 +21,7 @@ namespace NikoMealBox.Controllers
         private ProductRepository _repository;
         public AdminController()
         {
+            _repository = new ProductRepository();
         }
         public AdminController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
@@ -61,8 +62,14 @@ namespace NikoMealBox.Controllers
         }
         public ActionResult Admin_SelectProducts()
         {
-            var products = _repository.Select();
-            return Json(products, JsonRequestBehavior.AllowGet);
+            //var products = _repository.Select();
+            //return Json(products, JsonRequestBehavior.AllowGet);
+            //private ProductRepository _repository = new ProductRepository();
+            var products = _repository.SelectAllProducts();
+            ViewData["Products"] = products;
+            return View();
+
+            //return Json(products, JsonRequestBehavior.AllowGet);
 
         }
         public ActionResult UsersWithRoles()
@@ -94,11 +101,7 @@ namespace NikoMealBox.Controllers
 
 
             return View(usersWithRoles);
-            var products = _repository.SelectAllProducts();
-            ViewData["Products"] = products;
-            return View();
-
-            //return Json(products, JsonRequestBehavior.AllowGet);
+            
         }
 
     }
