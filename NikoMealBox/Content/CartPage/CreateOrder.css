@@ -1,0 +1,35 @@
+﻿/* public */
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* hint */
+.complete-hint{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.complete-hint img{
+    width: 10%;
+}
+
+.complete-hint h1 {
+    margin-top: 15px;
+    color: #008A84;
+    font-weight: bold;
+}
+
+/* 訂單編號 */
+.order-number p{
+    text-align: center;
+    color: #666;
+    font-size: 28px;    
+}

@@ -4,26 +4,26 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            <a href="@Url.Action("MemeberCenter","Account")" class="text-decoration-none">
-                <img src="~/Assets/Images/HomePage/member.png" alt="" width="50%">
-            </a>
-        </li>
+
+        <a href="@Url.Action("MemeberCenter","Account")" class="text-decoration-none">
+            <img src="~/Assets/Images/HomePage/Logged.jpg" alt="" width="8%">
+        </a>
+
         @*<li><a href="javascript:document.getElementById('logoutForm').submit()">登出</a></li>*@
-        <li><a href="@Url.Action("Index","CartAll",new { id = User.Identity.GetUserId()})"><img src="~/Assets/Images/HomePage/cart.png" alt="" width="50%"></a></li>
-    </ul>
+        <a href="@Url.Action("Index","CartAll",new { id = User.Identity.GetUserId()})">
+            <img src="~/Assets/Images/HomePage/cart.png" alt="" width="5%">
+        </a>
     }
 }
 else
 {
     @*還沒登入*@
     <a href="@Url.Action("Login","Account")" class="text-decoration-none">
-        <img src="~/Assets/Images/HomePage/member.png" alt="" width="5%">
+        <img src="~/Assets/Images/HomePage/member.png" alt="LogInIcon" width="5%">
     </a>
     <a href="@Url.Action("Index","CartAll")">
-        <img src="~/Assets/Images/HomePage/cart.png" alt="" width="5%">
+        <img src="~/Assets/Images/HomePage/cart.png" alt="CartIcon" width="5%">
     </a>
 }

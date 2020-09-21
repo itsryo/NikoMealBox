@@ -9,6 +9,9 @@ namespace NikoMealBox.DataAccess.Repository
 {
     public class OrderRepository:GenericRepository<Orders>
     {
-       
+        public void Insert2()
+        {
+           
+        }
     }
 }

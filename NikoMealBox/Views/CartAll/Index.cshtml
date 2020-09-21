@@ -1,15 +1,14 @@
 ﻿@section topCSS{
 
-    <link href="~/Content/ShoppingCarPage/cart.css" rel="stylesheet" />
+    <link href="~/Content/CartPage/cart.css" rel="stylesheet" />
 }
 @{
-    ViewBag.Title = "Index";
-    var cart = NikoMealBox.DataAccess.Repository.CartRepository.GetCurrentCart();
+    var currentCart = NikoMealBox.DataAccess.Repository.CartRepository.GetCurrentCart();
 }
 
 <div class="shopping-process">
     <div class="container">
-        <div class="step-bars">
+        <div class="step-bars" id="stepOne">
             <ul>
                 <li>
                     <span>1</span>
@@ -30,7 +29,7 @@
             <p>訂購金額未滿$600 無法外送</p>
         </div>
 
-        <div class="ordered-items justify-content-around d-flex w-100 px-2">
+        <div class="ordered-items-title">
             <span>訂購品項</span>
             <span class="e">品名</span>
             <span class="e">單價NT$</span>
@@ -38,42 +37,24 @@
             <span class="e">規格</span>
             <span class="e">小計NT$</span>
             <span class="e">刪除</span>
-
-            @*@foreach (var pd in cart)
-                {
-                    <div><img src="@pd.ImagePath" width="50" height="50" /></div>
-                    <div>@pd.Name</div>
-                    <div>@pd.UnitPrice</div>
-                    <div>@pd.Count</div>
-                    <div>@pd.Amount</div>
-                }*@
-            @*<td>@cart.TotalAmount</td>*@
         </div>
 
-        <div class="varvalue" id="varvalue">
-
+        <div class="ordered-items">
             @Html.Partial("_CartAllPartial")
         </div>
-        @*<div style="margin-top:20px;" class="row">
-            <div class="col-12 col-md-4 delivery_date">
-                <p>送達日期<input type="date"></p>
-            </div>
-            <div class="col-12 col-md-8 delivery_time">
-                <p>送達時段<input type="time"></p>
-            </div>
+
+
+        @*運費之後修*@
+        <div class="ordered-items-footer">
+            <a href="@Url.Action("Index","Products")">繼續選購光光商品</a>
+            <p>
+                購物金額 @currentCart.TotalAmount + 運費 $0=
+                <span>@currentCart.TotalAmount</span>
+            </p>
         </div>
 
-        <div class="row">
-            <div class="col-md-12 d-flex  justify-content-between">
-                <button class="btn-1">繼續選購光光商品</button>
-                <div class="total">
-                    <p class="">購物金額 @cart.TotalAmount + 運費 $0=  <span>@cart.TotalAmount</span></p>
-                </div>
-            </div>
-        </div>*@
 
-
-        <div class="step-bars-two">
+        <div class="step-bars" id="stepTwo">
             <ul>
                 <li>
                     <span>1</span>
@@ -90,192 +71,125 @@
             </ul>
         </div>
 
-
-        <div class="row">
-            <div class="col-12 col-md-8 my-2">
-                <div class="login-1">
-                    <button class="btn-2">
-                        <span class="a">已經有帳號了?</span>
-                        <span class="b">快速登入(訂購無須重新輸入個人資料,結帳更方便且可查詢完整訂購資訊)</span>
-                    </button>
+        @*表單*@
+        <form action="~/CartAll/CheckOrderList" method="post">
+            <div class="form-row">
+                <div id="order-name" class="input-area">
+                    <label for="username" class="required">你的姓名</label>
+                    <input type="text" name="username" class="form-control" />
                 </div>
-            </div>
-            <div class="col-12 col-md-4 my-2">
-                <div class="login-2">
-                    <button class="btn-3">Facebook快速登入</button>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-3 col-6">
-                <form>
-                    <label class="ml-2">您的姓名<span class="text-danger">*</span></label>
-                    <input style="border-radius: 25px;height: 40px;" class="form-control" type="text" name="name"
-                           value="" required />
-            </div>
-            <div class="col-md-1 col-6">
-                <label class="ml-2">性別<span class="text-danger">*</span></label>
-                <select style="border-radius: 25px;height: 40px;" class="form-control">
-                    <option>男</option>
-                    <option>女</option>
-                </select>
-            </div>
-            <div class="col-md-4 col-12 ">
-                <label class="mt-3 mt-md-0">電話（範例：0912345678或0423456789）<span class="text-danger">*</span></label>
-                <input style="border-radius: 25px;height: 40px;" class="form-control" type="text" name="name"
-                       value="" required>
-            </div>
-            <div class="col-md-4 col-12">
-                <label class="mt-3 mt-md-0">Email（請填寫正確信箱，以獲得優惠碼與活動資訊<span class="text-danger">*</span></label>
-                <input style="border-radius: 25px;height: 40px;" type="email" class="form-control" id="inputEmail3"
-                       placeholder="請輸入您的電子信箱,以作為會員登入帳號。">
-            </div>
-        </div>
-
-
-        <div class="row mt-3">
-            <div class="col-md-6">
-                <label class="ml-2">地址<span class="label_danger">*</span></label>
-                <div class="d-flex">
-                    <select style="border-radius: 25px;" class="form-control mr-3">
-                        <option>台中市</option>
-                    </select>
-                    <select style="border-radius: 25px;" class="form-control">
-                        <option>東區</option>
-                        <option>西區</option>
-                        <option>西屯區</option>
-                        <option>中區</option>
-                        <option>南區</option>
-                        <option>南屯區</option>
-                        <option>北區</option>
-                        <option>北屯區</option>
-                        <option>太平區</option>
-                        <option>大里區</option>
+                <div id="order-sex" class="input-area">
+                    <label for="sex" class="required">性別</label>
+                    <select class="form-control" name="sex">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
                     </select>
                 </div>
-            </div>
 
-            <div class="deatail-address col-md-6 ">
-                <label class="ml-2" for="customerName">
-                    詳細地址<span class="label_danger">
-                        *
-                        若非上述區域之客戶，請來電洽詢
-                    </span>
-                </label>
+                <div id="order-phone" class="input-area">
+                    <label for="phone" class="required">電話</label>
+                    <input type="tel" name="phone" class="form-control" placeholder="範例：0912345678" />
+                </div>
 
-                <input style="border-radius: 25px;height: 40px;" type="email" class="form-control" id="inputEmail3"
-                       placeholder="例:永大街201巷39號">
-            </div>
-        </div>
-
-        <div class="form-check">
-            <form>
-                <input style="margin-top: 15px;margin-left: -10px;" class="form-check-input" type="radio"
-                       name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                <label style="margin-left: 10px;margin-top: 10px;" class="form-check-label" for="exampleRadios1">
-                    備註說明
-                </label>
-                <input style=" width: 1170px; border-radius: 25px;height: 40px;margin-left: -20px;margin-top: 5px;"
-                       class="form-control" id="customerName" type="text" name="name" value="" required="required">
-            </form>
-        </div>
-
-        <div class="form-check">
-            <input style="margin-top: 15px;margin-left: -10px;" class="form-check-input" type="radio"
-                   name="exampleRadios" id="exampleRadios1" value="option1" checked>
-            <label style="margin-left: 10px;margin-top: 10px;" class="form-check-label" for="exampleRadios1">
-                我同意接受光光盒餐<span class="c">會員條款</span>和<span class="d">隱私權政策</span>
-            </label>
-        </div>
-
-        <div class="form-check">
-            <input style="margin-top: 15px;margin-left: -10px;" class="form-check-input" type="radio"
-                   name="exampleRadios" id="exampleRadios1" value="option1" checked>
-            <label style="margin-left: 12px;margin-top: 10px;" class="form-check-label" for="exampleRadios1">
-                3秒鐘建立帳號！下次無須重新輸入個人資料，結帳更方便，並可查詢完整訂購資訊與電子報。</br>
-                您輸入的Email即為帳號名稱，請在下方設定密碼，立即完成您的帳號建立。</br>
-                如果您已經建立過帳號，可直接在網頁上方登入。
-            </label>
-        </div>
-
-        <div class="row password">
-            <div class="col-md-4">
-                <label class="ml-2" for="customerName">設定密碼<span class="label_danger">*</span></label>
-                <div>
-                    <input style="border-radius: 25px;" type="email" class="form-control" id=""
-                           placeholder="至少六個字元以上">
+                <div id="order-mail" class="input-area">
+                    <label for="mail">Email</label>
+                    <input type="email" name="mail" class="form-control" placeholder="如需更換別的mail，再填即可" />
                 </div>
             </div>
-            <div class="col-md-4 ">
-                <label class="ml-2" for="customerName">確認密碼<span class="label_danger">*</span></label>
-                <div>
-                    <input style="border-radius: 25px" type="email" class="form-control" id=""
-                           placeholder="請再輸入一次密碼">
+
+            <div class="form-row" id="address">
+                <div id="order-city" class="input-area">
+                    <label for="city" class="required">地址</label>
+                    <select class="form-control" name="city">
+                        <option value="台中市">台中市</option>
+                    </select>
+                </div>
+
+                <div id="order-district" class="input-area">
+                    <label for="district" class="required">市區</label>
+                    <select class="form-control" name="district">
+                        <option value="東區">東區</option>
+                        <option value="西區">西區</option>
+                        <option value="西屯區">西屯區</option>
+                        <option value="中區">中區</option>
+                        <option value="南區">南區</option>
+                        <option value="南屯區">南屯區</option>
+                        <option value="北區">北區</option>
+                        <option value="北屯區">北屯區</option>
+                        <option value="太平區">太平區</option>
+                        <option value="大里區">大里區</option>
+                    </select>
+                </div>
+
+                <div id="order-detail-address">
+                    <label for="detailaddress" class="required">詳細地址</label>
+                    <input type="text" name="detailaddress" class="form-control" />
                 </div>
             </div>
-        </div>
 
-
-        <div class="step-bars-three">
-            <ul>
-                <li>
-                    <span>1</span>
-                    商品確認
-                </li>
-                <li>
-                    <span>2</span>
-                    資料確認
-                </li>
-                <li>
-                    <span>3</span>
-                    付款確認
-                </li>
-            </ul>
-        </div>
-
-        <div class="row ml-4">
-            <div class="col-md-2 my-1">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="" value="option1" checked>
-                <label class="form-check-label" for="exampleRadios1">
-                    信用卡付款
-                </label>
-            </div>
-            <div class="col-md-2 my-1 ">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="" value="option1" checked>
-                <label class="form-check-label" for="">
-                    LINE Pay
-                </label>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group d-flex ">
-                    <label for="inputEmail3" class="form-label d-flex align-items-end">公司統編</label>
-                    <div class="col-8 ">
-                        <input type="email" class="form-control border rounded-pill " id="inputEmail3">
-                    </div>
-                    </form>
+            <div class="form-row">
+                <div class="input-area" id="remark">
+                    <label for="remark">備註說明</label>
+                    <input type="text" name="remark" value="" class="form-control" />
                 </div>
             </div>
-        </div>
 
-        <div class="row ml-2 my-3">
-            <button class="btn-4">下單購買</button>
-        </div>
+            <div class="form-row" id="datetime">
+                <div class="input-area" id="delivery-date">
+                    <label for="deliverydate">送達日期</label>
+                    <input type="date" name="deliverydate" class="form-control" />
+                </div>
+
+                <div class="input-area" id="delivery-time">
+                    <label for="deliverytime">送達時段</label>
+                    <input type="time" name="deliverytime" class="form-control" />
+                </div>
+            </div>
 
 
+            <div class="step-bars" id="stepThree">
+                <ul>
+                    <li>
+                        <span>1</span>
+                        商品確認
+                    </li>
+                    <li>
+                        <span>2</span>
+                        資料確認
+                    </li>
+                    <li>
+                        <span>3</span>
+                        付款確認
+                    </li>
+                </ul>
+            </div>
+
+            <div class="form-row" id="payment">
+                <div class="payment-checkbox-group">
+                    <input type="radio" name="payment" value="信用卡付款" /> 信用卡付款
+                    <input type="radio" name="payment" value="Line Pay" /> LINE Pay
+                </div>
+            </div>
+
+            <div class="form-row" id="submit">
+                <button class="submit-btn">下單購買</button>
+            </div>
+        </form>
+        @*表單尾*@
     </div>
 </div>
-<script type="text/javascript">
+
+<script>
     function RemoveFromCartAll(productId) {
             $.ajax({
-                type: 'POST',
-                url: '@Url.Action("RemoveFromCart","CartAll")',
+            type: 'POST',
+                url: '@Url.Action("RemoveFromCart", "CartAll")',
                 data: { id: productId }
             })
-                .done(function (msg) {
-                    $('div#varvalue').html(msg);
-                });
+            .done(function (msg) {
+                $('div.ordered-items').html(msg);
+            });
         }
-
 </script>
 <script src="https://kit.fontawesome.com/05c128ff7b.js" crossorigin="anonymous"></script>

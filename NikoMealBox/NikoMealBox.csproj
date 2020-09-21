@@ -217,6 +217,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\WebAPI\ChartController.cs" />
+    <Compile Include="Controllers\WebAPI\ImgurController.cs" />
     <Compile Include="DataAccess\Interface\IRepository.cs" />
     <Compile Include="DataAccess\Repository\CartRepository.cs" />
     <Compile Include="DataAccess\Repository\GenericRepository.cs" />
@@ -251,11 +253,11 @@
     <Compile Include="Models\DataTable\Products.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CartItemViewModels.cs" />
     <Compile Include="ViewModels\CartViewModels.cs" />
+    <Compile Include="ViewModels\ChartViewModels.cs" />
     <Compile Include="ViewModels\ProductViewModels.cs" />
     <Compile Include="Controllers\WebAPI\ProductController.cs" />
   </ItemGroup>
@@ -294,6 +296,7 @@
     <Content Include="Assets\Images\bento\日光熟成雞腿排便當.jpeg" />
     <Content Include="Assets\Images\bento\日光熟成韓式雞腿肉便當.jpeg" />
     <Content Include="Assets\Images\bento\日光熟成鹽蔥雞腿肉便當.jpeg" />
+    <Content Include="Assets\Images\CartPage\check.png" />
     <Content Include="Assets\Images\HomePage\Carousel 01.jpeg" />
     <Content Include="Assets\Images\HomePage\Carousel 02.jpeg" />
     <Content Include="Assets\Images\HomePage\Carousel 03.jpeg" />
@@ -310,6 +313,7 @@
     <Content Include="Assets\Images\HomePage\HomeBackground.png" />
     <Content Include="Assets\Images\HomePage\Housegroup1.png" />
     <Content Include="Assets\Images\HomePage\line.png" />
+    <Content Include="Assets\Images\HomePage\Logged.jpg" />
     <Content Include="Assets\Images\HomePage\logo.png" />
     <Content Include="Assets\Images\HomePage\member.png" />
     <Content Include="Assets\Images\HomePage\product.jpeg" />
@@ -320,18 +324,20 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CartPage\CartAllPartial.css" />
+    <Content Include="Content\CartPage\CreateOrder.css" />
+    <Content Include="Content\CartPage\OrderList.css" />
     <Content Include="Content\HomePage\NicoHome.css" />
     <Content Include="Content\MemberCenterPage\ChangePassword.css" />
     <Content Include="Content\MemberCenterPage\MemeberCenter.css" />
     <Content Include="Content\LoginPage\Login.css" />
     <Content Include="Content\ProductsPage\productdetail.css" />
-    <Content Include="Content\ShoppingCarPage\cart.css" />
+    <Content Include="Content\CartPage\cart.css" />
     <Content Include="Content\styles.css" />
     <Content Include="Scripts\BackendProduct\datatables-demo.js" />
     <Content Include="Scripts\ProductsPage\productdetail.js" />
     <Content Include="Content\ProductsPage\products.css" />
     <Content Include="Content\RegisterPage\register.css" />
-    <Content Include="Content\ShoppingCarPage\shop.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -340,6 +346,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Assets\JSON\TaiwanAddress.json" />
     <None Include="Properties\PublishProfiles\nikoMealBox - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\NikoMealBox0914 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\NikoMealBox20200914014627 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -401,9 +408,14 @@
     <Content Include="Views\CartAll\Index.cshtml" />
     <Content Include="Views\Admin\Admin_SelectProducts.cshtml" />
     <Content Include="Views\CartAll\_CartAllPartial.cshtml" />
+    <Content Include="Views\Admin\UsersWithRoles.cshtml" />
+    <Content Include="Views\Account\LogOff.cshtml" />
+    <Content Include="Views\CartAll\CheckOrderList.cshtml" />
+    <Content Include="Views\CartAll\CreateOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\ShoppingCarPage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -431,6 +443,12 @@
     <EmbeddedResource Include="Migrations\202009081432079_updateuserId.resx">
       <DependentUpon>202009081432079_updateuserId.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LinePayClassLibrary\LinePayClassLibrary.csproj">
+      <Project>{39aef88e-bfe8-4cd5-9238-82fbc778ae75}</Project>
+      <Name>LinePayClassLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
