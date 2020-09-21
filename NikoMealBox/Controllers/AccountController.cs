@@ -16,6 +16,7 @@ using NikoMealBox.Models;
 namespace NikoMealBox.Controllers
 {
     [Authorize]
+    [RequireHttps]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -450,8 +451,18 @@ namespace NikoMealBox.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user);
+                var user = new ApplicationUser {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Name = model.Name,
+                    Mobile = model.Mobile,
+                    Height = model.Height,
+                    Weight = model.Weight,
+                    Gender = model.Gender,
+                    Birthday = model.Birthday,
+                    Address = model.Address
+                };
+                var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
