@@ -323,6 +323,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CartPage\CartAllPartial.css" />
+    <Content Include="Content\CartPage\OrderList.css" />
     <Content Include="Content\HomePage\NicoHome.css" />
     <Content Include="Content\MemberCenterPage\ChangePassword.css" />
     <Content Include="Content\MemberCenterPage\MemeberCenter.css" />

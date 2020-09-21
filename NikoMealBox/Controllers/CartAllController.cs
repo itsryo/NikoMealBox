@@ -35,7 +35,7 @@ namespace NikoMealBox.Controllers
             );
         }
 
-        public ActionResult OrderList(string username,string sex,int phone, string mail,string city,string district,string detailaddress,string remark,string deliverydate,string deliverytime,string payment)
+        public ActionResult OrderList(string username,string sex,string phone, string mail,string city,string district,string detailaddress,string remark,string deliverydate,string deliverytime,string payment)
         {
             ViewData["username"] = username;
             ViewData["sex"] = sex;
@@ -51,6 +51,7 @@ namespace NikoMealBox.Controllers
 
             return View();
         }
+
 
         public ActionResult RemoveFromCart(int id)
         {

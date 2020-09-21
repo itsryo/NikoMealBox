@@ -1,9 +1,77 @@
-﻿<h2>OrderList</h2>
+﻿@section topCSS{
+    <link href="~/Content/CartPage/OrderList.css" rel="stylesheet" />
+}
 
-<p>@ViewData["username"]</p>
-<p>@ViewData["sex"]</p>
-<p>@ViewData["phone"]</p>
-<p>@ViewData["mail"]</p>
-<p>@ViewData["city"]@ViewData["district"]@ViewData["detailaddress"]</p>
-<p>@ViewData["deliverydate"]@ViewData["deliverytime"]</p>
-<p>@ViewData["payment"]</p>
+@{
+    var currentCart = NikoMealBox.DataAccess.Repository.CartRepository.GetCurrentCart();
+}
+
+<div class="container">
+    <div class="title">
+        <h2>訂單已成立</h2>
+    </div>
+
+    <div class="ensure-list" id="products">
+        <div class="ensure-bar">
+            <p>商品確認</p>
+        </div>
+        <div class="ensure-content">
+            <p class="label">訂購商品:</p>
+            <div class="each-content-group">
+                @foreach (var product in currentCart)
+                {
+                    <div class="each-content">
+                        @product.Name x @product.Count
+                        @{ 
+                            var total = product.UnitPrice * product.Count;
+                        }
+                        @total 元 
+                    </div>
+                }
+            <div class="each-content">總計 @currentCart.TotalAmount</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ensure-list" id="userdatas">
+        <div class="ensure-bar">
+            <p>資料確認</p>
+        </div>
+        <div class="ensure-content">
+            <p class="label">人員資料:</p>
+            <div class="each-content-group">
+                <p class="each-content">@ViewData["username"]</p>
+                <p class="each-content">@ViewData["sex"]</p>
+                <p class="each-content">@ViewData["phone"]</p>
+                <p class="each-content">@ViewData["mail"]</p>
+                <p class="each-content">@ViewData["city"]@ViewData["district"]@ViewData["detailaddress"]</p>
+                <p class="each-content">@ViewData["deliverydate"] &nbsp; @ViewData["deliverytime"]</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="ensure-list" id="payment">
+        <div class="ensure-bar">
+            <p>付款確認</p>
+        </div>
+        <div class="ensure-content">
+            <p class="label">付款方式:</p>
+            <div class="each-content-group">
+                <p class="each-content">@ViewData["payment"]</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="step-button-group">
+        <button id="modify">修改訂單</button>
+        <button id="ensure-order">結賬付款</button>
+    </div>
+</div>
+
+
+<script>
+    var modifyBtn = document.getElementById('modify');
+    modifyBtn.addEventListener('click', function () {
+        history.back();
+    })
+</script>
