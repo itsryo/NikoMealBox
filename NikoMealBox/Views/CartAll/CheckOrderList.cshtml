@@ -64,7 +64,8 @@
 
     <div class="step-button-group">
         <a id="modify" href="#">修改訂單</a>
-        @Html.ActionLink("結賬付款", "CreateOrder", "CartAll", new { }, new { @id = "ensure-order" })
+        @* 物件對應model/Orders *@
+        @Html.ActionLink("結賬付款", "CreateOrder", "CartAll", new { city = ViewData["city"], region = ViewData["district"], address = ViewData["detailaddress"] }, new { @id = "ensure-order" })
     </div>
 </div>
 
