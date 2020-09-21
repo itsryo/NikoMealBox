@@ -312,6 +312,7 @@
     <Content Include="Assets\Images\HomePage\HomeBackground.png" />
     <Content Include="Assets\Images\HomePage\Housegroup1.png" />
     <Content Include="Assets\Images\HomePage\line.png" />
+    <Content Include="Assets\Images\HomePage\Logged.jpg" />
     <Content Include="Assets\Images\HomePage\logo.png" />
     <Content Include="Assets\Images\HomePage\member.png" />
     <Content Include="Assets\Images\HomePage\product.jpeg" />
