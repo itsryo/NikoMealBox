@@ -32,12 +32,12 @@ namespace NikoMealBox.Models.DataTable
         public DateTime CreateTime { get; set; }
 
         /// <summary>
-        /// 資料建立者
+        /// 資料編輯者
         /// </summary>
         public string EditUser { get; set; }
 
         /// <summary>
-        /// 資料建立時間
+        /// 資料編輯時間
         /// </summary>
         public DateTime? EditTime { get; set; }
 

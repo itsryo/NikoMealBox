@@ -22,8 +22,11 @@ namespace NikoMealBox.Controllers
         }
         public ActionResult Admin_SelectProducts()
         {
-            var products = _repository.Select();
-            return Json(products, JsonRequestBehavior.AllowGet);
+            var products = _repository.SelectAllProducts();
+            ViewData["Products"] = products;
+            return View();
+
+            //return Json(products, JsonRequestBehavior.AllowGet);
         }
     }
 }

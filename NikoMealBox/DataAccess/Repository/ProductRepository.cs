@@ -77,8 +77,55 @@ namespace NikoMealBox.DataAccess.Repository
         /// <returns></returns>
         public IEnumerable<Products> SelectAllProducts()
         {
-            var product = GetAll();
+            var product = GetAll().ToList();
             return product;
+        }
+
+        /// <summary>
+        /// 後台產品軟刪除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool softDeleteProduct(int id)
+        {
+            try
+            {
+                //var product = GetAll();
+                //var prod = from p in 
+                //           where p.Id == id
+                //           select p;
+                //prod.IsDelete = true;
+
+
+                var product = Get(x => x.Id == id);
+                product.IsDelete = true;//軟刪除
+                product.IsEnable = false;
+                SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            
+        }
+
+        /// <summary>
+        /// 後台新增商品
+        /// </summary>
+        /// <returns></returns>
+        public bool AddProduct(Products product)
+        {
+            
+            try
+            {
+                Insert(product);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

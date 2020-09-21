@@ -24,37 +24,86 @@ namespace NikoMealBox.WebAPI
             _repository = new ProductRepository();
         }
 
+        public IEnumerable<Products> prcoducts { get; set; }
+
+        /// <summary>
+        /// 後台查詢所有商品
+        /// </summary>
+        /// <returns></returns>
         [AcceptVerbs("GET","POST")]
         public IEnumerable<Products> SelectProducts()
         {
-            IEnumerable<Products> prcoducts =  _repository.SelectAllProducts();
             //var test = db.Products.Select(x => x).ToList();
+            //IEnumerable<Products> prcoducts =  _repository.SelectAllProducts();
+            prcoducts =_repository.SelectAllProducts();
 
             return prcoducts;
             //return Json(CarSalesNumber,JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// 後台軟刪除產品 IHttpActionResult
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public string DeleteConfirmed(int id)
+        {
+            bool result = _repository.softDeleteProduct(id);
+            if(result == true) //刪除成功 
+            {
+                return "刪除成功";
+                //return RedirectToAction("Product", "SelectProducts");
+
+            }
+            else
+            {
+                return "刪除失敗";
+            }
+            //Products products = db.Products.Find(id);
+            //db.Products.Remove(products);
+            //db.SaveChanges();
+            //return RedirectToAction("Index");
+
+        }
 
         public string GetTime()
         {
             return DateTime.Now.ToString("R");
         }
 
-        public bool AddProduct(Products query)
+        /// <summary>
+        /// 後台新增商品
+        /// </summary>
+        /// <param name="prod"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public string AddProduct(Products prod)
         {
-            using(var transaction = db.Database.BeginTransaction())
+            bool result = _repository.AddProduct(prod);
+            if (result == true) //新增成功 
             {
-                try
-                {
-                    _repository.Insert(query);
-                    return true;
-                }
-                catch(Exception ex)
-                {
-                    transaction.Rollback();
-                    return false;
-                }
+                return "新增成功";
+                //return RedirectToAction("Product", "SelectProducts");
+
             }
+            else
+            {
+                return "新增失敗";
+            }
+
+            //using (var transaction = db.Database.BeginTransaction())
+            //{
+            //    try
+            //    {
+            //        _repository.Insert(query);
+            //        return true;
+            //    }
+            //    catch(Exception ex)
+            //    {
+            //        transaction.Rollback();
+            //        return false;
+            //    }
+            //}
             
         }
     }

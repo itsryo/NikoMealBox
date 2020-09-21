@@ -9,38 +9,38 @@ namespace NikoMealBox.Models.DataTable
     public partial class Products : BaseEntity
     {
         /// <summary>
-        /// 商品名稱
+        /// 產品名稱
         /// </summary>
         [Required]
         [StringLength(20)]
         public string ProductName { get; set; }
 
         /// <summary>
-        /// 商品種類
+        /// 產品種類
         /// </summary>
         [Required]
         public int CategoryId { get; set; }
 
         /// <summary>
-        /// 商品單價
+        /// 產品單價
         /// </summary>
         public decimal UnitPrice { get; set; }
 
         /// <summary>
-        /// 商品庫存
+        /// 產品庫存
         /// </summary>
         [Required]
         public int UnitsInStock { get; set; }
 
         /// <summary>
-        /// 商品簡述
+        /// 產品簡述
         /// </summary>
         [Required]
         [StringLength(50)]
         public string Description { get; set; }
 
         /// <summary>
-        /// 商品材料
+        /// 產品材料
         /// </summary>
         [Required]
         [StringLength(50)]
@@ -87,7 +87,7 @@ namespace NikoMealBox.Models.DataTable
         public decimal Sodium { get; set; }
 
         /// <summary>
-        /// 商品圖片路徑
+        /// 產品圖片路徑
         /// </summary>
         [Required]
         [StringLength(256)]
