@@ -1,6 +1,6 @@
 ﻿@section topCSS{
 
-    <link href="~/Content/CartPage/cart.css" rel="stylesheet" />
+    <link href="~/Content/CartPage/Form.css" rel="stylesheet" />
 }
 @{
     var currentCart = NikoMealBox.DataAccess.Repository.CartRepository.GetCurrentCart();
@@ -138,12 +138,7 @@
             <div class="form-row" id="datetime">
                 <div class="input-area" id="delivery-date">
                     <label for="deliverydate">送達日期</label>
-                    <input type="date" name="deliverydate" class="form-control" />
-                </div>
-
-                <div class="input-area" id="delivery-time">
-                    <label for="deliverytime">送達時段</label>
-                    <input type="time" name="deliverytime" class="form-control" />
+                    <input type="datetime-local" name="deliverydate" class="form-control" />
                 </div>
             </div>
 
