@@ -13,5 +13,10 @@ namespace NikoMealBox.Models.DataTable
         /// </summary>
         [StringLength(50)]
         public string Description { get; set; }
+
+        /// <summary>
+        /// 一對多外鍵關聯
+        /// </summary>
+        //public ICollection<Orders> Orders { get; set; }
     }
 }

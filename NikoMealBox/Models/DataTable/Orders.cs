@@ -47,7 +47,7 @@ namespace NikoMealBox.Models.DataTable
         /// <summary>
         /// 聯絡信箱
         /// </summary>
-        public string Contactmail { get; set; }
+        public string ContactMail { get; set; }
 
         /// <summary>
         /// 訂單備註
@@ -64,15 +64,19 @@ namespace NikoMealBox.Models.DataTable
         /// </summary>
         public decimal ShippingFee { get; set; }
 
+        //[ForeignKey("OrderStatus")]
+        //public int OrderStatusId { get; set; }
+        //public OrderStatus OrderStatus { get; set; }
+
         /// <summary>
-        /// 該筆訂單狀態
+        /// 關聯到多個訂單詳細產品
         /// </summary>
-        /// 外鍵關聯?
-        public int OrderStatusId { get; set; }
+        public ICollection<OrderDetails> OrderDetails { get; set; }
 
         /// <summary>
         /// 訂單是由那個帳號下單
         /// </summary>
-        public Guid UserId { get; set; }
+        public string UserRefId { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }
