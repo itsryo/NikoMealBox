@@ -1,5 +1,6 @@
 namespace NikoMealBox.Models.DataTable
 {
+    using Microsoft.Ajax.Utilities;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -9,11 +10,6 @@ namespace NikoMealBox.Models.DataTable
 
     public partial class Orders:BaseEntity
     {   
-        /// <summary>
-        /// 該筆訂單狀態
-        /// </summary>
-        public int OrderStatusId { get; set; }
-
         /// <summary>
         /// 預計取貨時間
         /// </summary>
@@ -49,14 +45,38 @@ namespace NikoMealBox.Models.DataTable
         public string ContactPhone { get; set; }
 
         /// <summary>
-        /// 電話分機
+        /// 聯絡信箱
         /// </summary>
-        [StringLength(8)]
-        public string TelephoneExtension { get; set; }
+        public string ContactMail { get; set; }
+
+        /// <summary>
+        /// 訂單備註
+        /// </summary>
+        public string Remark { get; set; }
+
+        /// <summary>
+        /// 付款方式
+        /// </summary>
+        public string Payment { get; set; }
 
         /// <summary>
         /// 運費
         /// </summary>
         public decimal ShippingFee { get; set; }
+
+        //[ForeignKey("OrderStatus")]
+        //public int OrderStatusId { get; set; }
+        //public OrderStatus OrderStatus { get; set; }
+
+        /// <summary>
+        /// 關聯到多個訂單詳細產品
+        /// </summary>
+        public ICollection<OrderDetails> OrderDetails { get; set; }
+
+        /// <summary>
+        /// 訂單是由那個帳號下單
+        /// </summary>
+        public string UserRefId { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }

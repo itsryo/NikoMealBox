@@ -9,21 +9,6 @@ namespace NikoMealBox.Models.DataTable
     public partial class OrderDetails:BaseEntity
     {
         /// <summary>
-        /// 產品項目
-        /// </summary>
-        public int ProductId { get; set; }
-
-        /// <summary>
-        /// 所屬訂單
-        /// </summary>
-        public int OrderId { get; set; }
-
-        /// <summary>
-        /// 產品單價
-        /// </summary>
-        public decimal UnitPrice { get; set; }
-
-        /// <summary>
         /// 訂購數量
         /// </summary>
         public int Quantity { get; set; }
@@ -32,5 +17,20 @@ namespace NikoMealBox.Models.DataTable
         /// 總折扣
         /// </summary>
         public decimal Discount { get; set; }
+
+
+        /// <summary>
+        /// 所屬訂單
+        /// </summary>
+        [ForeignKey("Orders")]
+        public int OrdersId { get; set; }
+        public Orders Orders { get; set; }
+
+        /// <summary>
+        /// 關聯產品項目
+        /// </summary>
+        [ForeignKey("Products")]
+        public int ProductsId { get; set; }
+        public Products Products { get; set; }
     }
 }

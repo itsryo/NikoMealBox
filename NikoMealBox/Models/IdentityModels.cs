@@ -5,6 +5,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using NikoMealBox.Models.DataTable;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NikoMealBox.Models
 {
@@ -20,6 +23,12 @@ namespace NikoMealBox.Models
 
         public DateTime Birthday { get; set; }
         public string Address { get; set; }
+
+        /// <summary>
+        /// 會員持有的訂單
+        /// </summary>
+        [ForeignKey("UserRefId")]
+        public ICollection<Orders> Orders { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

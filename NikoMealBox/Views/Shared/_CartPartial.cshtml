@@ -8,10 +8,10 @@
 }
 <a id="CartDropDown" class="dropdown-toggle" data-toggle="dropdown">
     @*共500元(3)*@
-    @String.Format("共{0}元({1})",currentCart.TotalAmount, currentCart.Count)
+    @String.Format("共{0}元({1})", currentCart.TotalAmount, currentCart.Count)
     <span class="caret"></span>
 </a>
-<ul class="dropdown-menu" role="menu" aria-labelledby="CartDropDown">
+<ul class="dropdown-menu dropdown-menu-right w-50 p-2" role="menu" aria-labelledby="CartDropDown">
     @*@foreach (var cartitem in currentCart)
         {
             <li><a>@cartitem.Name <span>@cartitem.UnitPrice 元 x @cartitem.UnitsInStock</span></a></li>
@@ -20,22 +20,39 @@
         <li><a>可愛橡皮擦<span>50元x2</span></a></li>
         <li><a>可愛墊板<span>150元x2</span></a></li>*@
     @*<li class="divider"></li>
-    <li><a class="btn btn-default text-center" href="#">結帳去</a></li>*@
+        <li><a class="btn btn-default text-center" href="#">結帳去</a></li>*@
 
     @if (currentCart.Count > 0)
     {
         foreach (var cartitem in currentCart)
         {
             <li class="col-xs-12">
-                <span class="col-xs-10"> @cartitem.Name @cartitem.UnitPrice 元 x @cartitem.Count</span>
-                <span class="btn btn-danger col-xs-2" onclick="RemoveFromCart('@cartitem.Id')">
-                    x
-                </span>
+                <div class="row mx-0 m-3">
+                    <div class="col-3 px-0">
+                        <div class="pic">
+                            <img src="@cartitem.ImagePath" class="w-75" />
+                        </div>
+                    </div>
+                    <div class="col-6 px-0 ">
+                        <span class="col-xs-10"> @cartitem.Name</span>
+                        <br />
+                        <span> @cartitem.UnitPrice 元 x @cartitem.Count</span>
+                        
+                    </div>
+                    <div class="col-1">
+                        <span class="col-xs-2" onclick="RemoveFromCart('@cartitem.Id')">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
             </li>
-            
+
         }
-        <li class="divider"></li>
-        <li>
+        @*<li class="divider"></li>*@
+        <li class="text-right">
             <a class="btn btn-success text-center col-xs-5" href="@Url.Action("Index","CartAll",new { })">結帳去</a>
             <a class="btn btn-danger text-center col-xs-5" onclick="ClearCart()">清空</a>
         </li>

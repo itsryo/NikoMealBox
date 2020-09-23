@@ -58,11 +58,13 @@ namespace NikoMealBox
                appId: "661004114520349",
                appSecret: "4600245f4db84a93d850475d073ea4ac");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+
+
+                ClientId = "615290682296-dpf5thkoc9ijim2h8kkgin756gt3am2l.apps.googleusercontent.com",
+                ClientSecret = "S_Aw2plHmHIz0PYYk0G7EhGa"
+            });
         }
     }
 }
