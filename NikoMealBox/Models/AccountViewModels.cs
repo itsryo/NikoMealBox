@@ -165,6 +165,8 @@ namespace NikoMealBox.Models
 
     public class MemberCenterViewModel
     {
+        [Display(Name = "電子郵件")]
+        public string Email { get; set; }
         [Display(Name = "姓名")]
         public string Name { get; set; }
         [Display(Name = "手機號碼")]

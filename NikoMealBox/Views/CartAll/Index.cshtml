@@ -1,4 +1,5 @@
-﻿@section topCSS{
+﻿@model NikoMealBox.Models.MemberCenterViewModel
+@section topCSS{
 
     <link href="~/Content/CartPage/Form.css" rel="stylesheet" />
 }
@@ -75,28 +76,37 @@
         <form action="~/CartAll/CheckOrderList" method="post">
             <div class="form-row">
                 <div id="order-name" class="input-area">
-                    <label for="username" class="required">你的姓名</label>
-                    <input type="text" name="username" class="form-control" />
+                    @*<label for="username" class="required">你的姓名</label>*@
+                    @*<input type="text" name="username" class="form-control" />*@
+                    @Html.LabelFor(m => m.Name, new { @class = "required" })
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control " })
+
                 </div>
 
                 <div id="order-sex" class="input-area">
-                    <label for="sex" class="required">性別</label>
-                    <select class="form-control" name="sex">
-                        <option value="男">男</option>
-                        <option value="女">女</option>
-                    </select>
-                </div>
+                    @*<label for="sex" class="required">性別</label>
+        <select class="form-control" name="sex">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>*@
+                    @Html.LabelFor(m => m.Gender, new { @class = "required" })
+                    @Html.DisplayFor(m => m.Gender, new { @class = "form-control " })
+                    </div>
 
                 <div id="order-phone" class="input-area">
-                    <label for="phone" class="required">電話</label>
-                    <input type="tel" name="phone" class="form-control" placeholder="範例：0912345678" />
-                </div>
+                    @Html.LabelFor(m => m.Mobile, new { @class = "required" })
+                    @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control " })
+                        @*<label for="phone" class="required">電話</label>
+            <input type="tel" name="phone" class="form-control" placeholder="範例：0912345678" />*@
+                    </div>
 
                 <div id="order-mail" class="input-area">
-                    <label for="mail">Email</label>
-                    <input type="email" name="mail" class="form-control" placeholder="如需更換別的mail，再填即可" />
+                    @Html.LabelFor(m => m.Email, new { @class = "required" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control " })
+                    @*<label for="mail">Email</label>
+        <input type="email" name="mail" class="form-control" placeholder="如需更換別的mail，再填即可" />*@
                 </div>
-            </div>
+                </div>
 
             <div class="form-row" id="address">
                 <div id="order-city" class="input-area">
