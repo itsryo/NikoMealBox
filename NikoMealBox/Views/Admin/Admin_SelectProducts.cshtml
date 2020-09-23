@@ -179,46 +179,43 @@
                             </div>
 
 
-                            @*<div class="col-sm-4 my-1 form-group">
+                            <div class="col-sm-3 my-1 form-group">
                                 <label for="CtgyId">蛋奶素</label>
                                 <select class="form-control isOvolacto" name="IsOvolacto" id="IsOvolacto">
-                                    <option>是</option>
-                                    <option>否</option>
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
                                 </select>
                             </div>
-                            <div class="col-sm-4 my-1 form-group">
+                            
+                            <div class="col-sm-5 my-1 form-group">
                                 <label for="CtgyId">產品/種類是否還有提供</label>
-                                <select class="form-control isEnable" name="IsEnable" id="IsEnable">
-                                    <option>是</option>
-                                    <option>否</option>
+                                <select class="form-control isEnable" name="isEnable" id="IsEnable">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
                                 </select>
                             </div>
                             <div class="col-sm-4 my-1 form-group">
                                 <label for="CtgyId">產品/種類是否刪除</label>
-                                <select class="form-control isDelete" name="IsDelete" id="IsDelete">
-                                    <option>是</option>
-                                    <option>否</option>
+                                <select class="form-control isDelete" name="isDelete" id="IsDelete">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
                                 </select>
-                            </div>*@
-
-
-
-
-
-
-
-                            <div class="col-sm-3 my-1">
-                                <label for="IsOvolacto">蛋奶素</label>
-                                <input type="text" name="IsOvolacto" id="IsOvolacto" class="form-control isOvolacto" placeholder="">
                             </div>
-                            <div class="col-sm-5 my-1">
-                                <label for="IsEnable"> 產品/種類是否還有提供</label>
-                                <input type="text" name="IsEnable" id="IsEnable" class="form-control isEnable" placeholder="">
-                            </div>
-                            <div class="col-sm-4 my-1">
-                                <label for="IsDelete"> 產品/種類是否刪除</label>
-                                <input type="text" name="IsDelete" id="IsDelete" class="form-control isDelete" placeholder="">
-                            </div>
+
+
+
+                            @*<div class="col-sm-3 my-1">
+            <label for="IsOvolacto">蛋奶素</label>
+            <input type="text" name="IsOvolacto" id="IsOvolacto" class="form-control isOvolacto" placeholder="">
+        </div>
+        <div class="col-sm-5 my-1">
+            <label for="IsEnable"> 產品/種類是否還有提供</label>
+            <input type="text" name="IsEnable" id="IsEnable" class="form-control isEnable" placeholder="">
+        </div>
+        <div class="col-sm-4 my-1">
+            <label for="IsDelete"> 產品/種類是否刪除</label>
+            <input type="text" name="IsDelete" id="IsDelete" class="form-control isDelete" placeholder="">
+        </div>*@
                             <div class="col-sm-4 my-1">
                                 <label for="CreateUser"> 資料建立者</label>
                                 <input type="text" name="CreateUser" id="CreateUser" class="form-control createUser" placeholder="">
@@ -238,108 +235,119 @@
     <!-- EditModal -->
     <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="EditModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="EditModalLabel">編輯產品資料</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-row align-items-center">
-                        <div class="col-sm-8 my-1 form-group">
-                            <label>產品名稱</label>
-                            <input type="text" name class="form-control"><!--加form-control 樣式 可以拿掉看原本樣子-->
-                        </div>
-                        <div class="col-sm-4 my-1 form-group">
-                            <label for="exampleInputEmail1">種類Id</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-6 my-1 form-group">
-                            <label>產品單價</label>
-                            <input type="text" name class="form-control"><!--加form-control 樣式 可以拿掉看原本樣子-->
-                        </div>
-                        <div class="col-sm-6 my-1 form-group">
-                            <label>產品庫存</label>
-                            <input type="text" name class="form-control"><!--加form-control 樣式 可以拿掉看原本樣子-->
-                        </div>
-                        <div class="col-sm-6 my-1 form-group">
-                            <label for="exampleFormControlTextarea1">產品簡述</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                        <div class="col-sm-6 my-1 form-group">
-                            <label for="exampleFormControlTextarea1">產品材料</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-
-
-                        <div class="col-sm-3 my-1">
-                            <label>熱量</label>
-                            <input type="text" name class="form-control" placeholder="請輸入熱量">
-                        </div>
-                        <div class="col-sm-3 my-1">
-                            <label>碳水化合物</label>
-                            <input type="text" name class="form-control" placeholder="">
-                        </div>
-                        <div class="col-sm-3 my-1">
-                            <label>蛋白質</label>
-                            <input type="text" name class="form-control" placeholder="">
-                        </div>
-                        <div class="col-sm-3 my-1">
-                            <label>脂肪</label>
-                            <input type="text" name class="form-control" placeholder="">
-                        </div>
-                        <div class="col-sm-3 my-1">
-                            <label>飽和脂肪</label>
-                            <input type="text" name class="form-control" placeholder="">
-                        </div>
-                        <div class="col-sm-3 my-1">
-                            <label>反式脂肪</label>
-                            <input type="text" name class="form-control" placeholder="">
-                        </div>
-                        <div class="col-sm-3 my-1">
-                            <label>糖</label>
-                            <input type="text" name class="form-control" placeholder="">
-                        </div>
-                        <div class="col-sm-3 my-1">
-                            <label>鈉</label>
-                            <input type="text" name class="form-control" placeholder="">
-                        </div>
-                        <div class="col-12 my-1">
-                            <label>產品圖片路徑</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1" placeholder="">
-                        </div>
-                        <div class="col-sm-3 my-1">
-                            <label>蛋奶素</label>
-                            <input type="text" name class="form-control" placeholder="">
-                        </div>
-                        <div class="col-sm-5 my-1">
-                            <label> 產品/種類是否還有提供</label>
-                            <input type="text" name class="form-control" placeholder="">
-                        </div>
-                        <div class="col-sm-4 my-1">
-                            <label> 資料建立者</label>
-                            <input type="text" name class="form-control" placeholder="">
-                        </div>
+            <form id="EditProduct" method="post" action="">-->@*/api/Product/AddProduct*@
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="EditModalLabel">編輯產品資料</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
+                    <div class="modal-body">
+                        <div class="form-row align-items-center">
+                            <div class="col-sm-8 my-1 form-group">
+                                <label for="prodName">產品名稱</label>
+                                <input type="text" name="ProductName" id="prodName" class="form-control productName"><!--加form-control 樣式 可以拿掉看原本樣子-->
+                            </div>
+                            <div class="col-sm-4 my-1 form-group">
+                                <label for="CtgyId">種類Id</label>
+                                <select class="form-control categoryId" name="CategoryId" id="CtgyId">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6 my-1 form-group">
+                                <label for="price">產品單價</label>
+                                <input type="text" name="UnitPrice" id="price" class="form-control unitPrice"><!--加form-control 樣式 可以拿掉看原本樣子-->
+                            </div>
+                            <div class="col-sm-6 my-1 form-group">
+                                <label for="stock">產品庫存</label>
+                                <input type="text" name="UnitsInStock" id="stock" class="form-control InStock"><!--加form-control 樣式 可以拿掉看原本樣子-->
+                            </div>
+                            <div class="col-sm-6 my-1 form-group">
+                                <label for="desc">產品簡述</label>
+                                <textarea class="form-control description" name="Description" rows="3" id="desc"></textarea>
+                            </div>
+                            <div class="col-sm-6 my-1 form-group">
+                                <label for="Ingredients">產品材料</label>
+                                <textarea class="form-control materials" name="Materials" id="Ingredients" rows="3"></textarea>
+                            </div>
+                            <div class="col-sm-3 my-1">
+                                <label for="Calories">熱量</label>
+                                <input type="text" name="Calories" id="Calories" class="form-control calories" placeholder="請輸入熱量">
+                            </div>
+                            <div class="col-sm-3 my-1">
+                                <label for="Carbohydrate">碳水化合物</label>
+                                <input type="text" name="Carbohydrate" id="Carbohydrate" class="form-control carbohydrate" placeholder="">
+                            </div>
+                            <div class="col-sm-3 my-1">
+                                <label for="Protein">蛋白質</label>
+                                <input type="text" name="Protein" id="Protein" class="form-control protein" placeholder="">
+                            </div>
+                            <div class="col-sm-3 my-1">
+                                <label for="Fat">脂肪</label>
+                                <input type="text" name="Fat" id="Fat" class="form-control fat" placeholder="">
+                            </div>
+                            <div class="col-sm-3 my-1">
+                                <label for="SaturatedFat">飽和脂肪</label>
+                                <input type="text" name="SaturatedFat" id="SaturatedFat" class="form-control saturatedFat" placeholder="">
+                            </div>
+                            <div class="col-sm-3 my-1">
+                                <label for="TransFat">反式脂肪</label>
+                                <input type="text" name="TransFat" id="TransFat" class="form-control transFat" placeholder="">
+                            </div>
+                            <div class="col-sm-3 my-1">
+                                <label for="Sugar">糖</label>
+                                <input type="text" name="Sugar" id="Sugar" class="form-control sugar" placeholder="">
+                            </div>
+                            <div class="col-sm-3 my-1">
+                                <label for="Sodium">鈉</label>
+                                <input type="text" name="Sodium" id="Sodium" class="form-control sodium" placeholder="">
+                            </div>
+                            <div class="col-12 my-1">
+                                <label for="ImagePath">產品圖片路徑</label>
+                                <input type="file" class="form-control imagePath" name="ImagePath" id="ImagePath" placeholder="">
+                            </div>
+                            <div class="col-sm-3 my-1 form-group">
+                                <label for="CtgyId">蛋奶素</label>
+                                <select class="form-control isOvolacto" name="IsOvolacto" id="IsOvolacto">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-5 my-1 form-group">
+                                <label for="CtgyId">產品/種類是否還有提供</label>
+                                <select class="form-control isEnable" name="isEnable" id="IsEnable">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4 my-1 form-group">
+                                <label for="CtgyId">產品/種類是否刪除</label>
+                                <select class="form-control isDelete" name="isDelete" id="IsDelete">
+                                    <option value="true">是</option>
+                                    <option value="false">否</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4 my-1">
+                                <label for="CreateUser"> 資料建立者</label>
+                                <input type="text" name="CreateUser" id="CreateUser" class="form-control createUser" placeholder="">
+                            </div>
+                        </div>
 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="Create">建立</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="Edit">編輯</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
     <script>
-            //var result = document.getElementById("result");
             //取消Ajax快取
             //$.ajaxSetup({ cache: false });
-        //var apiUrl = "/Admin/Admin_SelectProducts";
 
 
         //建立datatable
@@ -349,6 +357,7 @@
                 "paging": true,//啟用分頁
                 //"bAutoWidth": false,//自动计算每一列的宽度
                 "pageLength": 5,//分頁的資料總筆數
+                "destroy": true,//Cannot reinitialise DataTable,解决重新加载表格内容问题
                 //"fixedHeader": true,
                 //"scrollY": "200px",
                 //"scrollCollapse": "true",
@@ -358,7 +367,7 @@
                     url: "/api/Product/SelectProducts",
                     type: 'Get',
                     dataType: 'json',
-                    data: {},
+                    data: { },
                     // 传给服务器的数据，可以添加我们自己的查询参数
                     dataSrc: function (Prod) {
                         return Prod;
@@ -415,48 +424,149 @@
         $(document).ready(function () {
             selectProd();//建立datatable
             //爲我們生成的按鈕綁定方法，這裏是彈出姓名和職業的對話框
+            //刪除btn
             $("#dataTable tbody").on("click", "#DeleteProduct", function () {
             //let deletebtn = document.getElementById("DeleteProduct");
             //deletebtn.addEventListener('click', function (e) {
-                ////獲取行
+                //獲取行
                 var row = $("table#dataTable tr").index($(this).closest("tr"));
-                ////獲取某列（從0列開始計數）的值
+                //獲取某列（從0列開始計數）的值
                 var Id = $("table#dataTable").find("tr").eq(row).find("td").eq(0).text();//Id
                 //var name = $("table#dataTable").find("tr").eq(row).find("td").eq(1).text();//便當
                 //var job = $("table#dataTable").find("tr").eq(row).find("td").eq(5).text();//簡述 "便當是: " + name + " 簡述: " + job
                 alert("Id: " + Id );
 
                 //軟刪除
-                $.ajax({
-                    url: '/api/Product/DeleteConfirmed', 
-                    type: 'Get', //請求方式，POST/GET。(預設為GET)
-                    data: {  
-                        id: Id
-                    },
-                    dataType: 'json',
-                    success: function (result) {//成功時Dosomething (程式只要可以執行成功)
-
-                        alert(result);
+                $.get('/api/Product/DeleteConfirmed' + '/' + Id)
+                    .done(function (data) {
+                        alert(data);
                         selectProd();
-                    },
-                    fail: function (result) {//失敗時Dosomething(程式爆掉)
+                    })
+                    .fail(function (jqXHR, textStatus, err) {
+                        alert(err);
+                        //$('#product').text('Error: ' + err);
+                    });
 
-                        htmlresult = result;
+                //$.ajax({
+                //    url: '/api/Product/DeleteConfirmed', 
+                //    type: 'Get', //請求方式，POST/GET。(預設為GET)
+                //    data: {  
+                //        id: Id
+                //    },
+                //    dataType: 'json',
+                //    success: function (result) {//成功時Dosomething (程式只要可以執行成功)
+                //        alert(result);
+                //        selectProd();
+                //    },
+                //    fail: function (result) {//失敗時Dosomething(程式爆掉)
+                //        alert(result);
+                //    }
+                //});
+                
+            });
 
-                    }
-                });
+            //編輯btn
+            $("#dataTable tbody").on('click', '#EditProduct', function () {
+                //獲取行
+                var row = $("table#dataTable tr").index($(this).closest("tr"));
+                //獲取某列（從0列開始計數）的值
+                var Id = $("table#dataTable").find("tr").eq(row).find("td").eq(0).text();//Id
+                var name = $("table#dataTable").find("tr").eq(row).find("td").eq(1).text();//便當
+                alert("Id: " + Id + name);
+
+                //編輯 取得資料
+                var apiUrl = "/api/Product/SelectOneProduct";
+                $.get(apiUrl + '/' + Id)
+                    .done(function (data) {
+                        let ary = ["productName", "categoryId", "unitPrice" ];//陣列
+                        let prodary = [{ "productName": "10", "categoryId": 1, "unitPrice": 120 }];//物件
+                        let prodAry = [ data ];//傳回物件
+
+                        //let jsonData = JSON.stringify(prodAry);
+                        //alert(jsonData);//json
+                        //alert(prodAry)//obj
+
+                        //for (let item in prodAry) {
+                        //    alert(jsonData[item])
+                        //}
+                        for (let i = 0; i < 1; i++) {
+                            let prodName = prodAry[0].ProductName;
+                            let name = document.querySelector("#EditProduct #prodName").value = prodName;
+                            //let item = prodAry[0].ary[i];
+                            let CtgyId = prodAry[0].CategoryId;
+                            let Id = document.querySelector("#EditProduct #CtgyId").value = CtgyId;
+
+                            let price = prodAry[0].UnitPrice;
+                            let UnitPrice = document.querySelector("#EditProduct #price").value = price;
+
+                            let stock = prodAry[0].UnitsInStock;
+                            let UnitsInStock = document.querySelector("#EditProduct #stock").value = stock;
+
+                            let desc = prodAry[0].Description;
+                            let Description = document.querySelector("#EditProduct #desc").value = desc;
+
+                            let Ingredients = prodAry[0].Materials;
+                            let Materials = document.querySelector("#EditProduct #Ingredients").value = Ingredients;
+
+                            let Calory = prodAry[0].Calories;// 熱量
+                            let Calories = document.querySelector("#EditProduct #Calories").value = Calory;
+
+                            let Carbo = prodAry[0].Carbohydrate;// 碳水化合物
+                            let Carbohydrate = document.querySelector("#EditProduct #Carbohydrate").value = Carbo;
+
+                            let protein = prodAry[0].Protein;// 蛋白質
+                            let Protein = document.querySelector("#EditProduct #Protein").value = protein;
+
+                            let fat = prodAry[0].Fat;// 脂肪
+                            let Fat = document.querySelector("#EditProduct #Fat").value = fat;
+
+                            let saturatedFat = prodAry[0].SaturatedFat;// 飽和脂肪
+                            let SaturatedFat = document.querySelector("#EditProduct #SaturatedFat").value = saturatedFat;
+
+                            let transFat = prodAry[0].TransFat;// 反式脂肪;
+                            let TransFat = document.querySelector("#EditProduct #TransFat").value = transFat;
+
+                            let sugar = prodAry[0].Sugar;// 糖;
+                            let Sugar = document.querySelector("#EditProduct #Sugar").value = sugar;
+
+                            let sodium = prodAry[0].Sodium;// 鈉;
+                            let Sodium = document.querySelector("#EditProduct #Sodium").value = sodium;
+
+                            let imagePath = prodAry[0].ImagePath;// 產品圖片路徑;
+                            alert(imagePath);
+                            //let ImagePath = document.querySelector("#EditProduct #ImagePath").value = imagePath;
+
+                            let isOvolacto = prodAry[0].IsOvolacto;// 蛋奶素;
+                            let IsOvolacto = document.querySelector("#EditProduct #IsOvolacto").value = isOvolacto;
+
+                            let isEnable = prodAry[0].IsEnable;// 產品/種類是否還有提供;
+                            let IsEnable = document.querySelector("#EditProduct #IsEnable").value = isEnable;
+
+                            let isDelete = prodAry[0].IsDelete;// 邏輯刪除;
+                            let IsDelete = document.querySelector("#EditProduct #IsDelete").value = isDelete;
+
+                            let createUser = prodAry[0].CreateUser;// 資料建立者;
+                            let CreateUser = document.querySelector("#EditProduct #CreateUser").value = createUser;
+                        }
+                    })
+                    .fail(function (jqXHR, textStatus, err) {
+                        alert(err);
+                        //$('#product').text('Error: ' + err);
+                    });
             });
         });
 
-        //建立產品
+        ////建立產品 防呆用
         //$("#AddModal").on('click', '#Create', function () {
-        //    let prodAry = ["productName", "categoryId", "unitPrice", "InStock", "description", "materials"]; 
+        //    //let prodAry = ["productName", "categoryId", "unitPrice", "InStock", "description", "materials"]; 
+        //    let prodAry = ["productName", "isOvolacto", "isEnable", "isDelete"]; 
         //    //calories carbohydrate protein fat saturatedFat transFat sugar sodium imagePath isOvolacto isEnable isDelete createUser
         //    console.log(this);
         //    for (let i = 0; i < prodAry.length; i++) {
         //        let item = prodAry[i];
-        //        //alert(item);
+        //        alert(item);
         //        let val = document.querySelector('#AddProduct' + " ." + item).value;
+        //        alert(val);
         //        if (val == null || val == 0) {
         //            alert("有欄位未填寫");
         //            return;
@@ -465,14 +575,18 @@
         //    }
         //    //let Name = document.querySelector("#AddProduct .categoryId").value;
         //});
-        //let CreateProd = document.querySelector("#Create");
-        //CreateProd.addEventListener('click', function (e) {
-        //})
 
-        //let DeleteProd = document.querySelector("#DeleteProduct");
-        //DeleteProd.addEventListener('click', function () {
 
-        //});
+
+
+
+
+
+
+
+
+
+
 
             //$().ready(function () {
             //    //$.ajax()

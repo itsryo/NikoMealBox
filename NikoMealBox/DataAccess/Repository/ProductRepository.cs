@@ -12,7 +12,7 @@ namespace NikoMealBox.DataAccess.Repository
     {
 
         /// <summary>
-        /// 取得所有產品
+        /// 前台 取得所有產品
         /// </summary>
         /// <returns></returns>
         public IEnumerable<ProductViewModels.Index> Select()
@@ -61,23 +61,25 @@ namespace NikoMealBox.DataAccess.Repository
 
 
 
+   
+
         /// <summary>
-        /// 搜尋商品
+        /// 後台 查詢所有商品
         /// </summary>
-        /// <param name="keyWord"></param>
         /// <returns></returns>
-        public IEnumerable<Products> Search(string keyWord)
+        public IEnumerable<Products> SelectAllProd()
         {
-            return GetAll().Where(x => x.ProductName.Contains(keyWord));
+            var product = GetAll().ToList();
+            return product;
         }
 
         /// <summary>
-        /// 管理頁查詢商品
+        /// 後台 取得單一商品(編輯)
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Products> SelectAllProducts()
+        public Products SelectOneProd(int id)
         {
-            var product = GetAll().ToList();
+            var product = Get(p => p.Id == id);
             return product;
         }
 
@@ -116,9 +118,10 @@ namespace NikoMealBox.DataAccess.Repository
         /// <returns></returns>
         public bool AddProduct(Products product)
         {
-            
+            //int ovlacto = product.IsOvolacto = "是" ? 1 : 0; 
             try
             {
+
                 Insert(product);
                 return true;
             }
@@ -126,6 +129,18 @@ namespace NikoMealBox.DataAccess.Repository
             {
                 return false;
             }
+        }
+
+
+
+        /// <summary>
+        /// 搜尋商品
+        /// </summary>
+        /// <param name="keyWord"></param>
+        /// <returns></returns>
+        public IEnumerable<Products> Search(string keyWord)
+        {
+            return GetAll().Where(x => x.ProductName.Contains(keyWord));
         }
     }
 }

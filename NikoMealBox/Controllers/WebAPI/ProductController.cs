@@ -27,7 +27,7 @@ namespace NikoMealBox.WebAPI
         public IEnumerable<Products> prcoducts { get; set; }
 
         /// <summary>
-        /// 後台查詢所有商品
+        /// 後台查詢所有商品&單一商品
         /// </summary>
         /// <returns></returns>
         [AcceptVerbs("GET","POST")]
@@ -35,11 +35,27 @@ namespace NikoMealBox.WebAPI
         {
             //var test = db.Products.Select(x => x).ToList();
             //IEnumerable<Products> prcoducts =  _repository.SelectAllProducts();
-            prcoducts =_repository.SelectAllProducts();
 
-            return prcoducts;
+            var products = _repository.SelectAllProd();
+            return products;
+
             //return Json(CarSalesNumber,JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public Products SelectOneProduct(int id)
+        {
+            //var test = db.Products.Select(x => x).ToList();
+            //IEnumerable<Products> prcoducts =  _repository.SelectAllProducts();
+            
+                var Oneproduct = _repository.SelectOneProd(id);
+                return Oneproduct;
+
+            //return Json(CarSalesNumber,JsonRequestBehavior.AllowGet);
+        }
+
+
+
 
         /// <summary>
         /// 後台軟刪除產品 IHttpActionResult
@@ -77,17 +93,22 @@ namespace NikoMealBox.WebAPI
         /// <param name="prod"></param>
         /// <returns></returns>
         [HttpPost]
-        public string AddProduct(Products prod)
+        public string AddProduct(Products prod) //IEnumerable<Products>  IHttpActionResult
         {
+
             bool result = _repository.AddProduct(prod);
             if (result == true) //新增成功 
             {
+
+                //return SelectProducts();
+                //return RedirectToRoute("", "");
                 return "新增成功";
                 //return RedirectToAction("Product", "SelectProducts");
 
             }
             else
             {
+                //return NotFound();
                 return "新增失敗";
             }
 

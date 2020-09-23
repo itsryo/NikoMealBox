@@ -65,8 +65,8 @@ namespace NikoMealBox.Controllers
             //var products = _repository.Select();
             //return Json(products, JsonRequestBehavior.AllowGet);
             //private ProductRepository _repository = new ProductRepository();
-            var products = _repository.SelectAllProducts();
-            ViewData["Products"] = products;
+            //var products = _repository.SelectProducts();
+            //ViewData["Products"] = products;
             return View();
 
             //return Json(products, JsonRequestBehavior.AllowGet);
