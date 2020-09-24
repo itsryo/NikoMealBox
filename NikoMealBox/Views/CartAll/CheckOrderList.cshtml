@@ -22,7 +22,7 @@
                 @foreach (var product in currentCart)
                 {
                     <div class="each-content">
-                        <img src="https://imgur.com/xr3tkAI.jpg">
+                        <img src="@product.ImagePath">
                         <div>@product.Name x @product.Count</div>
                         <div>
                             @{
@@ -70,7 +70,7 @@
     <div class="step-button-group">
         <a id="modify" href="#">修改訂單</a>
         @* 物件對應model/Orders *@
-        @Html.ActionLink("結賬付款", "CreateOrder", "CartAll", new { city = ViewData["city"], region = ViewData["district"], address = ViewData["detailaddress"] }, new { @id = "ensure-order" })
+        @Html.ActionLink("結賬付款", "CreateOrder", "CartAll", Model , new { @id = "ensure-order" })
     </div>
 </div>
 

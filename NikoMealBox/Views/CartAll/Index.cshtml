@@ -76,37 +76,36 @@
         <form action="~/CartAll/CheckOrderList" method="post">
             <div class="form-row">
                 <div id="order-name" class="input-area">
-                    @*<label for="username" class="required">你的姓名</label>*@
-                    @*<input type="text" name="username" class="form-control" />*@
-                    @Html.LabelFor(m => m.Name, new { @class = "required" })
-                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control " })
-
+                    <label for="CreateUser" class="required">姓名</label>
+                    <input type="text" name="CreateUser" class="form-control" value="@Model.Name" />
                 </div>
 
                 <div id="order-sex" class="input-area">
-                    @*<label for="sex" class="required">性別</label>
-        <select class="form-control" name="sex">
-            <option value="男">男</option>
-            <option value="女">女</option>
-        </select>*@
-                    @Html.LabelFor(m => m.Gender, new { @class = "required" })
-                    @Html.DisplayFor(m => m.Gender, new { @class = "form-control " })
-                    </div>
+                    <label for="Sex" class="required">性別</label>
+                    <select class="form-control" name="Sex">
+                        @if (Model.Gender == "man")
+                        {
+                            <option value="男" selected>男</option>
+                            <option value="女">女</option>
+                        }
+                        else
+                        {
+                            <option value="男">男</option>
+                            <option value="女" selected>女</option>
+                        }
+                    </select>
+                </div>
 
                 <div id="order-phone" class="input-area">
-                    @Html.LabelFor(m => m.Mobile, new { @class = "required" })
-                    @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control " })
-                        @*<label for="phone" class="required">電話</label>
-            <input type="tel" name="phone" class="form-control" placeholder="範例：0912345678" />*@
-                    </div>
+                    <label for="ContactPhone" class="required">電話</label>
+                    <input type="text" name="ContactPhone" class="form-control" placeholder="範例：0912345678" value="@Model.Mobile" />
+                </div>
 
                 <div id="order-mail" class="input-area">
-                    @Html.LabelFor(m => m.Email, new { @class = "required" })
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control " })
-                    @*<label for="mail">Email</label>
-        <input type="email" name="mail" class="form-control" placeholder="如需更換別的mail，再填即可" />*@
+                    <label for="ContactMail">Email</label>
+                    <input type="text" name="ContactMail" class="form-control" value="@Model.Email" />
                 </div>
-                </div>
+            </div>
 
             <div class="form-row" id="address">
                 <div id="order-city" class="input-area">
@@ -178,7 +177,14 @@
             </div>
 
             <div class="form-row" id="submit">
-                <button class="submit-btn">下單購買</button>
+                @if (currentCart.Count == 0)
+                {
+                    <button class="submit-btn" id="emptycart">下單購買</button>
+                }
+                else
+                {
+                    <button class="submit-btn">下單購買</button>
+                }
             </div>
         </form>
         @*表單尾*@
@@ -195,6 +201,12 @@
             .done(function (msg) {
                 $('div.ordered-items').html(msg);
             });
-        }
+    }
+
+    var emptycartBtn = document.getElementById("emptycart");
+    emptycartBtn.addEventListener('click'function (e) {
+        e.preventDefault();
+        alert("購物車為空!");
+    });
 </script>
 <script src="https://kit.fontawesome.com/05c128ff7b.js" crossorigin="anonymous"></script>
