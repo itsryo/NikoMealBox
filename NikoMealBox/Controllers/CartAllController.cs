@@ -51,14 +51,13 @@ namespace NikoMealBox.Controllers
         public async Task<ActionResult> Index()
         {
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            MemberCenterViewModel result = new MemberCenterViewModel
+            OrderViewModels result = new OrderViewModels
             {
-                Name = user.Name,
-                Address = user.Address,
-                Birthday = user.Birthday,
-                Mobile = user.Mobile,
-                Gender = user.Gender,
-                Email = user.Email
+                CreateUser = user.Name,
+                PickUpAddress = user.Address,
+                ContactPhone = user.Mobile,
+                Sex = user.Gender,
+                ContactMail = user.Email
                 //Height = user.Height,
                 //Weight = user.Weight
             };

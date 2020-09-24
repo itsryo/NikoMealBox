@@ -1,4 +1,4 @@
-﻿@model NikoMealBox.Models.MemberCenterViewModel
+﻿@model NikoMealBox.ViewModels.OrderViewModels
 @section topCSS{
 
     <link href="~/Content/CartPage/Form.css" rel="stylesheet" />
@@ -77,13 +77,13 @@
             <div class="form-row">
                 <div id="order-name" class="input-area">
                     <label for="CreateUser" class="required">姓名</label>
-                    <input type="text" name="CreateUser" class="form-control" value="@Model.Name" />
+                    <input type="text" name="CreateUser" class="form-control" value="@Model.CreateUser" />
                 </div>
 
                 <div id="order-sex" class="input-area">
                     <label for="Sex" class="required">性別</label>
                     <select class="form-control" name="Sex">
-                        @if (Model.Gender == "man")
+                        @if (Model.Sex == "man")
                         {
                             <option value="男" selected>男</option>
                             <option value="女">女</option>
@@ -98,12 +98,12 @@
 
                 <div id="order-phone" class="input-area">
                     <label for="ContactPhone" class="required">電話</label>
-                    <input type="text" name="ContactPhone" class="form-control" placeholder="範例：0912345678" value="@Model.Mobile" />
+                    <input type="text" name="ContactPhone" class="form-control" placeholder="範例：0912345678" value="@Model.ContactPhone" />
                 </div>
 
                 <div id="order-mail" class="input-area">
                     <label for="ContactMail">Email</label>
-                    <input type="text" name="ContactMail" class="form-control" value="@Model.Email" />
+                    <input type="text" name="ContactMail" class="form-control" value="@Model.ContactMail" />
                 </div>
             </div>
 
