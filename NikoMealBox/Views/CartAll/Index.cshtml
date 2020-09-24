@@ -110,15 +110,15 @@
 
             <div class="form-row" id="address">
                 <div id="order-city" class="input-area">
-                    <label for="city" class="required">地址</label>
-                    <select class="form-control" name="city">
+                    <label for="PickUpCity" class="required">地址</label>
+                    <select class="form-control" name="PickUpCity">
                         <option value="台中市">台中市</option>
                     </select>
                 </div>
 
-                <div id="order-district" class="input-area">
-                    <label for="district" class="required">市區</label>
-                    <select class="form-control" name="district">
+                <div id="order-region" class="input-area">
+                    <label for="PickUpRegion" class="required">市區</label>
+                    <select class="form-control" name="PickUpRegion">
                         <option value="東區">東區</option>
                         <option value="西區">西區</option>
                         <option value="西屯區">西屯區</option>
@@ -132,23 +132,23 @@
                     </select>
                 </div>
 
-                <div id="order-detail-address">
-                    <label for="detailaddress" class="required">詳細地址</label>
-                    <input type="text" name="detailaddress" class="form-control" />
+                <div id="order-address">
+                    <label for="PickUpAddress" class="required">詳細地址</label>
+                    <input type="text" name="PickUpAddress" class="form-control" />
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="input-area" id="remark">
-                    <label for="remark">備註說明</label>
-                    <input type="text" name="remark" value="" class="form-control" />
+                    <label for="Remark">備註說明</label>
+                    <input type="text" name="Remark" value="" class="form-control" />
                 </div>
             </div>
 
             <div class="form-row" id="datetime">
                 <div class="input-area" id="delivery-date">
-                    <label for="deliverydate">送達日期</label>
-                    <input type="datetime-local" name="deliverydate" class="form-control" />
+                    <label for="GetProductDate">送達日期</label>
+                    <input type="datetime-local" name="GetProductDate" class="form-control" />
                 </div>
             </div>
 
@@ -172,8 +172,8 @@
 
             <div class="form-row" id="payment">
                 <div class="payment-checkbox-group">
-                    <input type="radio" name="payment" value="信用卡付款" /> 信用卡付款
-                    <input type="radio" name="payment" value="Line Pay" /> LINE Pay
+                    <input type="radio" name="Payment" value="信用卡付款" /> 信用卡付款
+                    <input type="radio" name="Payment" value="Line Pay" /> LINE Pay
                 </div>
             </div>
 

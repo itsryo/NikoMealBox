@@ -12,6 +12,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Protocols;
 
 namespace NikoMealBox.Controllers
 {
@@ -64,8 +65,11 @@ namespace NikoMealBox.Controllers
         [HttpPost]
         public ActionResult CheckOrderList(OrderViewModels OrderForm)
         {
-            ViewData["OrderForm"] = OrderForm;
-            return View();
+            if (ModelState.IsValid)
+            {
+                // 例外處理
+            }
+            return View(OrderForm);
         }
 
         public ActionResult CreateOrder(string city,string region,string address)

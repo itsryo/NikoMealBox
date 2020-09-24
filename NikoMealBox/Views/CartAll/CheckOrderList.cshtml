@@ -1,11 +1,12 @@
-﻿@section topCSS{
+﻿@model NikoMealBox.ViewModels.OrderViewModels
+
+@section topCSS{
     <link href="~/Content/CartPage/OrderList.css" rel="stylesheet" />
 }
 
 @{
     var currentCart = NikoMealBox.DataAccess.Repository.CartRepository.GetCurrentCart();
 }
-
 <div class="container">
     <div class="title">
         <h2>訂單已成立</h2>
@@ -21,14 +22,17 @@
                 @foreach (var product in currentCart)
                 {
                     <div class="each-content">
-                        @product.Name x @product.Count
-                        @{
-                            var total = product.UnitPrice * product.Count;
-                        }
-                        @total 元
+                        <img src="https://imgur.com/xr3tkAI.jpg">
+                        <div>@product.Name x @product.Count</div>
+                        <div>
+                            @{
+                                var total = product.UnitPrice * product.Count;
+                            }
+                            @total 元
+                        </div>
                     </div>
                 }
-                <div class="each-content">總計 @currentCart.TotalAmount</div>
+                <div class="each-content" id="total">總計 @currentCart.TotalAmount</div>
             </div>
         </div>
     </div>
@@ -40,12 +44,13 @@
         <div class="ensure-content">
             <p class="label">人員資料:</p>
             <div class="each-content-group">
-                <p class="each-content">@ViewData["username"]</p>
-                <p class="each-content">@ViewData["sex"]</p>
-                <p class="each-content">@ViewData["phone"]</p>
-                <p class="each-content">@ViewData["mail"]</p>
-                <p class="each-content">@ViewData["city"]@ViewData["district"]@ViewData["detailaddress"]</p>
-                <p class="each-content">@ViewData["deliverydate"] &nbsp; @ViewData["deliverytime"]</p>
+                <p class="each-content">@Model.CreateUser</p>
+                <p class="each-content">@Model.Sex</p>
+                <p class="each-content">@Model.ContactPhone</p>
+                <p class="each-content">@Model.ContactMail</p>
+                <p class="each-content">@Model.PickUpCity@Model.PickUpRegion@Model.PickUpAddress</p>
+                <p class="each-content">@Model.GetProductDate</p>
+                <p class="each-content">@Model.Remark</p>
             </div>
         </div>
     </div>
@@ -57,7 +62,7 @@
         <div class="ensure-content">
             <p class="label">付款方式:</p>
             <div class="each-content-group">
-                <p class="each-content">@ViewData["payment"]</p>
+                <p class="each-content">@Model.Payment</p>
             </div>
         </div>
     </div>

@@ -168,15 +168,15 @@
 }
 
 /* address */
-#order-detail-address{
+#order-address{
     flex-grow: 5;
 }
 
-#order-city,#order-district{
+#order-city,#order-region{
     flex-grow: 1;
 }
 
-#order-district{
+#order-region{
     padding: 0 30px;
 }
 
