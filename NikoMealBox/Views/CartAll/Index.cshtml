@@ -1,4 +1,5 @@
-﻿@section topCSS{
+﻿@model NikoMealBox.ViewModels.OrderViewModels
+@section topCSS{
 
     <link href="~/Content/CartPage/Form.css" rel="stylesheet" />
 }
@@ -75,40 +76,48 @@
         <form action="~/CartAll/CheckOrderList" method="post">
             <div class="form-row">
                 <div id="order-name" class="input-area">
-                    <label for="username" class="required">你的姓名</label>
-                    <input type="text" name="username" class="form-control" />
+                    <label for="CreateUser" class="required">姓名</label>
+                    <input type="text" name="CreateUser" class="form-control" value="@Model.CreateUser" />
                 </div>
 
                 <div id="order-sex" class="input-area">
-                    <label for="sex" class="required">性別</label>
-                    <select class="form-control" name="sex">
-                        <option value="男">男</option>
-                        <option value="女">女</option>
+                    <label for="Sex" class="required">性別</label>
+                    <select class="form-control" name="Sex">
+                        @if (Model.Sex == "man")
+                        {
+                            <option value="男" selected>男</option>
+                            <option value="女">女</option>
+                        }
+                        else
+                        {
+                            <option value="男">男</option>
+                            <option value="女" selected>女</option>
+                        }
                     </select>
                 </div>
 
                 <div id="order-phone" class="input-area">
-                    <label for="phone" class="required">電話</label>
-                    <input type="tel" name="phone" class="form-control" placeholder="範例：0912345678" />
+                    <label for="ContactPhone" class="required">電話</label>
+                    <input type="text" name="ContactPhone" class="form-control" placeholder="範例：0912345678" value="@Model.ContactPhone" />
                 </div>
 
                 <div id="order-mail" class="input-area">
-                    <label for="mail">Email</label>
-                    <input type="email" name="mail" class="form-control" placeholder="如需更換別的mail，再填即可" />
+                    <label for="ContactMail">Email</label>
+                    <input type="text" name="ContactMail" class="form-control" value="@Model.ContactMail" />
                 </div>
             </div>
 
             <div class="form-row" id="address">
                 <div id="order-city" class="input-area">
-                    <label for="city" class="required">地址</label>
-                    <select class="form-control" name="city">
+                    <label for="PickUpCity" class="required">地址</label>
+                    <select class="form-control" name="PickUpCity">
                         <option value="台中市">台中市</option>
                     </select>
                 </div>
 
-                <div id="order-district" class="input-area">
-                    <label for="district" class="required">市區</label>
-                    <select class="form-control" name="district">
+                <div id="order-region" class="input-area">
+                    <label for="PickUpRegion" class="required">市區</label>
+                    <select class="form-control" name="PickUpRegion">
                         <option value="東區">東區</option>
                         <option value="西區">西區</option>
                         <option value="西屯區">西屯區</option>
@@ -122,23 +131,23 @@
                     </select>
                 </div>
 
-                <div id="order-detail-address">
-                    <label for="detailaddress" class="required">詳細地址</label>
-                    <input type="text" name="detailaddress" class="form-control" />
+                <div id="order-address">
+                    <label for="PickUpAddress" class="required">詳細地址</label>
+                    <input type="text" name="PickUpAddress" class="form-control" />
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="input-area" id="remark">
-                    <label for="remark">備註說明</label>
-                    <input type="text" name="remark" value="" class="form-control" />
+                    <label for="Remark">備註說明</label>
+                    <input type="text" name="Remark" value="" class="form-control" />
                 </div>
             </div>
 
             <div class="form-row" id="datetime">
                 <div class="input-area" id="delivery-date">
-                    <label for="deliverydate">送達日期</label>
-                    <input type="datetime-local" name="deliverydate" class="form-control" />
+                    <label for="GetProductDate">送達日期</label>
+                    <input type="datetime-local" name="GetProductDate" class="form-control" />
                 </div>
             </div>
 
@@ -162,13 +171,20 @@
 
             <div class="form-row" id="payment">
                 <div class="payment-checkbox-group">
-                    <input type="radio" name="payment" value="信用卡付款" /> 信用卡付款
-                    <input type="radio" name="payment" value="Line Pay" /> LINE Pay
+                    <input type="radio" name="Payment" value="信用卡付款" /> 信用卡付款
+                    <input type="radio" name="Payment" value="Line Pay" /> LINE Pay
                 </div>
             </div>
 
             <div class="form-row" id="submit">
-                <button class="submit-btn">下單購買</button>
+                @if (currentCart.Count == 0)
+                {
+                    <button class="submit-btn" id="emptycart">下單購買</button>
+                }
+                else
+                {
+                    <button class="submit-btn">下單購買</button>
+                }
             </div>
         </form>
         @*表單尾*@
@@ -185,6 +201,12 @@
             .done(function (msg) {
                 $('div.ordered-items').html(msg);
             });
-        }
+    }
+
+    var emptycartBtn = document.getElementById("emptycart");
+    emptycartBtn.addEventListener('click'function (e) {
+        e.preventDefault();
+        alert("購物車為空!");
+    });
 </script>
 <script src="https://kit.fontawesome.com/05c128ff7b.js" crossorigin="anonymous"></script>
