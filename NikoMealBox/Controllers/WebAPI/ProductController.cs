@@ -42,6 +42,11 @@ namespace NikoMealBox.WebAPI
             //return Json(CarSalesNumber,JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// 查詢單一筆資料
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public Products SelectOneProduct(int id)
         {
@@ -75,17 +80,35 @@ namespace NikoMealBox.WebAPI
             {
                 return "刪除失敗";
             }
-            //Products products = db.Products.Find(id);
-            //db.Products.Remove(products);
-            //db.SaveChanges();
-            //return RedirectToAction("Index");
 
         }
 
-        public string GetTime()
+
+        /// <summary>
+        /// 更新/編輯資料
+        /// </summary>
+        /// <param name="product">單一商品資料</param>
+        /// <returns></returns>
+        public string Edit(Products product)//int id,
         {
-            return DateTime.Now.ToString("R");
+            //product.Id = id;
+            bool result = _repository.EditProduct(product);
+            if (result == true) //編輯成功 
+            {
+                return "編輯成功";
+                //return RedirectToAction("Product", "SelectProducts");
+                //Request.CreateResponse(HttpStatusCode.Created, product);
+            }
+            else
+            {
+                return "編輯失敗";
+
+
+            }
+
         }
+
+        
 
         /// <summary>
         /// 後台新增商品
@@ -126,6 +149,11 @@ namespace NikoMealBox.WebAPI
             //    }
             //}
             
+        }
+
+        public string GetTime()
+        {
+            return DateTime.Now.ToString("R");
         }
     }
 }

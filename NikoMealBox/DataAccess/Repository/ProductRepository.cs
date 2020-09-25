@@ -113,6 +113,25 @@ namespace NikoMealBox.DataAccess.Repository
         }
 
         /// <summary>
+        /// 編輯資料
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        public bool EditProduct(Products product)
+        {
+            try
+            {
+                Update(product);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+
+        /// <summary>
         /// 後台新增商品
         /// </summary>
         /// <returns></returns>

@@ -13,7 +13,7 @@ using System.Net;
 
 namespace NikoMealBox.Controllers
 {
-    [Authorize(Users = "Admin@gmail.com")]
+    //[Authorize(Users = "Admin@gmail.com")]
     public class AdminController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -55,6 +55,7 @@ namespace NikoMealBox.Controllers
                 _userManager = value;
             }
         }
+
         // GET: Addmin
         public ActionResult Index()
         {
@@ -62,11 +63,6 @@ namespace NikoMealBox.Controllers
         }
         public ActionResult Admin_SelectProducts()
         {
-            //var products = _repository.Select();
-            //return Json(products, JsonRequestBehavior.AllowGet);
-            //private ProductRepository _repository = new ProductRepository();
-            //var products = _repository.SelectProducts();
-            //ViewData["Products"] = products;
             return View();
 
             //return Json(products, JsonRequestBehavior.AllowGet);
