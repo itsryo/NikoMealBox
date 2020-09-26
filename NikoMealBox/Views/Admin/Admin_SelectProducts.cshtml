@@ -105,7 +105,8 @@
     <!-- ADDModal -->
     <div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="AddModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <form id="AddProduct" method="post" action="/api/Product/AddProduct">
+            <form id="AddForm" method="post" onsubmit="return false" enctype="multipart/form-data">
+               @* action="/api/Product/AddProduct"*@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="AddModalLabel">新增產品資料</h5>
@@ -177,7 +178,7 @@
                             </div>
                             <div class="col-12 my-1">
                                 <label for="ImagePath">產品圖片路徑</label>
-                                <input type="file" class="form-control imagePath" name="ImagePath" id="ImagePath" placeholder="">
+                                <input type="text" class="form-control imagePath" name="ImagePath" id="ImagePath" placeholder="">
                             </div>
 
 
@@ -203,21 +204,6 @@
                                     <option value="false">否</option>
                                 </select>
                             </div>
-
-
-
-                            @*<div class="col-sm-3 my-1">
-                                    <label for="IsOvolacto">蛋奶素</label>
-                                    <input type="text" name="IsOvolacto" id="IsOvolacto" class="form-control isOvolacto" placeholder="">
-                                </div>
-                                <div class="col-sm-5 my-1">
-                                    <label for="IsEnable"> 產品/種類是否還有提供</label>
-                                    <input type="text" name="IsEnable" id="IsEnable" class="form-control isEnable" placeholder="">
-                                </div>
-                                <div class="col-sm-4 my-1">
-                                    <label for="IsDelete"> 產品/種類是否刪除</label>
-                                    <input type="text" name="IsDelete" id="IsDelete" class="form-control isDelete" placeholder="">
-                                </div>*@
                             <div class="col-sm-4 my-1">
                                 <label for="CreateUser"> 資料建立者</label>
                                 <input type="text" name="CreateUser" id="CreateUser" class="form-control createUser" placeholder="">
@@ -227,7 +213,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                        <button type="submit" class="btn btn-primary" id="Create">建立</button>
+                        <button type="submit" class="btn btn-primary" data-dismiss="modal" id="AddBtn">建立</button>
                     </div>
                 </div>
             </form>
@@ -369,12 +355,10 @@
             </form>
         </div>
     </div>
+
+
     <script>
-            //取消Ajax快取
-            //$.ajaxSetup({ cache: false });
-
-
-        //建立datatable
+        //建立Products datatable
         function selectProd() {
             $('#dataTable').DataTable({
                 "searching": true,// 是否允许搜尋
@@ -446,8 +430,6 @@
         //var jsonObject = {};
         var jsonObject;
         var vm;
-
-
         //Vue Binding
         vm = new Vue({
             el: "#EditProduct",
@@ -479,9 +461,6 @@
             },
             });
 
-
-
-
         //畫面載入後
         $(document).ready(function () {
             selectProd();//建立datatable
@@ -495,23 +474,14 @@
                 var row = $("table#dataTable tr").index($(this).closest("tr"));
                 //獲取某列（從0列開始計數）的值
                 var Id = $("table#dataTable").find("tr").eq(row).find("td").eq(0).text();//Id
-                //var name = $("table#dataTable").find("tr").eq(row).find("td").eq(1).text();//便當
+                //$("table#dataTable").find("tr").eq(row).find("td").eq(6).val(data.IsDelete);
                 var offer = $("table#dataTable").find("tr").eq(row).find("td").eq(5);//是否提供
                 var Delete = $("table#dataTable").find("tr").eq(row).find("td").eq(6).text();//是否刪除
-
-                alert("Id: " + Id );
-                alert(row);
+                alert("產品Id: " + Id );
 
                 //軟刪除
                 $.get('/api/Product/DeleteConfirmed' + '/' + Id)
                     .done(function (data) {
-                        //alert(row)
-                        ////是否提供
-                        //$("table#dataTable").find("tr").eq(row).find("td").eq(5).val("111111");
-                        //$("table#dataTable").find("tr").eq(row).find("td").eq(6).val(data.IsDelete);
-                        //var aa = $("table#dataTable").find("tr").eq(row).find("td").eq(6).text();
-                        //alert(aa)
-
                         alert("刪除成功")
                         console.log(data)
                         selectProd();
@@ -541,10 +511,7 @@
                     },
                     datatype: 'json',
                     success: function (data) {//成功時dosomething (程式只要可以執行成功)
-                        alert("success");
-                        
                         jsonObject = data;
-                       
                         globalThis.vm.product = jsonObject
                         //Binding();
                     },
@@ -558,18 +525,11 @@
 
         ///確定編輯
         let EdBtn = document.getElementById("Editbtn");
-
         EdBtn.addEventListener('click', function (e) {
             alert("進來了");
-            console.log(e);
-
-            //var Edrow = $("table#dataTable tr").index($(this).closest("tr"));
-            //alert(Edrow)
-
-            //var prod = $('#EditForm').serialize();
+            //var prod = $('#EditForm').serialize();//表示將這個表單序列化
 
             var table = document.getElementById('dataTable');
-
             let prodjson = JSON.stringify(vm.product);
 
             //確定編輯
@@ -584,18 +544,39 @@
                     console.log(data);
                     selectProd();
                     //location.href = "/api/Product/SelectProducts";
-
                 },
                 fail: function (data) {//失敗時dosomething(程式爆掉)
                     alert("更新失敗");
                 }
             });
-        })
-        
-        //function EditProd() {
-           
-        //}
+        });
 
+
+        //確定新增
+        let AddBtn = document.getElementById("AddBtn");
+        AddBtn.addEventListener('click', function () {
+            alert("進來新增");
+            var Addprod = $('#AddForm').serialize();//表示將這個表單序列化
+            //var form = $('#AddForm');
+            //var formData = new FormData(form);
+
+            //確定新增
+            $.ajax({
+                url: '/api/Product/AddProduct',
+                type: 'post', //請求方式，post/get。(預設為get)
+                //contentType: 'application/x-www-form-urlencoded; charset=utf-8',//傳送資料格式
+                data: Addprod,//prod,//id: EdId,
+                datatype: 'json',
+                success: function (data) {//成功時dosomething (程式只要可以執行成功)
+                    alert("新增成功")
+                    selectProd();
+                    //location.href = "/api/Product/SelectProducts";
+                },
+                fail: function (data) {//失敗時dosomething(程式爆掉)
+                    alert("新增失敗");
+                }
+            });
+        });
 
 
 
@@ -633,68 +614,6 @@
         //    //let Name = document.querySelector("#AddProduct .categoryId").value;
         //});
 
-
-
-
-
-
-
-
-
-
-
-
-
-            //$().ready(function () {
-            //    //$.ajax()
-            //    $("#selectProd").click(function () {
-            //        $.ajax({
-            //            url: apiUrl,
-            //            type: "Get",
-            //            dataType: "json",
-            //            success: function (response) {
-            //                //將JSON物件轉成文字
-            //                jsonText = JSON.stringify(response);
-            //                result.innerHTML = jsonText;
-            //                result.style.display = "block";
-            //                result.className = getAlertStyle();
-            //            }
-            //        });
-            //    });
-            //});
-                 @*//$.post()
-                $("#post").click(function () {
-                    $.post(apiUrl, function (response) {
-                        //顯示JSON資料
-                        showAjaxResult(response)
-                    });
-                });
-                //$.get()
-                $("#get").click(function () {
-                    $.get(apiUrl, function (response) {
-                        showAjaxResult(response)
-                    });
-                });
-                //$.getJSON()
-                $("#getJSON").click(function () {
-                    $.getJSON(apiUrl, function (response) {
-                        showAjaxResult(response)
-                    });
-                });
-                //顯示API URL
-                $("#urlText").text("API URL : " + apiUrl);
-                //顯示JSON資料
-                function showAjaxResult(response) {
-                    result.innerHTML = JSON.stringify(response);
-                    result.className = getAlertStyle();
-                    result.style.display = "block";
-                }
-                //Reset
-                $("#reset").click(function () {
-                    result.style.display = "none";
-                    result.innerHTML = "";
-                });
-            });*@
     </script>
 </body>
 </html>
