@@ -413,7 +413,11 @@
                     //{ "title": '反式脂肪', "data": "TransFat" },
                     //{ "title": '糖', "data": "Sugar" },
                     //{ "title": '鈉', "data": "Sodium" },
-                    //{ "title": '產品圖片路徑' },//, "data": "ImagePath" 
+                    {
+                        "title": '產品圖片路徑', "data": "ImagePath", "render": function (data, type, full, meta) {
+                            return "<img src = " + data + " width = 100 % />'"
+                        }
+                    },
                     //{ "title": '蛋奶素', "data": "IsOvolacto" },
                     { "title": '產品/種類是否還有提供', "data": "IsEnable" },
                     { "title": '邏輯刪除', "data": "IsDelete" },
