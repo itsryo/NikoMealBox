@@ -217,6 +217,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\WebAPI\AdminProductTestController.cs" />
     <Compile Include="Controllers\WebAPI\ChartController.cs" />
     <Compile Include="Controllers\WebAPI\ImgurController.cs" />
     <Compile Include="DataAccess\Interface\IRepository.cs" />
@@ -259,6 +260,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AdminProductTestViewModel.cs" />
     <Compile Include="ViewModels\CartItemViewModels.cs" />
     <Compile Include="ViewModels\CartViewModels.cs" />
     <Compile Include="ViewModels\ChartViewModels.cs" />
@@ -325,6 +327,9 @@
     <Content Include="Assets\Images\LoginPage\img_sign-in.png" />
     <Content Include="Assets\Images\LoginPage\img_sign-in_text.png" />
     <Content Include="Content\AboutPage\About.css" />
+    <Content Include="Content\AdminTest\loading-spin.svg" />
+    <Content Include="Content\AdminTest\mobile-style.css" />
+    <Content Include="Content\AdminTest\style.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -340,6 +345,8 @@
     <Content Include="Content\CartPage\Form.css" />
     <Content Include="Content\styles.css" />
     <Content Include="Scripts\BackendProduct\datatables-demo.js" />
+    <Content Include="Scripts\BackendProduct\imgur.js" />
+    <Content Include="Scripts\BackendProduct\upload.js" />
     <Content Include="Scripts\ProductsPage\productdetail.js" />
     <Content Include="Content\ProductsPage\products.css" />
     <Content Include="Content\RegisterPage\register.css" />
@@ -417,6 +424,7 @@
     <Content Include="Views\Account\LogOff.cshtml" />
     <Content Include="Views\CartAll\CheckOrderList.cshtml" />
     <Content Include="Views\CartAll\CreateOrder.cshtml" />
+    <Content Include="Views\AdminProductTest\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

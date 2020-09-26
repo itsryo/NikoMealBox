@@ -1,0 +1,341 @@
+﻿@model NikoMealBox.ViewModels.AdminProductTestViewModel
+@{
+    Layout = null;
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />\
+
+@*圖片上傳*@
+<link href="~/Content/AdminTest/mobile-style.css" rel="stylesheet" />
+<link href="~/Content/AdminTest/style.css" rel="stylesheet" />
+<script src="~/Scripts/BackendProduct/imgur.js"></script>
+<script src="~/Scripts/BackendProduct/upload.js"></script>
+
+@*database*@
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+<!--引用jQuery-->
+@*<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>*@
+<!--引用dataTables.js-->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+
+<div class="container" style="margin-top:3%">
+    <a href="#" class="btn btn-info" onclick="AddProductTest(0)">Add new prosuctstest</a><br /><br />
+
+    <table class="table table-striped" id="testtest">
+        <thead>
+            <tr>
+                <th>producttestid</th>
+                <th>Name</th>
+                <th>UnitPrice</th>
+                <th>UnitsInStock</th>
+                <th>CategoryId</th>
+                <th>Description</th>
+                <th>Materials</th>
+                <th>ImagePath</th>
+                <th>Action(Edit)</th>
+                <th>Action(Delete)</th>
+
+            </tr>
+        </thead>
+        <tbody id="SetProductsList">
+            <tr id="LoadingStatus" style="color:red"></tr>
+        </tbody>
+    </table>
+
+    @*Create A Popup Modal With Register Form For Add Or Edit Product*@
+
+    <div class="modal fade" id="MyModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h4 id="ModalTitle"></h4>
+                </div>
+                <div class="modal-body">
+                    <form id="form">
+                        <fieldset id="SubmitForm">
+                            @Html.HiddenFor(m => m.Id, new { @id = "id" })
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.Name, new { @id = "Name", @class = "form-control", @placeholder = "Name*" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.UnitPrice, new { @id = "UnitPrice", @class = "form-control", @placeholder = "UnitPrice*" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.UnitsInStock, new { @id = "UnitsInStock", @class = "form-control", @placeholder = "UnitsInStock*" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.CategoryId, new { @id = "CategoryId", @class = "form-control", @placeholder = "CategoryId*" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.Description, new { @id = "Description", @class = "form-control", @placeholder = "Description*" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.Materials, new { @id = "Materials", @class = "form-control", @placeholder = "Materials*" })
+                            </div>
+                            <div class="form-group">
+                                @*<input type="file" />*@
+                                @*@Html.TextBoxFor(m => m.ImagePath, new { @id = "ImagePath", @class = "form-control", @placeholder = "ImagePath*" })*@
+                                @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10 testimg">
+                                    <div class="dropzone">
+                                        <div class="info"></div>
+                                    </div>
+                                    <div class="test">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.CreateUser, new { @id = "CreateUser", @class = "form-control", @placeholder = "CreateUser*" })
+                            </div>
+                            <div class="form-group">
+                                <a href="#" class="btn btn-block btn-danger" id="SaveProduct">Save</a>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @*Create A Popup Modal For Delete*@
+    <div class="modal fade" id="DeleteConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h4>Delete Product</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>Are you sure?</h4>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a>
+                    <a href="#" class="btn btn-danger" onclick="ConfirmDelete()">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<script>
+    $("#LoadingStatus").html("Loading.......");
+    $.get("/AdminProductTest/GetProductsList", null, DataBind);
+    function DataBind(ProductsList) {
+        var SetData = $("#SetProductsList");
+        for (var i = 0; i < ProductsList.length; i++) {
+            var Data = "<tr class='row_" + ProductsList[i].Id + "'>" +
+                "<td>" + ProductsList[i].Id + "</td>" +
+                "<td>" + ProductsList[i].Name + "</td>" +
+                "<td>" + ProductsList[i].UnitPrice + "</td>" +
+                "<td>" + ProductsList[i].UnitsInStock + "</td>" +
+                "<td>" + ProductsList[i].CategoryId + "</td>" +
+                "<td>" + ProductsList[i].Description + "</td>" +
+                "<td>" + ProductsList[i].Materials + "</td>" +
+                "<td>" + "<img src=" + ProductsList[i].ImagePath + " width=70% />" + "</td>" +
+                "<td>" + "<a href='#' class='btn btn-warning' onclick='EditProduct(" + ProductsList[i].Id + ")'><span class='glyphicon glyphicon-edit'></span></a>" + "</td>" +
+                "<td>" + "<a href='#' class='btn btn-danger' onclick='DeleteProduct(" + ProductsList[i].Id + ")'><span class='glyphicon glyphicon-trash'></span></a>" + "</td>"
+            "</tr>";
+            SetData.append(Data);
+            $("#LoadingStatus").html(" ");
+
+        }
+
+        //selectProd();
+
+
+        //$('#testtest').DataTable({
+        //    //searching: false,
+        //    "ajax": "/AdminProductTest/GetProductsList",
+        //    columnDefs: [{
+        //        targets: [3],
+        //        orderable: false,
+        //    }]
+        //});
+    }
+
+    function AddProductTest(ProductId) {
+        $("#form")[0].reset();
+        $("#ModalTitle").html("Add New Product");
+        $("#MyModal").modal();
+    }
+
+    function EditProduct(ProductId) {
+        var url = "/AdminProductTest/GetProductById?ProductId=" + ProductId;
+        $("#ModalTitle").html("Update Product");
+        $("#MyModal").modal();
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function (data) {
+                var obj = JSON.parse(data);
+                $("#id").val(obj.Id);
+                $("#Name").val(obj.ProductName);
+                $("#UnitPrice").val(obj.UnitPrice);
+                $("#UnitsInStock").val(obj.UnitsInStock);
+                $("#CategoryId").val(obj.CategoryId);
+                $("#Description").val(obj.Description);
+                $("#Materials").val(obj.Materials);
+                //$(".testimg").html('<img src=\"' + obj.ImagePath + '\" style="margin:10px" height="200" width="200" id="imagePreview" />'
+                //    + '<input type="file" name="ImageUpload" id="ImageUpload" value=\"' + obj.ImagePath + '\" accept="image/jpeg,image/png")" />');
+                //document.querySelector('#ImageUpload').setAttribute("onchange", "ShowImagePreview(this, document.getElementById('imagePreview'))");
+                $(".status").html('<img class="img" alt="Imgur-Upload" src=\"' + obj.ImagePath + '\"/>');
+                $("#CreateUser").val(obj.CreateUser);
+                debugger;
+            }
+        })
+    }
+
+    $("#SaveProduct").click(function () {
+        var src = document.querySelector('.testimg img').src
+        //let formData = new FormData(form);
+        //formData.append('url', src)
+
+        var formData = $('#form').serializeArray();
+        formData.push({ name: "ImagePath", value: src });
+
+
+        //var data = $("#form").serialize();
+        var data = formData;
+        $.ajax({
+            type: "Post",
+            url: "/AdminProductTest/SaveDataInDatabase",
+            data: data,
+            success: function (result) {
+                alert('success!!');
+                window.location.href = "/AdminProductTest/Index";
+                $("#MyModal").modal("hide");
+            }
+        })
+
+    })
+
+
+    function DeleteProduct(ProductId) {
+        $("#id").val(ProductId);
+        $("#DeleteConfirmation").modal("show");
+    }
+
+    function ConfirmDelete() {
+        var id = $("#id").val();
+        $.ajax({
+            type: "Post",
+            url: "/AdminProductTest/GetProductById?ProductId=" + id,
+            success: function (result) {
+                $("#DeleteConfirmation").modal("hide");
+                $(".row_" + id).remove();
+            }
+        })
+    }
+
+
+
+
+
+
+
+
+    function ShowImagePreview(imageUploader, previewImage) {
+        if (imageUploader.files && imageUploader.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(previewImage).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(imageUploader.files[0]);
+        }
+    }
+
+
+
+
+
+
+
+    var feedback = function (res) {
+        if (res.success === true) {
+            var get_link = res.data.link.replace(/^http:\/\//i, 'https://');
+            document.querySelector('.status').classList.add('bg-success');
+            //document.querySelector('.status').innerHTML =
+            //    'Image : ' + '<br><input class="image-url" value=\"' + get_link + '\"/>' + '<img class="img" alt="Imgur-Upload" src=\"' + get_link + '\"/>';
+            document.querySelector('.status').innerHTML =
+                '<img class="img" alt="Imgur-Upload" src=\"' + get_link + '\"/>';
+
+
+            let imgsuccess = document.createElement('img')
+            document.querySelector('.testimg').append(imgsuccess)
+            //document.querySelector('.testimg').innerHTML =
+            //    '<img src=\"' + get_link + '\" style="margin:10px" height="200" width="200" id="imagePreview" />'
+            //    + '<input type="file" name="ImageUpload" id="ImageUpload" class="input" accept="image/jpeg,image/png" />';
+            //document.querySelector('#ImageUpload').setAttribute("onchange", "ShowImagePreview(this, document.getElementById('imagePreview'))");
+
+        }
+    };
+
+    new Imgur({
+        clientid: '8b1721cd18c1965', //You can change this ClientID
+        callback: feedback
+    });
+
+
+
+
+
+
+    //$(document).ready(function () {
+    //    $('#testtest').DataTable({
+    //        searching: false,
+    //        "ajax": "/AdminProductTest/GetProductsList",
+    //        "scrollX": true,
+    //        "columns": [{ "data": "Id" }, { "data": "ProductName" }, {
+    //            "data": "UnitPrice"
+    //        }, { "data": "UnitsInStock" }, { "data": "CategoryId" }, { "data": "Description" }, { "data": "Materials" }, { "data": "ImagePath" }]
+    //    });
+    //});
+
+    //$(document).ready(function () {
+    //    selectProd();
+    //})
+
+
+
+    //function selectProd() {
+    //    $('#testtest').DataTable({
+    //        "dom": `<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>
+    //        <'row'<'col-sm-12'tr>>
+    //        <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>`,
+    //        "searching": true,
+    //        "paging": true,
+    //        "pageLength": 5,
+    //        "ajax": {
+    //            url: "/AdminProductTest/GetProductsList",
+    //            type: 'Get',
+    //            dataType: 'json',
+    //            data: {},
+    //            dataSrc: function (Prod) {
+    //                return Prod;
+    //            },
+    //            error: function () {
+    //                alert("ajax無法撈回資料");
+    //            },
+
+    //        },
+    //        "columns": [
+    //            { "title": '產品Id', "data": "Id" },
+    //            { "title": '產品名稱', "data": "Name" },
+    //            { "title": '產品種類', "data": "CategoryId" },
+    //            { "title": '產品單價', "data": "UnitPrice" },
+    //            { "title": '產品庫存', "data": "UnitsInStock" },
+    //            { "title": '產品簡述', "data": "Description" },
+    //            { "title": '產品材料', "data": "Materials" },
+    //            { "title": '產品圖片路徑', "data": "ImagePath" },
+    //        ],
+
+    //    });
+    //}
+
+</script>
