@@ -251,7 +251,7 @@
                             <div class="col-sm-2 my-1 form-group">
                                 <label for="EdprodId">產品Id</label>
                                 @*<p name="Id" id="EdprodId" class=" prodId" v-model="product.Id">{{product.Id}}</p>*@
-                                <input type="text" name="Id" id="EdprodId" class="form-control prodId" v-model="product.Id"><!--加form-control 樣式 可以拿掉看原本樣子-->
+                                <input type="text" name="Id" id="EdprodId" class="form-control prodId" readonly v-model="product.Id"><!--加form-control 樣式 可以拿掉看原本樣子-->
                             </div>
                             <div class="col-sm-8 my-1 form-group">
                                 <label for="EdprodName">產品名稱</label>
@@ -319,7 +319,7 @@
                             </div>*@
                             <div class="col-12 my-1">
                                 <label for="EdImagePath">產品圖片路徑</label>
-                                <input type="text" class="form-control imagePath" name="ImagePath" id="EdImagePath" placeholder="">
+                                <input type="text" class="form-control imagePath" name="ImagePath" id="EdImagePath" placeholder="" v-model="product.ImagePath">
                             </div>
                             <div class="col-sm-3 my-1 form-group">
                                 <label for="EdIsOvolacto">蛋奶素</label>
@@ -344,11 +344,11 @@
                             </div>
                             <div class="col-sm-6 my-1">
                                 <label for="EdCreateUser"> 資料建立者</label>
-                                <input type="text" name="CreateUser" id="EdCreateUser" class="form-control createUser" placeholder="" v-model="product.CreateUser">
+                                <input type="text" name="CreateUser" id="EdCreateUser" class="form-control createUser" placeholder="" readonly v-model="product.CreateUser">
                             </div>
                             <div class="col-sm-6 my-1">
                                 <label for="EdcreateTime"> 資料建立時間</label>
-                                <input type="text" name="CreateTime" id="EdCreateUser" class="form-control createTime" placeholder="" v-model="product.CreateTime">
+                                <input type="text" name="CreateTime" id="EdcreateTime" class="form-control createTime" placeholder="" readonly v-model="product.CreateTime">
                             </div>
                             <div class="col-sm-6 my-1">
                                 <label for="EditUser"> 資料編輯者</label>
@@ -356,14 +356,14 @@
                             </div>
                             <div class="col-sm-6 my-1">
                                 <label for="EditTime"> 資料編輯時間</label>
-                                <input type="text" name="EditUser" id="EditTime" class="form-control EditTime" placeholder="" v-model="product.EditTime">
+                                <input type="text" name="EditUser" id="EditTime" class="form-control EditTime" placeholder="" readonly v-model="product.EditTime">
                             </div>
                         </div>
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                        <button type="submit" class="btn btn-primary" id="Editbtn" onclick="EditProd()">編輯</button>
+                        <button type="submit" class="btn btn-primary" data-dismiss="modal" id="Editbtn">編輯</button>@*onclick="EditProd(this)"*@
                     </div>
                 </div>
             </form>
@@ -453,33 +453,35 @@
             el: "#EditProduct",
             data: {
                 product: {
-                    "ProductName": "雞肉便當",
-                    "CategoryId": 1,
-                    "UnitPrice": 50.00,
-                    "UnitsInStock": 0,
-                    "Description": "超好吃",
-                    "Materials": "雞肉、滷蛋、飯、地瓜葉、南瓜泥、海帶",
-                    "Calories": 250.00,
-                    "Carbohydrate": 20.00,
-                    "Protein": 23.00,
-                    "Fat": 28.00,
-                    "SaturatedFat": 26.00,
-                    "TransFat": 25.00,
-                    "Sugar": 30.00,
-                    "Sodium": 25.00,
-                    "ImagePath": "/Assets/Images/bento/日光和風牛肉漢堡排便當.jpeg",
+                    "CategoryId": "",
+                    "UnitPrice": "",
+                    "UnitsInStock":"",
+                    "Description": "",
+                    "Materials": "",
+                    "Calories": "",
+                    "Carbohydrate": "",
+                    "Protein": "",
+                    "Fat": "",
+                    "SaturatedFat": "",
+                    "TransFat": "",
+                    "Sugar": "",
+                    "Sodium": "",
+                    "ImagePath": "",
                     "IsOvolacto": false,
                     "IsEnable": false,
-                    "Id": 5,
+                    "Id": "",
                     "IsDelete": true,
-                    "CreateUser": "萍",
-                    "CreateTime": "2020-09-04T07:31:05",
+                    "CreateUser": "",
+                    "CreateTime": "",
                     "EditUser": null,
                     "EditTime": null
                 }
             },
-
             });
+
+
+
+
         //畫面載入後
         $(document).ready(function () {
             selectProd();//建立datatable
@@ -494,48 +496,42 @@
                 //獲取某列（從0列開始計數）的值
                 var Id = $("table#dataTable").find("tr").eq(row).find("td").eq(0).text();//Id
                 //var name = $("table#dataTable").find("tr").eq(row).find("td").eq(1).text();//便當
+                var offer = $("table#dataTable").find("tr").eq(row).find("td").eq(5);//是否提供
+                var Delete = $("table#dataTable").find("tr").eq(row).find("td").eq(6).text();//是否刪除
+
                 alert("Id: " + Id );
+                alert(row);
 
                 //軟刪除
                 $.get('/api/Product/DeleteConfirmed' + '/' + Id)
                     .done(function (data) {
-                        alert(data);
+                        //alert(row)
+                        ////是否提供
+                        //$("table#dataTable").find("tr").eq(row).find("td").eq(5).val("111111");
+                        //$("table#dataTable").find("tr").eq(row).find("td").eq(6).val(data.IsDelete);
+                        //var aa = $("table#dataTable").find("tr").eq(row).find("td").eq(6).text();
+                        //alert(aa)
+
+                        alert("刪除成功")
+                        console.log(data)
                         selectProd();
                     })
                     .fail(function (jqXHR, textStatus, err) {
                         alert(err);
                         //$('#product').text('Error: ' + err);
                     });
-
-                //$.ajax({
-                //    url: '/api/Product/DeleteConfirmed',
-                //    type: 'Get', //請求方式，POST/GET。(預設為GET)
-                //    data: {
-                //        id: Id
-                //    },
-                //    dataType: 'json',
-                //    success: function (result) {//成功時Dosomething (程式只要可以執行成功)
-                //        alert(result);
-                //        selectProd();
-                //    },
-                //    fail: function (result) {//失敗時Dosomething(程式爆掉)
-                //        alert(result);
-                //    }
-                //});
-
             });
 
             //編輯btn
             $("#dataTable tbody").on('click', '#EditProductBtn', function () {
                 //獲取行
-                var row = $("table#dataTable tr").index($(this).closest("tr"));
+                var Edrow = $("table#dataTable tr").index($(this).closest("tr"));
                 //獲取某列（從0列開始計數）的值
-                var Id = $("table#dataTable").find("tr").eq(row).find("td").eq(0).text();//Id
-                var name = $("table#dataTable").find("tr").eq(row).find("td").eq(1).text();//便當
+                var Id = $("table#dataTable").find("tr").eq(Edrow).find("td").eq(0).text();//Id
+                var name = $("table#dataTable").find("tr").eq(Edrow).find("td").eq(1).text();//便當
                 alert("Id: " + Id + name);
-
                 
-
+                //vue Binding
                 //編輯 取得資料
                 $.ajax({
                     url: '/api/Product/SelectOneProduct',
@@ -546,7 +542,9 @@
                     datatype: 'json',
                     success: function (data) {//成功時dosomething (程式只要可以執行成功)
                         alert("success");
+                        
                         jsonObject = data;
+                        console.log(jsonObject)
                         globalThis.vm.product = jsonObject
                         //Binding();
                     },
@@ -557,33 +555,46 @@
             });
         });
 
-        
+
         ///確定編輯
-        function EditProd() {
+        let EdBtn = document.getElementById("Editbtn");
+
+        EdBtn.addEventListener('click', function (e) {
             alert("進來了");
+            console.log(e);
+
+            //var Edrow = $("table#dataTable tr").index($(this).closest("tr"));
+            //alert(Edrow)
+
             //var prod = $('#EditForm').serialize();
-            //var prodjson = JSON.stringify(prod);
+
+            var table = document.getElementById('dataTable');
+
             let prodjson = JSON.stringify(vm.product);
 
             //確定編輯
             $.ajax({
                 url: '/api/Product/Edit',
                 type: 'Post', //請求方式，post/get。(預設為get)
-                contentType: 'application/json; charset=utf-8',
-                //processData: false,
-                data:prodjson,//id: EdId,
+                contentType: 'application/json; charset=utf-8',//傳送資料格式
+                data: prodjson,//prod,//id: EdId,
                 datatype: 'json',
                 success: function (data) {//成功時dosomething (程式只要可以執行成功)
-                    alert(data);
-                    selectprod();
+                    alert("更新成功")
+                    console.log(data);
+                    selectProd();
                     //location.href = "/api/Product/SelectProducts";
 
                 },
                 fail: function (data) {//失敗時dosomething(程式爆掉)
-                    alert(data);
+                    alert("更新失敗");
                 }
             });
-        }
+        })
+        
+        //function EditProd() {
+           
+        //}
 
 
 

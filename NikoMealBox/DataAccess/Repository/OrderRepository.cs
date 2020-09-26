@@ -53,7 +53,7 @@ namespace NikoMealBox.DataAccess.Repository
                     OrdersId = eachOrder.Id,
                     Orders = eachOrder,
                     ProductsId = item.Id,
-                    Products = new ProductRepository().SelectAllProducts().Where(x => x.Id == item.Id).FirstOrDefault(),
+                    Products = new ProductRepository().SelectAllProd().Where(x => x.Id == item.Id).FirstOrDefault(),
                 };
                 OrderDetailList.Add(eachOrderDetail);
             }

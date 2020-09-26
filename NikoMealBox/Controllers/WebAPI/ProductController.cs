@@ -60,7 +60,7 @@ namespace NikoMealBox.WebAPI
         }
 
 
-
+        Products prod = new Products();
 
         /// <summary>
         /// 後台軟刪除產品 IHttpActionResult
@@ -69,7 +69,9 @@ namespace NikoMealBox.WebAPI
         [HttpGet]
         public string DeleteConfirmed(int id)
         {
-            bool result = _repository.softDeleteProduct(id);
+            
+            bool result = _repository.softDeleteProduct(id,ref prod);
+            
             if(result == true) //刪除成功 
             {
                 return "刪除成功";
@@ -89,19 +91,19 @@ namespace NikoMealBox.WebAPI
         /// </summary>
         /// <param name="product">單一商品資料</param>
         /// <returns></returns>
-        public string Edit(Products product)//int id,
+        public Products Edit(Products product)//int id,
         {
             //product.Id = id;
-            bool result = _repository.EditProduct(product);
+            bool result = _repository.EditProduct(product,ref prod);
             if (result == true) //編輯成功 
             {
-                return "編輯成功";
+                return prod;
                 //return RedirectToAction("Product", "SelectProducts");
                 //Request.CreateResponse(HttpStatusCode.Created, product);
             }
             else
             {
-                return "編輯失敗";
+                return null;
 
 
             }

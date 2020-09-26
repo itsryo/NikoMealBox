@@ -88,7 +88,7 @@ namespace NikoMealBox.DataAccess.Repository
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool softDeleteProduct(int id)
+        public bool softDeleteProduct(int id ,ref Products oneProd)
         {
             try
             {
@@ -102,6 +102,7 @@ namespace NikoMealBox.DataAccess.Repository
                 var product = Get(x => x.Id == id);
                 product.IsDelete = true;//軟刪除
                 product.IsEnable = false;
+                oneProd = product;
                 SaveChanges();
                 return true;
             }
@@ -117,11 +118,12 @@ namespace NikoMealBox.DataAccess.Repository
         /// </summary>
         /// <param name="product"></param>
         /// <returns></returns>
-        public bool EditProduct(Products product)
+        public bool EditProduct(Products product,ref Products prod)
         {
             try
             {
                 Update(product);
+                prod = Get(x => x.Id == product.Id);
                 return true;
             }
             catch (Exception ex)
