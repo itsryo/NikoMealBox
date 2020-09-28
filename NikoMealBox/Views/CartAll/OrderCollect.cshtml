@@ -1,0 +1,56 @@
+﻿@model NikoMealBox.ViewModels.OrderViewModels
+<link href="~/Content/CartPage/OrderCollect.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="card-group">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <h4 class="order-id">#1</h4>
+                    <p class="order-status shipping">運送中</p>
+                </div>
+                <div class="order-date-group">
+                    <p class="order-date">訂單時間 @DateTime.Now</p>
+                    <p class="finish-date hidden">結單時間</p>
+                </div>
+                <div class="order-other-info">
+                    <ul>
+                        <li class="name">名字 金成韋</li>
+                        <li class="address">地址 新北市</li>  
+                        <li class="payment">付款方式 Line Pay</li>
+                    </ul>
+                </div>
+                <a href="#">檢視購買商品</a>
+                <div class="order-detail-group">
+                    <hr />
+                    <div class="order-item">
+                        <img src="https://i.imgur.com/kJajggg.png" />
+                        <p class="count">x1</p>
+                        <p class="total-price">$150</p>
+                    </div>
+                    <div class="order-item">
+                        <img src="https://i.imgur.com/kJajggg.png" />
+                        <p class="count">x1</p>
+                        <p class="total-price">$150</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title order-id">#1</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Card Three</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</div>

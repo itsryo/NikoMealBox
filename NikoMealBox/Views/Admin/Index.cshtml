@@ -177,33 +177,32 @@
     function previewFile() {
         var preview = document.getElementById("test");
         var file = document.querySelector('input[type=file]').files[0];
-        const reader = new FileReader();
-        var jsondata = new Object();
+        var rawdata = { "base64": "default" };
 
         if (file) {
+            var reader = new FileReader();
             reader.readAsDataURL(file);
+            reader.onload = function (e) {
+                rawdata.base64 = this.result.split(',')[1];
+            }
         }
 
-        reader.addEventListener("load", function () {
-            preview.src = reader.result;
-            jsondata.base64 = reader.result.split(',')[1];
-        }, false);
-
-
-        $.ajax({
-            url: "../api/Imgur/UploadAsync",
-            data: JSON.stringify(jsondata),
-            type: "POST",
-            contentType: 'application/json; charset=UTF-8',
-            dataType: "json",
-            success: function (res) {
-                alert(res);
-            },
-            error: function () {
-                alert("GG");
-            }
-        });
-    };
+        setTimeout(function () {
+            $.ajax({
+                url: "../api/Imgur/UploadAsync",
+                data: JSON.stringify(rawdata),
+                type: "POST",
+                contentType: 'application/json; charset=UTF-8',
+                dataType: "json",
+                success: function (res) {
+                    console.log(res.imageUrl);
+                },
+                error: function (err) {
+                    alert(err.responseText);
+                }
+            });
+        }, 500);
+    }; 
 
     $(document).ready(function () {
         $.ajax({

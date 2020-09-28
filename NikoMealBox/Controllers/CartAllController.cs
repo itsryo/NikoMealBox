@@ -81,6 +81,12 @@ namespace NikoMealBox.Controllers
             return View();
         }
 
+        [Authorize]
+        public ActionResult OrderCollect() 
+        {
+            return View();
+        }
+
         public ActionResult RemoveFromCart(int id)
         {
             var currentCart = CartRepository.GetCurrentCart();

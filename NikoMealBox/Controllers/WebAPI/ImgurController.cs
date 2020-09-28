@@ -58,7 +58,7 @@ namespace NikoMealBox.Controllers.WebAPI
 
         // Upload: api/Imgur/UploadAsync
         [HttpPost]
-        public async System.Threading.Tasks.Task<HttpResponseMessage> UploadAsync([FromBody]string base64json)
+        public async System.Threading.Tasks.Task<HttpResponseMessage> UploadAsync([FromBody]Object base64json)
         {
             var apiclient = new ApiClient("1b1ed0a9fc10214", "36ebd8d5c71376376eebc39a6246ca429c297f50");
             var httpclient = new HttpClient();
@@ -76,7 +76,7 @@ namespace NikoMealBox.Controllers.WebAPI
             var imageEndpoint = new ImageEndpoint(apiclient, httpclient);
 
             //反序
-            JObject request = JObject.Parse(base64json);
+            JObject request = JObject.Parse(base64json.ToString());
             byte[] data = System.Convert.FromBase64String(request["base64"].ToString());
             MemoryStream ms = new MemoryStream(data);
             var imageUpload = await imageEndpoint.UploadImageAsync(ms);
@@ -87,5 +87,6 @@ namespace NikoMealBox.Controllers.WebAPI
 
             return Request.CreateResponse(HttpStatusCode.OK, response, GlobalConfiguration.Configuration.Formatters.JsonFormatter);
         }
+
     }
 }
