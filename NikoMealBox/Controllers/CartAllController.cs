@@ -84,7 +84,10 @@ namespace NikoMealBox.Controllers
         [Authorize]
         public ActionResult OrderCollect() 
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+            var userAllOrders = _repository.GetAll().AsEnumerable<Orders>().Where(x => x.UserRefId == userId);
+          
+            return View(userAllOrders);
         }
 
         public ActionResult RemoveFromCart(int id)

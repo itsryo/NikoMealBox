@@ -2,7 +2,6 @@
 * {
     margin: 0;
     padding: 0;
-    list-style: none;
 }
 
 .container {
@@ -48,6 +47,11 @@
 
 .order-other-info ul{
     line-height: 40px;
+    margin-left: 20px;
+}
+
+.order-other-info li{
+    list-style-type: disc;
 }
 
 .card-body a{
@@ -69,4 +73,12 @@
 
 .order-item p{
     margin-top: 15px;
+}
+
+.qrcode{
+    text-align: center;
+}
+
+.qrcode img{
+    width: 50%;
 }
