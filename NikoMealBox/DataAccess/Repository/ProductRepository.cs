@@ -108,6 +108,7 @@ namespace NikoMealBox.DataAccess.Repository
             }
             catch (Exception ex)
             {
+                //throw ex;
                 return false;
             }
             
@@ -128,6 +129,7 @@ namespace NikoMealBox.DataAccess.Repository
             }
             catch (Exception ex)
             {
+                //throw ex;
                 return false;
             }
 
@@ -148,6 +150,7 @@ namespace NikoMealBox.DataAccess.Repository
             }
             catch (Exception ex)
             {
+                //throw ex;
                 return false;
             }
         }

@@ -41,9 +41,12 @@ namespace NikoMealBox.Controllers.WebAPI
         {
         }
 
-        // Test imgur upload
-        public async System.Threading.Tasks.Task<string> UploadAsync()
+        // Test imgur upload   
+        //async System.Threading.Tasks.Task<string>   UploadAsync
+        [HttpPost]
+        public async System.Threading.Tasks.Task<string> UploadAsync([FromBody]string filePath)
         {
+            //byte[] aa = Convert.FromBase64String(filePath);
             var apiclient = new ApiClient("1b1ed0a9fc10214", "36ebd8d5c71376376eebc39a6246ca429c297f50");
             var httpclient = new HttpClient();
             var token = new OAuth2Token
@@ -59,7 +62,7 @@ namespace NikoMealBox.Controllers.WebAPI
             apiclient.SetOAuth2Token(token);
             var imageEndpoint = new ImageEndpoint(apiclient, httpclient);
 
-            var filePath = "C:\\Users\\wayne\\Downloads\\ImgurAPI\\Imgur\\Picture\\abc.png";
+            //var filePath = "C:\\Users\\wayne\\Downloads\\ImgurAPI\\Imgur\\Picture\\abc.png";
             var fileStream = File.OpenRead(filePath);
             var imageUpload = await imageEndpoint.UploadImageAsync(fileStream);
 
