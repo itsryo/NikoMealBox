@@ -337,6 +337,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CartPage\CartAllPartial.css" />
     <Content Include="Content\CartPage\CreateOrder.css" />
+    <Content Include="Content\CartPage\OrderCollect.css" />
     <Content Include="Content\CartPage\OrderList.css" />
     <Content Include="Content\HomePage\NicoHome.css" />
     <Content Include="Content\MemberCenterPage\ChangePassword.css" />
@@ -426,6 +427,7 @@
     <Content Include="Views\CartAll\CheckOrderList.cshtml" />
     <Content Include="Views\CartAll\CreateOrder.cshtml" />
     <Content Include="Views\AdminProductTest\Index.cshtml" />
+    <Content Include="Views\CartAll\OrderCollect.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
