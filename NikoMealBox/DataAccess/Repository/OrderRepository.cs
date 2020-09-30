@@ -43,7 +43,6 @@ namespace NikoMealBox.DataAccess.Repository
                 OrderDetails = OrderDetailList,
                 UserRefId = UserId,
                 OrderStatusRefId = 4,
-                // 訂單狀況
             };
             foreach (var item in currentCart)
             {

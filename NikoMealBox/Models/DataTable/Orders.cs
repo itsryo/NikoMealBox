@@ -65,7 +65,7 @@ namespace NikoMealBox.Models.DataTable
         public decimal ShippingFee { get; set; }
 
         public int OrderStatusRefId { get; set; }
-        public OrderStatus OrderStatus { get; set; }
+        //public OrderStatus OrderStatus { get; set; }  migration一直出問題，放棄用FK建立關係
 
         /// <summary>
         /// 關聯到多個訂單詳細產品
