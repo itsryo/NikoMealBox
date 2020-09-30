@@ -1,123 +1,218 @@
-﻿@section topCSS {
-    <link href="~/Content/AboutPage/About.css" rel="stylesheet" />
+﻿@* 團隊介紹 *@
+@{
+    ViewBag.Title = "團隊介紹";
+}
+@section topCSS{
+    <link href="~/Content/AboutPage/AboutTeam.css" rel="stylesheet" />
 }
 
-<div class="bannerbackground">
-    <div class="banner container">
-        <div class="breadandpic d-flex justify-content-end">
-            <ul>
-                <li class="d-inline"><a href="@Url.Action("Index","Home")">首頁</a></li>
-                <li class="d-inline"><a href="#">關於光光</a></li>
-            </ul>
-        </div>
-        <div class="pic d-flex justify-content-center align-items-center">
-            <img src="~/Assets/Images/AboutPage/Aboutbanner.png" alt="" width="50%">
-        </div>
+<div class="container body-content">
+    <div class="gu_breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index","Home")">首頁</a>
+            </li>
+            <li class="breadcrumb-item active">
+                團隊介紹
+            </li>
+        </ol>
     </div>
-</div>
-
-
-<div class="content container d-flex">
-    <div class="contenttxt col-5">
-        <div class="pic">
-            <img src="~/Assets/Images/AboutPage/contenttitle.png" alt="">
-        </div>
-        <div class="txt">
-            <p>
-                2017年夏天，來自好友生病的消息，讓吃得安心健康這件事，成為翔業餐飲品牌的起始。一個簡單純粹的想法，讓我們開始思考對於吃的追求。<br>
-
-                吃是每天必需且最直接的接觸，然而近年來的食安問題，讓我們反思食材的源頭。於是從食材的溯源把關，到還原食材的真實狀態，都一再考驗著我們。<br>
-
-                當我們執著在「只做自己敢吃的」想法時，即便是簡單的盒餐，都有著不簡單的心思在裡頭。也因如此，我們擁有一群相同理念的夥伴，彼此秉從善如流的心，共為更好的生活飲食著想。
-            </p>
-        </div>
-    </div>
-    <div class="pic col-7">
-        <img src="~/Assets/Images/AboutPage/contentimg.jpeg" alt="">
-    </div>
-</div>
-
-<div class="mountain d-flex">
-    <div class="mountainimg col-6">
-        <img src="~/Assets/Images/AboutPage/moutaingroup.png" alt="" width="100%">
-    </div>
-    <div class="mountainimg col-6">
-        <img src="~/Assets/Images/AboutPage/moutaingroup2.png" alt="" width="100%">
-    </div>
-</div>
-
-
-<div class="family container">
-    <div class="row">
-        <div class="wrapimg col-md-7 col-sm-12">
-            <div class="row">
-                <img src="~/Assets/Images/AboutPage/family.png" alt="" width="100%" class="my-3">
+    <div class="row justify-content-around mt-3">
+        <div class="col-10 col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://scontent.ftpe12-1.fna.fbcdn.net/v/t1.0-9/73482839_10158192046827223_604790700185223168_n.jpg?_nc_cat=104&_nc_sid=174925&_nc_ohc=DFWLGYQ7Z30AX-MwEWm&_nc_ht=scontent.ftpe12-1.fna&oh=8066260bf038f0c2163a8aa826eee83b&oe=5F994CE7" alt="Card image cap">
+                <div class="card-body">
+                    <h3 class="card-title">余修逸</h3>
+                    <hr />
+                    <h5 class="card-text">最高學歷之大學<br /><small>最高學歷之學系</small></h5>
+                    <a href="https://github.com/itsryo" class="btn btn-secondary" target="_blank">GitHub</a>
+                </div>
             </div>
-            <div class="row">
-                <img src="~/Assets/Images/AboutPage/family02.png" alt="" width="100%" class="mb-3">
-            </div>
-
         </div>
-        <div class="wraptxt col-md-5 col-sm-12 py-4">
+        <div class="col-10 col-md-4 mt-3 mt-md-0">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://scontent.ftpe12-1.fna.fbcdn.net/v/t1.0-9/49830758_2122357717825435_957620150427713536_n.jpg?_nc_cat=106&_nc_sid=09cbfe&_nc_ohc=qpMKI0YvGF8AX8Godm1&_nc_ht=scontent.ftpe12-1.fna&oh=73cea68c94ec96190d8cd776b361277f&oe=5F9B4A5E" alt="王昆泉">
+                <div class="card-body">
+                    <h3 class="card-title">王昆泉</h3>
+                    <hr />
+                    <h5 class="card-text">德明財經科技大學<br /><small>連鎖加盟經營管理學位學程系</small></h5>
+                    <a href="https://github.com/zo334411" class="btn btn-secondary" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-around mt-3">
+        <div class="col-10 col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://scontent.ftpe12-1.fna.fbcdn.net/v/t1.0-9/81397914_2586057208156114_8150172942102167552_n.jpg?_nc_cat=106&_nc_sid=09cbfe&_nc_ohc=kInlJWZylwMAX8bYmIz&_nc_ht=scontent.ftpe12-1.fna&oh=15cc4ef79499f9ac860e3707a6f74d8c&oe=5F980D14" alt="Card image cap">
+                <div class="card-body">
+                    <h3 class="card-title">黃怡瑄</h3>
+                    <hr />
+                    <h5 class="card-text">國立臺北科技大學<br /><small>資訊與財金管理研究所</small></h5>
+                    <a href="https://github.com/YiXuan-Huang" class="btn btn-secondary" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-10 col-md-4 mt-3 mt-md-0">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="..." alt="余宛萍">
+                <div class="card-body">
+                    <h3 class="card-title">余宛萍</h3>
+                    <hr />
+                    <h5 class="card-text">最高學歷之大學<br /><small>最高學歷之學系</small></h5>
+                    <a href="https://github.com/wanping0924" class="btn btn-secondary" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-around my-3">
+        <div class="col-10 col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://avatars0.githubusercontent.com/u/19454402?s=400&u=4199f4b776654df01cc4536080eaad2c7d590350&v=4" alt="金成韋">
+                <div class="card-body">
+                    <h3 class="card-title">金成韋</h3>
+                    <hr />
+                    <h5 class="card-text">最高學歷之大學<br /><small>最高學歷之學系</small></h5>
+                    <a href="https://github.com/waynelens" class="btn btn-secondary" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-10 col-md-4 mt-3 mt-md-0">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://scontent.ftpe12-1.fna.fbcdn.net/v/t1.0-9/35053832_2135342270080600_8252008021144633344_o.jpg?_nc_cat=106&_nc_sid=174925&_nc_ohc=QVPGBkLNNzgAX_2NBIu&_nc_ht=scontent.ftpe12-1.fna&oh=bc739e043d013b6e8ca437b0dcd21235&oe=5F99EF2C" alt="Card image cap">
+                <div class="card-body">
+                    <h3 class="card-title">吳昀洋</h3>
+                    <hr />
+                    <h5 class="card-text">國立臺北大學<br /><small>電機工程學系</small></h5>
+                    <a href="https://github.com/oscar0410" class="btn btn-secondary" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@*@section topCSS {
+        <link href="~/Content/AboutPage/About.css" rel="stylesheet" />
+    }
+
+    <div class="bannerbackground">
+        <div class="banner container">
+            <div class="breadandpic d-flex justify-content-end">
+                <ul>
+                    <li class="d-inline"><a href="@Url.Action("Index","Home")">首頁</a></li>
+                    <li class="d-inline"><a href="#">關於光光</a></li>
+                </ul>
+            </div>
+            <div class="pic d-flex justify-content-center align-items-center">
+                <img src="~/Assets/Images/AboutPage/Aboutbanner.png" alt="" width="50%">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="content container d-flex">
+        <div class="contenttxt col-5">
             <div class="pic">
-                <img src="~/Assets/Images/AboutPage/family03.png" alt="" width="100%">
+                <img src="~/Assets/Images/AboutPage/contenttitle.png" alt="">
             </div>
             <div class="txt">
                 <p>
-                    2018年光光盒餐成立，源於「分享」的理念，我們希望將更多美味、真實的食物帶到台灣人的餐桌，讓消費者不用擔心食安問題，又能便利的享受餐點。
-                    <br>
-                    <br>
-                    「選擇一條不一樣的路，傳遞安心好味道」
-                    <br>
+                    2017年夏天，來自好友生病的消息，讓吃得安心健康這件事，成為翔業餐飲品牌的起始。一個簡單純粹的想法，讓我們開始思考對於吃的追求。<br>
 
-                    從選定成本較高的產銷食材，到講究一粒米的溯源，都是嚴格把關。更進一步在水源上改善，並引進蔬果spa機，去除99%以上的化學殘留，去蕪存菁還原食材的真實狀態。連盛裝容器都是遠赴日本取經，帶回來專屬食品用的精美印花餐盒，連微波加熱都毋須擔心。最後在主廚創新的巧思下，成就一個個既美味又健康的盒餐。
-                    <br>
-                    <br>
+                    吃是每天必需且最直接的接觸，然而近年來的食安問題，讓我們反思食材的源頭。於是從食材的溯源把關，到還原食材的真實狀態，都一再考驗著我們。<br>
 
-                    其實這樣的過程並不簡單，經歷了無數次的嘗試與挑戰，多達二十幾道工序的盒餐，與堅持現點現做的餐廳模式，只為成就「如同家裡廚房」一樣的感受，讓家人、朋友吃到不打折的新鮮與健康。
-                    <br>
-                    <br>
-
-                    如同光光的理念「享受餐餐好食光」，用天然無毒的好食材，透過主廚的創新手藝，把健康美味的盒餐，分享給家人朋友，既滿足了味蕾，更透過良好的料理療癒身心。希望傳遞給消費者對於吃的新感受，讓人們買到的是美味、健康、與永續。
+                    當我們執著在「只做自己敢吃的」想法時，即便是簡單的盒餐，都有著不簡單的心思在裡頭。也因如此，我們擁有一群相同理念的夥伴，彼此秉從善如流的心，共為更好的生活飲食著想。
                 </p>
             </div>
         </div>
+        <div class="pic col-7">
+            <img src="~/Assets/Images/AboutPage/contentimg.jpeg" alt="">
+        </div>
     </div>
-</div>
+
+    <div class="mountain d-flex">
+        <div class="mountainimg col-6">
+            <img src="~/Assets/Images/AboutPage/moutaingroup.png" alt="" width="100%">
+        </div>
+        <div class="mountainimg col-6">
+            <img src="~/Assets/Images/AboutPage/moutaingroup2.png" alt="" width="100%">
+        </div>
+    </div>
+
+
+    <div class="family container">
+        <div class="row">
+            <div class="wrapimg col-md-7 col-sm-12">
+                <div class="row">
+                    <img src="~/Assets/Images/AboutPage/family.png" alt="" width="100%" class="my-3">
+                </div>
+                <div class="row">
+                    <img src="~/Assets/Images/AboutPage/family02.png" alt="" width="100%" class="mb-3">
+                </div>
+
+            </div>
+            <div class="wraptxt col-md-5 col-sm-12 py-4">
+                <div class="pic">
+                    <img src="~/Assets/Images/AboutPage/family03.png" alt="" width="100%">
+                </div>
+                <div class="txt">
+                    <p>
+                        2018年光光盒餐成立，源於「分享」的理念，我們希望將更多美味、真實的食物帶到台灣人的餐桌，讓消費者不用擔心食安問題，又能便利的享受餐點。
+                        <br>
+                        <br>
+                        「選擇一條不一樣的路，傳遞安心好味道」
+                        <br>
+
+                        從選定成本較高的產銷食材，到講究一粒米的溯源，都是嚴格把關。更進一步在水源上改善，並引進蔬果spa機，去除99%以上的化學殘留，去蕪存菁還原食材的真實狀態。連盛裝容器都是遠赴日本取經，帶回來專屬食品用的精美印花餐盒，連微波加熱都毋須擔心。最後在主廚創新的巧思下，成就一個個既美味又健康的盒餐。
+                        <br>
+                        <br>
+
+                        其實這樣的過程並不簡單，經歷了無數次的嘗試與挑戰，多達二十幾道工序的盒餐，與堅持現點現做的餐廳模式，只為成就「如同家裡廚房」一樣的感受，讓家人、朋友吃到不打折的新鮮與健康。
+                        <br>
+                        <br>
+
+                        如同光光的理念「享受餐餐好食光」，用天然無毒的好食材，透過主廚的創新手藝，把健康美味的盒餐，分享給家人朋友，既滿足了味蕾，更透過良好的料理療癒身心。希望傳遞給消費者對於吃的新感受，讓人們買到的是美味、健康、與永續。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
-<div class="cauliflower">
     <div class="cauliflower">
-        <img src="~/Assets/Images/AboutPage/cauliflower.jpeg" alt="" width="100%">
-        <div class="Process container mx-auto">
-            <img src="~/Assets/Images/AboutPage/Process.gif" alt="">
+        <div class="cauliflower">
+            <img src="~/Assets/Images/AboutPage/cauliflower.jpeg" alt="" width="100%">
+            <div class="Process container mx-auto">
+                <img src="~/Assets/Images/AboutPage/Process.gif" alt="">
+            </div>
         </div>
     </div>
-</div>
 
 
 
 
-<div class="link container">
-    <div class="row my-3">
-        <div class="col-md-8 col-sm-12" id="linkheight">
-            <img src="~/Assets/Images/AboutPage/link01.jpeg" alt="">
+    <div class="link container">
+        <div class="row my-3">
+            <div class="col-md-8 col-sm-12" id="linkheight">
+                <img src="~/Assets/Images/AboutPage/link01.jpeg" alt="">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <img src="~/Assets/Images/AboutPage/link02.jpeg" alt="" width="100%">
+            </div>
         </div>
-        <div class="col-md-4 col-sm-12">
-            <img src="~/Assets/Images/AboutPage/link02.jpeg" alt="" width="100%">
+        <div class="row">
+            <div class="col-md-4 col-sm-12 my-1 sectiontwo">
+                <img src="~/Assets/Images/AboutPage/link03.jpeg" alt="" width="100%">
+            </div>
+            <div class="col-md-4 col-sm-12 sectiontwo">
+                <img src="~/Assets/Images/AboutPage/link04.jpeg" alt="" width="100%">
+            </div>
+            <div class="col-md-4 col-sm-12 sectiontwo">
+                <img src="~/Assets/Images/AboutPage/link05.jpeg" alt="" width="100%">
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-sm-12 my-1 sectiontwo">
-            <img src="~/Assets/Images/AboutPage/link03.jpeg" alt="" width="100%">
-        </div>
-        <div class="col-md-4 col-sm-12 sectiontwo">
-            <img src="~/Assets/Images/AboutPage/link04.jpeg" alt="" width="100%">
-        </div>
-        <div class="col-md-4 col-sm-12 sectiontwo">
-            <img src="~/Assets/Images/AboutPage/link05.jpeg" alt="" width="100%">
-        </div>
-    </div>
-</div>
+    </div>*@
 

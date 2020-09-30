@@ -327,6 +327,7 @@
     <Content Include="Assets\Images\LoginPage\img_sign-in.png" />
     <Content Include="Assets\Images\LoginPage\img_sign-in_text.png" />
     <Content Include="Content\AboutPage\About.css" />
+    <Content Include="Content\AboutPage\AboutTeam.css" />
     <Content Include="Content\AdminTest\loading-spin.svg" />
     <Content Include="Content\AdminTest\mobile-style.css" />
     <Content Include="Content\AdminTest\style.css" />
