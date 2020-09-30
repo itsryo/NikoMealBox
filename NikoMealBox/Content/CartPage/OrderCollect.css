@@ -1,0 +1,84 @@
+﻿/* public */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.hidden{
+    display: none;
+}
+
+/* card-group */
+.card-group{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* card */
+.card{
+    margin: 15px;
+    box-shadow: 0 5px 5px 0 #aaa;
+}
+
+.card-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-status{
+    margin-top: 5px;
+}
+
+.shipping {
+    color: #008A84;
+    font-weight: bold;
+} /* 還會有其他狀態*/
+
+.order-date-group{
+    color: #aaa;
+    font-size: 14px;
+}
+
+.order-other-info ul{
+    line-height: 40px;
+    margin-left: 20px;
+}
+
+.order-other-info li{
+    list-style-type: disc;
+}
+
+.card-body a{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* order-item */
+.order-item{
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-item img{
+    width: 50%;
+}
+
+.order-item p{
+    margin-top: 15px;
+}
+
+.qrcode{
+    text-align: center;
+}
+
+.qrcode img{
+    width: 50%;
+}

@@ -227,3 +227,10 @@
     justify-content: flex-end;
 }
 
+/* 錯誤提醒 */
+label.error{
+    font-size: 14px;
+    color: red;
+    height: 0;
+    margin: 2px 0;
+}

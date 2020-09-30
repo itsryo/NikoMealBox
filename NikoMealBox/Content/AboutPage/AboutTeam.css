@@ -1,0 +1,66 @@
+﻿.gu_breadcrumb {
+	text-align: right;
+	padding: 8px 0;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+
+	.gu_breadcrumb::before {
+		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+		width: 100%;
+		border-top: 1px solid #727171;
+		right: 1em;
+		margin-left: -100%;
+	}
+
+	.gu_breadcrumb .breadcrumb {
+		vertical-align: middle;
+		display: inline-block;
+		background: none;
+		border-radius: 0;
+		padding: 0;
+		margin-bottom: 0;
+	}
+
+		.gu_breadcrumb .breadcrumb > li {
+			font-size: 14px;
+			letter-spacing: 1.5px;
+			display: inline-block;
+		}
+
+/* .gu_breadcrumb .breadcrumb>li+li:before {
+    padding: 0 2px;
+    color: #717071;
+    margin-right: -0.5em;
+} */
+
+@media screen and (min-width: 768px) {
+	.gu_breadcrumb .breadcrumb > li {
+		font-size: 18px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.gu_breadcrumb {
+		text-align: left;
+	}
+
+		.gu_breadcrumb::before {
+			display: none;
+		}
+}
+
+.gu_breadcrumb .breadcrumb > li.active {
+	color: #008a84;
+}
+
+.gu_breadcrumb .breadcrumb > li > a {
+	color: #717071;
+}
+
+	.gu_breadcrumb .breadcrumb > li > a:hover {
+		color: #008a84;
+	}

@@ -96,11 +96,11 @@ namespace NikoMealBox.Controllers
         }
 
         // POST: Products/Edit/5
-        // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
+        // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。[Bind(Include = "Id,ProductName,CategoryId,UnitPrice,UnitsInStock,Description,Materials,Calories,Carbohydrate,Protein,Fat,SaturatedFat,TransFat,Sugar,Sodium,ImagePath,IsOvolacto,IsEnable,IsDelete,CreateUser,CreateTime,EditUser,EditTime")]
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ProductName,CategoryId,UnitPrice,UnitsInStock,Description,Materials,Calories,Carbohydrate,Protein,Fat,SaturatedFat,TransFat,Sugar,Sodium,ImagePath,IsOvolacto,IsEnable,IsDelete,CreateUser,CreateTime,EditUser,EditTime")] Products products)
+        public ActionResult Edit(Products products)
         {
             if (ModelState.IsValid)
             {

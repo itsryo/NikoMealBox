@@ -51,16 +51,13 @@ namespace NikoMealBox.Controllers
         public async Task<ActionResult> Index()
         {
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            MemberCenterViewModel result = new MemberCenterViewModel
+            OrderViewModels result = new OrderViewModels
             {
-                Name = user.Name,
-                Address = user.Address,
-                Birthday = user.Birthday,
-                Mobile = user.Mobile,
-                Gender = user.Gender,
-                Email = user.Email
-                //Height = user.Height,
-                //Weight = user.Weight
+                CreateUser = user.Name,
+                PickUpAddress = user.Address,
+                ContactPhone = user.Mobile,
+                Sex = user.Gender,
+                ContactMail = user.Email
             };
             return View(result);
         }
@@ -78,8 +75,18 @@ namespace NikoMealBox.Controllers
         public ActionResult CreateOrder(OrderViewModels OrderForm)
         {
             var userId = User.Identity.GetUserId();
-            _repository.CreateOrder(OrderForm, userId);
+            var orderId = _repository.CreateOrder(OrderForm, userId);
+            ViewData["orderId"] = orderId;
             return View();
+        }
+
+        [Authorize]
+        public ActionResult OrderCollect() 
+        {
+            var userId = User.Identity.GetUserId();
+            var userAllOrders = _repository.GetAll().AsEnumerable<Orders>().Where(x => x.UserRefId == userId);
+          
+            return View(userAllOrders);
         }
 
         public ActionResult RemoveFromCart(int id)
