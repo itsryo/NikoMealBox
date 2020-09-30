@@ -106,7 +106,7 @@
     <div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="AddModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <form id="AddForm" method="post" onsubmit="return false" enctype="multipart/form-data">
-               @* action="/api/Product/AddProduct"*@
+               @*action="/api/Product/AddProduct">*@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="AddModalLabel">新增產品資料</h5>
@@ -308,7 +308,7 @@
                             </div>*@
                             <div class="col-sm-9 my-1">
                                 <label for="EdImagePath">產品圖片路徑</label>
-                                <input type="text" class="form-control imagePath" name="ImagePath" id="EdImagePath" placeholder="" v-model="product.ImagePath">     
+                                <input type="file" class="form-control imagePath" name="ImagePath" id="EdImagePath" placeholder="" v-model="product.ImagePath">     
                             </div>
                             <div class="col-sm-3 my-1">
                                 <label for="EdPreviewImage">預覽圖片</label>
@@ -523,6 +523,7 @@
                     datatype: 'json',
                     success: function (data) {//成功時dosomething (程式只要可以執行成功)
                         jsonObject = data;
+                        console.log(jsonObject);
                         globalThis.vm.product = jsonObject
                         //Binding();
                     },
@@ -567,16 +568,23 @@
         let AddBtn = document.getElementById("AddBtn");
         AddBtn.addEventListener('click', function () {
             alert("進來新增");
-            var Addprod = $('#AddForm').serialize();//表示將這個表單序列化
+            var Addprod = $('#AddForm').serializeArray(); //表示將這個表單序列化
             //var form = $('#AddForm');
-            //var formData = new FormData(form);
+            let imagePreview = document.querySelector('#PreviewImage');//預覽圖片位置
+            let url = imagePreview.src;
 
+            //var form = document.querySelector('#AddForm');
+            //var formData = new FormData($('form#AddForm').serialize());
+            Addprod.push({ name: 'ImagePath', value: url });
+            //formData.append('ImagePath', url);
             //確定新增
             $.ajax({
                 url: '/api/Product/AddProduct',
                 type: 'post', //請求方式，post/get。(預設為get)
-                //contentType: 'application/x-www-form-urlencoded; charset=utf-8',//傳送資料格式
-                data: Addprod,//prod,//id: EdId,
+                //contentType: 'multipart/form-data',//傳送資料格式
+                //processData: false,
+                //contentType: false,
+                data: Addprod,//prod,//id: EdId,//Addprod
                 datatype: 'json',
                 success: function (data) {//成功時dosomething (程式只要可以執行成功)
                     alert(data)
@@ -592,52 +600,71 @@
         //上傳照片
         let ImageUploader = document.querySelector('#ImagePath');
         ImageUploader.addEventListener('change', function (e) {
-            console.log(e.target.files);// get file object
-            const file = e.target.files[0];
-            console.log(file);// get file object
-            let form = new FormData();
-            form.append("ImagePath", e.target.files[0])
-
-
-            let imagePreview = document.querySelector('#PreviewImage');//預覽圖片位置
-            let imgPath = document.getElementById('ImagePath').value;//圖片值/路徑
-            console.log(imgPath);
-            console.log(typeof (imgPath));
-            console.log(JSON.stringify(imgPath));
-
-            //顯示預覽
-            showPreviewImage(file);
-            function showPreviewImage(fileObj) {
-                const image = URL.createObjectURL(fileObj);//檔案物件中取得路徑URL.createObjectUR
-                imagePreview.src = image;
-                console.log(image);
+            
+            
+            function showPreviewImage(imgUrl) {
+                let imagePreview = document.querySelector('#PreviewImage');//預覽圖片位置
+                imagePreview.src = imgUrl;
+                alert(imgUrl);
             }
-            $.ajax({
-                url: "/api/Imgur/UploadAsyncs",
-                type: "Post",
-                //processData: false,
-                contentType: 'application/json',//傳送資料格式
-                data: JSON.stringify(imgPath),
-                datatype: 'json',
-                success: function (path) {
-                    alert("success");
-                    alert(path);
+            //console.log(e.target.files);
+            var file = document.querySelector('input[type=file]').files[0];
+            var rawdata = { "base64": "default" };
 
-                },
-                fail: function () {
-                    alert('fail');
+            if (file) {
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function (e) {
+                    rawdata.base64 = this.result.split(',')[1];
                 }
-            })
+            }
 
+            setTimeout(function () {
+                $.ajax({
+                    url: "../api/Imgur/UploadAsync",
+                    data: JSON.stringify(rawdata),
+                    type: "POST",
+                    contentType: 'application/json; charset=UTF-8',
+                    dataType: "json",
+                    success: function (res) {
+                        showPreviewImage(res.imageUrl);
+                        console.log(res.imageUrl);
+                    },
+                    error: function (err) {
+                        alert(err.responseText);
+                    }
+                });
+            }, 500);
+
+
+
+
+            //console.log(e.target.files);// get file object
+            //const file = e.target.files[0];
+            //console.log(file);// get file object
+            //let form = new FormData();
+            //form.append("ImagePath", e.target.files[0])
+
+
+            //let imagePreview = document.querySelector('#PreviewImage');//預覽圖片位置
+            //let imgPath = document.getElementById('ImagePath').value;//圖片值/路徑
+            //console.log(imgPath);
+            //console.log(typeof (imgPath));
+            //console.log(JSON.stringify(imgPath));
+
+            ////顯示預覽
+            //showPreviewImage(file);
+            //function showPreviewImage(fileObj) {
+            //    const image = URL.createObjectURL(fileObj);//檔案物件中取得路徑URL.createObjectUR
+            //    imagePreview.src = image;
+            //    console.log(image);
+            //}
             //$.ajax({
-            //    url: "https://api.imgur.com/3/image",
-            //    method: "POST",
-            //    headers: {
-            //        'Authorization': 'Client-ID 62004dc8f2239f1'
-            //    },
-            //    formData: {
-            //        'image': encode_image
-            //    },
+            //    url: "/api/Imgur/UploadAsyncs",
+            //    type: "Post",
+            //    //processData: false,
+            //    contentType: 'application/json',//傳送資料格式
+            //    data: JSON.stringify(imgPath),
             //    datatype: 'json',
             //    success: function (path) {
             //        alert("success");
@@ -649,6 +676,7 @@
             //    }
             //})
 
+            
         })
 
 
