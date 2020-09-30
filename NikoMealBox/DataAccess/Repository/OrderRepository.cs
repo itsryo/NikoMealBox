@@ -21,7 +21,7 @@ namespace NikoMealBox.DataAccess.Repository
         /// 在db插入訂單
         /// </summary>
         /// <param name="OrderForm"></param>
-        public void CreateOrder(OrderViewModels OrderForm, string UserId)
+        public int CreateOrder(OrderViewModels OrderForm, string UserId)
         {
             var currentCart = CartRepository.GetCurrentCart();
             List<OrderDetails> OrderDetailList = new List<OrderDetails>();
@@ -42,6 +42,8 @@ namespace NikoMealBox.DataAccess.Repository
                 Payment = OrderForm.Payment,
                 OrderDetails = OrderDetailList,
                 UserRefId = UserId,
+                OrderStatusRefId = 4,
+                // 訂單狀況
             };
             foreach (var item in currentCart)
             {
@@ -57,8 +59,10 @@ namespace NikoMealBox.DataAccess.Repository
                 };
                 OrderDetailList.Add(eachOrderDetail);
             }
+
             Insert(eachOrder);
             SaveChanges();
+            return eachOrder.Id;
         }
     }
 }

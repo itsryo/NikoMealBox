@@ -58,8 +58,6 @@ namespace NikoMealBox.Controllers
                 ContactPhone = user.Mobile,
                 Sex = user.Gender,
                 ContactMail = user.Email
-                //Height = user.Height,
-                //Weight = user.Weight
             };
             return View(result);
         }
@@ -77,7 +75,8 @@ namespace NikoMealBox.Controllers
         public ActionResult CreateOrder(OrderViewModels OrderForm)
         {
             var userId = User.Identity.GetUserId();
-            _repository.CreateOrder(OrderForm, userId);
+            var orderId = _repository.CreateOrder(OrderForm, userId);
+            ViewData["orderId"] = orderId;
             return View();
         }
 

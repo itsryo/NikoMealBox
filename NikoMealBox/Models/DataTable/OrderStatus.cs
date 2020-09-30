@@ -17,6 +17,6 @@ namespace NikoMealBox.Models.DataTable
         /// <summary>
         /// 一對多外鍵關聯
         /// </summary>
-        //public ICollection<Orders> Orders { get; set; }
+        public ICollection<Orders> Orders { get; set; }
     }
 }
