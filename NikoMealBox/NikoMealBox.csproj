@@ -225,6 +225,7 @@
     <Compile Include="DataAccess\Repository\GenericRepository.cs" />
     <Compile Include="DataAccess\Repository\OrderDetailsRepository.cs" />
     <Compile Include="DataAccess\Repository\OrderRepository.cs" />
+    <Compile Include="DataAccess\Repository\OrderStatusRepository.cs" />
     <Compile Include="DataAccess\Repository\ProductRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
