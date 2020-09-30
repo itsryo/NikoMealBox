@@ -76,6 +76,7 @@ namespace NikoMealBox.Controllers
         {
             var userId = User.Identity.GetUserId();
             var orderId = _repository.CreateOrder(OrderForm, userId);
+            CartRepository.GetCurrentCart().ClearCart();
             ViewData["orderId"] = orderId;
             return View();
         }
@@ -84,7 +85,7 @@ namespace NikoMealBox.Controllers
         public ActionResult OrderCollect() 
         {
             var userId = User.Identity.GetUserId();
-            var userAllOrders = _repository.GetAll().AsEnumerable<Orders>().Where(x => x.UserRefId == userId);
+            var userAllOrders = _repository.GetAll().AsEnumerable<Orders>().Where(x => x.UserRefId == userId && x.IsDelete == false);
           
             return View(userAllOrders);
         }

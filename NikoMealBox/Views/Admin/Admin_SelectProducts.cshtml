@@ -106,7 +106,7 @@
     <div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="AddModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <form id="AddForm" method="post" onsubmit="return false" enctype="multipart/form-data">
-               @* action="/api/Product/AddProduct"*@
+               @*action="/api/Product/AddProduct">*@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="AddModalLabel">新增產品資料</h5>
@@ -176,11 +176,14 @@
                                 <label for="Sodium">鈉</label>
                                 <input type="text" name="Sodium" id="Sodium" class="form-control sodium" placeholder="">
                             </div>
-                            <div class="col-12 my-1">
+                            <div class="col-sm-9 my-1">
                                 <label for="ImagePath">產品圖片路徑</label>
-                                <input type="text" class="form-control imagePath" name="ImagePath" id="ImagePath" placeholder="">
+                                <input type="file" class="form-control imagePath" name="ImagePath" id="ImagePath" accept="image/*" placeholder="">
                             </div>
-
+                            <div class="col-sm-3 my-1">
+                                <label for="EreviewImage">預覽圖片</label>
+                                <img src="" id="PreviewImage" width="100%" name="pic" />
+                            </div>
 
                             <div class="col-sm-3 my-1 form-group">
                                 <label for="CtgyId">蛋奶素</label>
@@ -303,9 +306,13 @@
                                 <label for="EdImagePath">產品圖片路徑</label>
                                 <input type="file" class="form-control imagePath" name="ImagePath" id="EdImagePath" placeholder="">
                             </div>*@
-                            <div class="col-12 my-1">
+                            <div class="col-sm-9 my-1">
                                 <label for="EdImagePath">產品圖片路徑</label>
-                                <input type="text" class="form-control imagePath" name="ImagePath" id="EdImagePath" placeholder="" v-model="product.ImagePath">
+                                <input type="file" class="form-control imagePath" name="ImagePath" id="EdImagePath" placeholder="" v-model="product.ImagePath">     
+                            </div>
+                            <div class="col-sm-3 my-1">
+                                <label for="EdPreviewImage">預覽圖片</label>
+                                <img src="" v-bind:src="product.ImagePath" id="EdPreviewImage" width="100%" name="pic" />
                             </div>
                             <div class="col-sm-3 my-1 form-group">
                                 <label for="EdIsOvolacto">蛋奶素</label>
@@ -375,7 +382,7 @@
                     url: "/api/Product/SelectProducts",
                     type: 'Get',
                     dataType: 'json',
-                    data: { },
+                    data: {},
                     // 传给服务器的数据，可以添加我们自己的查询参数
                     dataSrc: function (Prod) {
                         return Prod;
@@ -393,7 +400,7 @@
                         "render": function (data, type, full, meta) {
                             //return " <input type = 'button' id = 'testButton' value = '點擊我！'>";
                             return "<button type = 'button' id = 'DeleteProduct' class='btn btn-danger' data-toggle='modal' data-target='#DeleteModal'>刪除</button>"
-                                + "<button type = 'button' id = 'EditProductBtn' class='btn btn-success my-2 mx-2' data-toggle='modal' data-target='#EditModal'>檢視/編輯</button>"  
+                                + "<button type = 'button' id = 'EditProductBtn' class='btn btn-success my-2 mx-2' data-toggle='modal' data-target='#EditModal'>檢視/編輯</button>"
                         }
                     }
                 ],
@@ -441,7 +448,7 @@
                 product: {
                     "CategoryId": "",
                     "UnitPrice": "",
-                    "UnitsInStock":"",
+                    "UnitsInStock": "",
                     "Description": "",
                     "Materials": "",
                     "Calories": "",
@@ -463,7 +470,7 @@
                     "EditTime": null
                 }
             },
-            });
+        });
 
         //畫面載入後
         $(document).ready(function () {
@@ -481,7 +488,7 @@
                 //$("table#dataTable").find("tr").eq(row).find("td").eq(6).val(data.IsDelete);
                 var offer = $("table#dataTable").find("tr").eq(row).find("td").eq(5);//是否提供
                 var Delete = $("table#dataTable").find("tr").eq(row).find("td").eq(6).text();//是否刪除
-                alert("產品Id: " + Id );
+                alert("產品Id: " + Id);
 
                 //軟刪除
                 $.get('/api/Product/DeleteConfirmed' + '/' + Id)
@@ -504,7 +511,7 @@
                 var Id = $("table#dataTable").find("tr").eq(Edrow).find("td").eq(0).text();//Id
                 var name = $("table#dataTable").find("tr").eq(Edrow).find("td").eq(1).text();//便當
                 alert("Id: " + Id + name);
-                
+
                 //vue Binding
                 //編輯 取得資料
                 $.ajax({
@@ -516,6 +523,7 @@
                     datatype: 'json',
                     success: function (data) {//成功時dosomething (程式只要可以執行成功)
                         jsonObject = data;
+                        console.log(jsonObject);
                         globalThis.vm.product = jsonObject
                         //Binding();
                     },
@@ -560,19 +568,26 @@
         let AddBtn = document.getElementById("AddBtn");
         AddBtn.addEventListener('click', function () {
             alert("進來新增");
-            var Addprod = $('#AddForm').serialize();//表示將這個表單序列化
+            var Addprod = $('#AddForm').serializeArray(); //表示將這個表單序列化
             //var form = $('#AddForm');
-            //var formData = new FormData(form);
+            let imagePreview = document.querySelector('#PreviewImage');//預覽圖片位置
+            let url = imagePreview.src;
 
+            //var form = document.querySelector('#AddForm');
+            //var formData = new FormData($('form#AddForm').serialize());
+            Addprod.push({ name: 'ImagePath', value: url });
+            //formData.append('ImagePath', url);
             //確定新增
             $.ajax({
                 url: '/api/Product/AddProduct',
                 type: 'post', //請求方式，post/get。(預設為get)
-                //contentType: 'application/x-www-form-urlencoded; charset=utf-8',//傳送資料格式
-                data: Addprod,//prod,//id: EdId,
+                //contentType: 'multipart/form-data',//傳送資料格式
+                //processData: false,
+                //contentType: false,
+                data: Addprod,//prod,//id: EdId,//Addprod
                 datatype: 'json',
                 success: function (data) {//成功時dosomething (程式只要可以執行成功)
-                    alert("新增成功")
+                    alert(data)
                     selectProd();
                     //location.href = "/api/Product/SelectProducts";
                 },
@@ -582,6 +597,87 @@
             });
         });
 
+        //上傳照片
+        let ImageUploader = document.querySelector('#ImagePath');
+        ImageUploader.addEventListener('change', function (e) {
+            
+            
+            function showPreviewImage(imgUrl) {
+                let imagePreview = document.querySelector('#PreviewImage');//預覽圖片位置
+                imagePreview.src = imgUrl;
+                alert(imgUrl);
+            }
+            //console.log(e.target.files);
+            var file = document.querySelector('input[type=file]').files[0];
+            var rawdata = { "base64": "default" };
+
+            if (file) {
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function (e) {
+                    rawdata.base64 = this.result.split(',')[1];
+                }
+            }
+
+            setTimeout(function () {
+                $.ajax({
+                    url: "../api/Imgur/UploadAsync",
+                    data: JSON.stringify(rawdata),
+                    type: "POST",
+                    contentType: 'application/json; charset=UTF-8',
+                    dataType: "json",
+                    success: function (res) {
+                        showPreviewImage(res.imageUrl);
+                        console.log(res.imageUrl);
+                    },
+                    error: function (err) {
+                        alert(err.responseText);
+                    }
+                });
+            }, 500);
+
+
+
+
+            //console.log(e.target.files);// get file object
+            //const file = e.target.files[0];
+            //console.log(file);// get file object
+            //let form = new FormData();
+            //form.append("ImagePath", e.target.files[0])
+
+
+            //let imagePreview = document.querySelector('#PreviewImage');//預覽圖片位置
+            //let imgPath = document.getElementById('ImagePath').value;//圖片值/路徑
+            //console.log(imgPath);
+            //console.log(typeof (imgPath));
+            //console.log(JSON.stringify(imgPath));
+
+            ////顯示預覽
+            //showPreviewImage(file);
+            //function showPreviewImage(fileObj) {
+            //    const image = URL.createObjectURL(fileObj);//檔案物件中取得路徑URL.createObjectUR
+            //    imagePreview.src = image;
+            //    console.log(image);
+            //}
+            //$.ajax({
+            //    url: "/api/Imgur/UploadAsyncs",
+            //    type: "Post",
+            //    //processData: false,
+            //    contentType: 'application/json',//傳送資料格式
+            //    data: JSON.stringify(imgPath),
+            //    datatype: 'json',
+            //    success: function (path) {
+            //        alert("success");
+            //        alert(path);
+
+            //    },
+            //    fail: function () {
+            //        alert('fail');
+            //    }
+            //})
+
+            
+        })
 
 
 
@@ -597,26 +693,25 @@
 
 
 
+            ////建立產品 防呆用
+            //$("#AddModal").on('click', '#Create', function () {
+            //    //let prodAry = ["productName", "categoryId", "unitPrice", "InStock", "description", "materials"];
+            //    let prodAry = ["productName", "isOvolacto", "isEnable", "isDelete"];
+            //    //calories carbohydrate protein fat saturatedFat transFat sugar sodium imagePath isOvolacto isEnable isDelete createUser
+            //    console.log(this);
+            //    for (let i = 0; i < prodAry.length; i++) {
+            //        let item = prodAry[i];
+            //        alert(item);
+            //        let val = document.querySelector('#AddProduct' + " ." + item).value;
+            //        alert(val);
+            //        if (val == null || val == 0) {
+            //            alert("有欄位未填寫");
+            //            return;
+            //        }
 
-        ////建立產品 防呆用
-        //$("#AddModal").on('click', '#Create', function () {
-        //    //let prodAry = ["productName", "categoryId", "unitPrice", "InStock", "description", "materials"];
-        //    let prodAry = ["productName", "isOvolacto", "isEnable", "isDelete"];
-        //    //calories carbohydrate protein fat saturatedFat transFat sugar sodium imagePath isOvolacto isEnable isDelete createUser
-        //    console.log(this);
-        //    for (let i = 0; i < prodAry.length; i++) {
-        //        let item = prodAry[i];
-        //        alert(item);
-        //        let val = document.querySelector('#AddProduct' + " ." + item).value;
-        //        alert(val);
-        //        if (val == null || val == 0) {
-        //            alert("有欄位未填寫");
-        //            return;
-        //        }
-
-        //    }
-        //    //let Name = document.querySelector("#AddProduct .categoryId").value;
-        //});
+            //    }
+            //    //let Name = document.querySelector("#AddProduct .categoryId").value;
+            //});
 
     </script>
 </body>

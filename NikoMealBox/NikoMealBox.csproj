@@ -225,6 +225,7 @@
     <Compile Include="DataAccess\Repository\GenericRepository.cs" />
     <Compile Include="DataAccess\Repository\OrderDetailsRepository.cs" />
     <Compile Include="DataAccess\Repository\OrderRepository.cs" />
+    <Compile Include="DataAccess\Repository\OrderStatusRepository.cs" />
     <Compile Include="DataAccess\Repository\ProductRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -257,6 +258,10 @@
     <Compile Include="Migrations\202009300804265_OrderFix.Designer.cs">
       <DependentUpon>202009300804265_OrderFix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009300951497_AddEcPayModel.cs" />
+    <Compile Include="Migrations\202009300951497_AddEcPayModel.Designer.cs">
+      <DependentUpon>202009300951497_AddEcPayModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DataTable\BaseEntity.cs" />
@@ -265,6 +270,7 @@
     <Compile Include="Models\DataTable\Orders.cs" />
     <Compile Include="Models\DataTable\OrderStatus.cs" />
     <Compile Include="Models\DataTable\Products.cs" />
+    <Compile Include="Models\ECPayModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -478,6 +484,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009300804265_OrderFix.resx">
       <DependentUpon>202009300804265_OrderFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009300951497_AddEcPayModel.resx">
+      <DependentUpon>202009300951497_AddEcPayModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
