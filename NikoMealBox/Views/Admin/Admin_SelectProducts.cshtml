@@ -182,7 +182,7 @@
                             </div>
                             <div class="col-sm-3 my-1">
                                 <label for="EreviewImage">預覽圖片</label>
-                                <img src="" id="PreviewImage" width="100%" name="pic" />
+                                <img src="" id="PreviewImage" width="100%" class="ImgPreview" name="pic" />
                             </div>
 
                             <div class="col-sm-3 my-1 form-group">
@@ -308,11 +308,11 @@
                             </div>*@
                             <div class="col-sm-9 my-1">
                                 <label for="EdImagePath">產品圖片路徑</label>
-                                <input type="file" class="form-control imagePath" name="ImagePath" id="EdImagePath" placeholder="" v-model="product.ImagePath">     
+                                <input type="file" class="form-control EdimagePath" name="ImagePath" id="EdImagePath" placeholder="">@*v-model="product.ImagePath"*@
                             </div>
                             <div class="col-sm-3 my-1">
                                 <label for="EdPreviewImage">預覽圖片</label>
-                                <img src="" v-bind:src="product.ImagePath" id="EdPreviewImage" width="100%" name="pic" />
+                                <img  v-bind:src="product.ImagePath" id="EdPreviewImage" class="ImgPreview" width="100%" name="pic" />
                             </div>
                             <div class="col-sm-3 my-1 form-group">
                                 <label for="EdIsOvolacto">蛋奶素</label>
@@ -525,6 +525,10 @@
                         jsonObject = data;
                         console.log(jsonObject);
                         globalThis.vm.product = jsonObject
+                        console.log(globalThis.vm.product);
+
+                        console.log(globalThis.vm.product.ImagePath);
+
                         //Binding();
                     },
                     fail: function (data) {//失敗時dosomething(程式爆掉)
@@ -597,18 +601,52 @@
             });
         });
 
-        //上傳照片
-        let ImageUploader = document.querySelector('#ImagePath');
-        ImageUploader.addEventListener('change', function (e) {
+
+        //上傳照片 /新增
+        let AddImageUpload = document.querySelector('#ImagePath');
+        AddImageUpload.addEventListener('change', function (e) {
+            let add = "Add";
+            //新增
+            var AddfileObj = document.querySelector('#ImagePath').files[0];
+            ImgUpload(add, AddfileObj)
             
-            
-            function showPreviewImage(imgUrl) {
-                let imagePreview = document.querySelector('#PreviewImage');//預覽圖片位置
-                imagePreview.src = imgUrl;
-                alert(imgUrl);
+        })
+
+        //上傳照片 /編輯
+        let EdImageUpload = document.querySelector('#EdImagePath');
+        AddImageUpload.addEventListener('change', function (e) {
+            let Ed = "Edit";
+            //編輯
+            var EdfileObj = document.querySelector('#EdImagePath').files[0];
+            ImgUpload(Ed, EdfileObj)
+
+        })
+
+        //API
+        function ImgUpload(choice,file) {
+            if (choice == "Add") {
+                //新增
+                function showPreviewImage(imgUrl) {
+                    let imagePreview = document.querySelector('.ImgPreview');//預覽圖片位置
+                    imagePreview.src = imgUrl;
+                    alert(imgUrl);
+                }
+            } else {
+                //編輯
+                function showPreviewImage(imgUrl) {
+                    let EdimagePreview = document.querySelector('#EdPreviewImage');//預覽圖片位置
+                    EdimagePreview.src = imgUrl;
+                    alert(imgUrl);
+                }
             }
-            //console.log(e.target.files);
-            var file = document.querySelector('input[type=file]').files[0];
+            
+
+            //console.log(e.target.files);   #ImagePath
+            //var file = document.querySelector('input[type=file]').files[0];
+            
+            //編輯
+            //var file = document.querySelector('#EdImagePath').files[0];
+
             var rawdata = { "base64": "default" };
 
             if (file) {
@@ -635,51 +673,7 @@
                     }
                 });
             }, 500);
-
-
-
-
-            //console.log(e.target.files);// get file object
-            //const file = e.target.files[0];
-            //console.log(file);// get file object
-            //let form = new FormData();
-            //form.append("ImagePath", e.target.files[0])
-
-
-            //let imagePreview = document.querySelector('#PreviewImage');//預覽圖片位置
-            //let imgPath = document.getElementById('ImagePath').value;//圖片值/路徑
-            //console.log(imgPath);
-            //console.log(typeof (imgPath));
-            //console.log(JSON.stringify(imgPath));
-
-            ////顯示預覽
-            //showPreviewImage(file);
-            //function showPreviewImage(fileObj) {
-            //    const image = URL.createObjectURL(fileObj);//檔案物件中取得路徑URL.createObjectUR
-            //    imagePreview.src = image;
-            //    console.log(image);
-            //}
-            //$.ajax({
-            //    url: "/api/Imgur/UploadAsyncs",
-            //    type: "Post",
-            //    //processData: false,
-            //    contentType: 'application/json',//傳送資料格式
-            //    data: JSON.stringify(imgPath),
-            //    datatype: 'json',
-            //    success: function (path) {
-            //        alert("success");
-            //        alert(path);
-
-            //    },
-            //    fail: function () {
-            //        alert('fail');
-            //    }
-            //})
-
-            
-        })
-
-
+        }
 
 
 
