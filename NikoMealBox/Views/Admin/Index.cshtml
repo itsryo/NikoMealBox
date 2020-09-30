@@ -203,36 +203,36 @@
                 }
             });
         }, 500);
-    }; 
+    };
 
-    $(document).ready(function () {
-        $.ajax({
-            type: "Get",
-            url: "/api/chart/chart",
-            success: function (response) {
-                var ctx = document.getElementById('myAreaChart').getContext('2d');
-                var chart = new Chart(ctx, {
-                    //The type of chart we want to create
-                    type: 'bar',
+    //$(document).ready(function () {
+    //    $.ajax({
+    //        type: "Get",
+    //        url: "/api/chart/chart",
+    //        success: function (response) {
+    //            var ctx = document.getElementById('myAreaChart').getContext('2d');
+    //            var chart = new Chart(ctx, {
+    //                //The type of chart we want to create
+    //                type: 'bar',
 
 
-                    //The data for our dataset
-                    data: {
-                        labels: response.ProductName,
-                        datasets: [{
-                            label: 'My First dataset',
-                            backgroundColor: 'rgb(255, 99, 132)',
-                            borderColor: 'rgb(255, 99, 132)',
-                            data: response.UnitStock
-                        }]
-                    },
+    //                //The data for our dataset
+    //                data: {
+    //                    labels: response.ProductName,
+    //                    datasets: [{
+    //                        label: 'My First dataset',
+    //                        backgroundColor: 'rgb(255, 99, 132)',
+    //                        borderColor: 'rgb(255, 99, 132)',
+    //                        data: response.UnitStock
+    //                    }]
+    //                },
 
-                    // Configuration options go here
-                    options: {}
-                });
-            }
-        });
-    });
+    //                // Configuration options go here
+    //                options: {}
+    //            });
+    //        }
+    //    });
+    //});
 
 
 
@@ -240,30 +240,53 @@
 
     $(document).ready(function () {
         console.log('hi')
-
         $.ajax({
             type: "Get",
-            dataType:"JSON",
             url: "/api/Chart/YearSalesResultChart",
             success: function (response) {
-                console.log(response)
+                console.log(response[0].ProductName)
+                console.log(response.length)
+                var ary = [];
+                var quan = [];
+                for (let i = 0; i < response.length; i++) {
+                    productName = response[i].ProductName;
+                    quantity = response[i].Quantity;
+                    ary.push(productName)
+                    quan.push(quantity)
+                    console.log(productName)
+                }
+                console.log(ary)
+
+            
                 var ctx = document.getElementById('myBarChart').getContext('2d');
                 var chart = new Chart(ctx, {
                     // The type of chart we want to create
                     type: 'bar',
                     // The data for our dataset
                     data: {
-                        labels: response.ProductName,
+                        labels: ary,
                         datasets: [{
-                            label: 'My First dataset',
+                            label: '年銷售圖表',
                             backgroundColor: 'rgb(255, 99, 132)',
                             borderColor: 'rgb(255, 99, 132)',
-                            data: response.Quantity
+                            data: quan,
+
                         }]
                     },
 
+
                     // Configuration options go here
-                    options: {}
+                    options: {
+                        scales: {
+
+                            yAxes: [{
+                                min: 1,
+                                max: 10,
+                                interval: 10
+                            }]
+
+                        }
+                    }
 
                 });
             }

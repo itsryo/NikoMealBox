@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Web.Mvc;
 using static NikoMealBox.ViewModels.ChartViewModels;
+using HttpGetAttribute = System.Web.Http.HttpGetAttribute;
 using RoutePrefixAttribute = System.Web.Http.RoutePrefixAttribute;
 
 namespace NikoMealBox.Controllers.WebAPI
@@ -55,7 +56,8 @@ namespace NikoMealBox.Controllers.WebAPI
         //}
 
 
-        //[AcceptVerbs("GET","POST")]
+       //[AcceptVerbs("GET","POST")]
+       [HttpGet]
         public List<YearSalesResult> YearSalesResultChart()
         {
            // var viewModel = new ChartViewModels.YearSalesResult();
