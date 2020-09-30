@@ -346,6 +346,8 @@
     <Content Include="Content\ProductsPage\productdetail.css" />
     <Content Include="Content\CartPage\Form.css" />
     <Content Include="Content\styles.css" />
+    <Content Include="Scripts\additional-methods.js" />
+    <Content Include="Scripts\additional-methods.min.js" />
     <Content Include="Scripts\BackendProduct\datatables-demo.js" />
     <Content Include="Scripts\BackendProduct\imgur.js" />
     <Content Include="Scripts\BackendProduct\upload.js" />

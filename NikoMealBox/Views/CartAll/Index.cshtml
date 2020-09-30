@@ -73,7 +73,7 @@
         </div>
 
         @*表單*@
-        <form action="~/CartAll/CheckOrderList" method="post">
+        <form action="~/CartAll/CheckOrderList" method="post" id="order-form">
             <div class="form-row">
                 <div id="order-name" class="input-area">
                     <label for="CreateUser" class="required">姓名</label>
@@ -98,7 +98,7 @@
 
                 <div id="order-phone" class="input-area">
                     <label for="ContactPhone" class="required">電話</label>
-                    <input type="text" name="ContactPhone" class="form-control" placeholder="範例：0912345678" value="@Model.ContactPhone" />
+                    <input type="text" name="ContactPhone" class="form-control" value="@Model.ContactPhone" />
                 </div>
 
                 <div id="order-mail" class="input-area">
@@ -177,20 +177,16 @@
             </div>
 
             <div class="form-row" id="submit">
-                @if (currentCart.Count == 0)
-                {
-                    <button class="submit-btn" id="emptycart">下單購買</button>
-                }
-                else
-                {
-                    <button class="submit-btn">下單購買</button>
-                }
+                <button class="submit-btn" type="submit">下單購買</button>
             </div>
         </form>
         @*表單尾*@
     </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/additional-methods.min.js"></script>
 <script>
     function RemoveFromCartAll(productId) {
             $.ajax({
@@ -203,10 +199,46 @@
             });
     }
 
-    var emptycartBtn = document.getElementById("emptycart");
-    emptycartBtn.addEventListener('click'function (e) {
-        e.preventDefault();
-        alert("購物車為空!");
+    // 驗證
+    var validate = $("#order-form").validate({
+        rules: {
+            CreateUser: {
+                required: true
+            },
+            ContactPhone: {
+                required: true,
+                isMobile: true,
+            },
+            ContactMail: {
+                required: true,
+                email: true,
+            },
+            PickUpAddress: {
+                required: true,
+            },
+            Remark: {
+                maxlength: 60,
+            }
+        },
+        //錯誤提示
+        messages: {
+            CreateUser: "請填寫姓名",
+            ContactPhone: "請填寫如 0978555123、(02)29447598格式",
+            ContactMail: "請填寫正確格式的mail",
+            PickUpAddress: "請填寫完整地址",
+            Remark: "最大長度60字"
+        },
     });
+
+    jQuery.validator.addMethod("isMobile", function (value, element) {
+        var mobile = /^\(?(\d{2})\)?[\s\-]?(\d{4})\-?(\d{4})$/;
+        return this.optional(element) || mobile.test(value)
+    });
+
+    // 日期驗證
+    var dateinput = document.getElementsByName('GetProductDate')[0];
+    var nextDay = new Date().setDate(new Date().getDate() + 1);
+    dateinput.min = new Date(nextDay).toISOString().split("T")[0] + "T00:00";
+
 </script>
 <script src="https://kit.fontawesome.com/05c128ff7b.js" crossorigin="anonymous"></script>
