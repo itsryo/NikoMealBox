@@ -13,7 +13,10 @@
         <div class=" col-sm-12 col-md-12 d-flex ">
             <a class="hyper  nav-link border rounded-pill  d-inline-block border-info " href="@Url.Action("OrderCollect","CartAll")">盒餐訂單 </a>
             <a class="hyper ml-2 nav-link border rounded-pill  d-inline-block border-info " style="background-color:#008A84; color:#FFF;" href="#">會員資料維護</a>
+            @if (ViewData["ProviderKey"] == "")
+            {
             <a class="hyper ml-2 nav-link border rounded-pill  d-inline-block border-info " href="@Url.Action("ChangePassword","Manage")">密碼變更</a>
+            }
             <a class="hyper ml-2 nav-link border rounded-pill  d-inline-block bg-danger text-white" href="javascript:document.getElementById('logoutForm').submit()"> 登出 <span class="sr-only">(current)</span></a>
         </div>
     </div>

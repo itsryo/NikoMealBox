@@ -61,7 +61,7 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-chart-area mr-1"></i>
-                            產品季銷售
+                            產品月銷售
                         </div>
                         <div class="card-body">
                             <canvas id="myAreaChart" width="100%" height="40"></canvas>
@@ -174,6 +174,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 <script>
+
     function previewFile() {
         var preview = document.getElementById("test");
         var file = document.querySelector('input[type=file]').files[0];
@@ -211,10 +212,11 @@
             success: function (response) {
                 var ctx = document.getElementById('myAreaChart').getContext('2d');
                 var chart = new Chart(ctx, {
-                    // The type of chart we want to create
+                    //The type of chart we want to create
                     type: 'bar',
 
-                    // The data for our dataset
+
+                    //The data for our dataset
                     data: {
                         labels: response.ProductName,
                         datasets: [{
@@ -241,13 +243,14 @@
 
         $.ajax({
             type: "Get",
-            url: "/api/chart/chart",
+            dataType:"JSON",
+            url: "/api/Chart/YearSalesResultChart",
             success: function (response) {
-                var ctxx = document.getElementById('myBarChart').getContext('2d');
-                var chartt = new Chart(ctxx, {
+                console.log(response)
+                var ctx = document.getElementById('myBarChart').getContext('2d');
+                var chart = new Chart(ctx, {
                     // The type of chart we want to create
                     type: 'bar',
-
                     // The data for our dataset
                     data: {
                         labels: response.ProductName,
@@ -255,12 +258,13 @@
                             label: 'My First dataset',
                             backgroundColor: 'rgb(255, 99, 132)',
                             borderColor: 'rgb(255, 99, 132)',
-                            data: response.UnitStock
+                            data: response.Quantity
                         }]
                     },
 
                     // Configuration options go here
                     options: {}
+
                 });
             }
         });

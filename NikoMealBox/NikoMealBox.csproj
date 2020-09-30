@@ -223,7 +223,9 @@
     <Compile Include="DataAccess\Interface\IRepository.cs" />
     <Compile Include="DataAccess\Repository\CartRepository.cs" />
     <Compile Include="DataAccess\Repository\GenericRepository.cs" />
+    <Compile Include="DataAccess\Repository\OrderDetailsRepository.cs" />
     <Compile Include="DataAccess\Repository\OrderRepository.cs" />
+    <Compile Include="DataAccess\Repository\OrderStatusRepository.cs" />
     <Compile Include="DataAccess\Repository\ProductRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -247,6 +249,14 @@
     <Compile Include="Migrations\202009221645001_OrderModify.cs" />
     <Compile Include="Migrations\202009221645001_OrderModify.Designer.cs">
       <DependentUpon>202009221645001_OrderModify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009300742476_OrderChange.cs" />
+    <Compile Include="Migrations\202009300742476_OrderChange.Designer.cs">
+      <DependentUpon>202009300742476_OrderChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009300804265_OrderFix.cs" />
+    <Compile Include="Migrations\202009300804265_OrderFix.Designer.cs">
+      <DependentUpon>202009300804265_OrderFix.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -327,6 +337,7 @@
     <Content Include="Assets\Images\LoginPage\img_sign-in.png" />
     <Content Include="Assets\Images\LoginPage\img_sign-in_text.png" />
     <Content Include="Content\AboutPage\About.css" />
+    <Content Include="Content\AboutPage\AboutTeam.css" />
     <Content Include="Content\AdminTest\loading-spin.svg" />
     <Content Include="Content\AdminTest\mobile-style.css" />
     <Content Include="Content\AdminTest\style.css" />
@@ -345,6 +356,8 @@
     <Content Include="Content\ProductsPage\productdetail.css" />
     <Content Include="Content\CartPage\Form.css" />
     <Content Include="Content\styles.css" />
+    <Content Include="Scripts\additional-methods.js" />
+    <Content Include="Scripts\additional-methods.min.js" />
     <Content Include="Scripts\BackendProduct\datatables-demo.js" />
     <Content Include="Scripts\BackendProduct\imgur.js" />
     <Content Include="Scripts\BackendProduct\upload.js" />
@@ -460,6 +473,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009221645001_OrderModify.resx">
       <DependentUpon>202009221645001_OrderModify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009300742476_OrderChange.resx">
+      <DependentUpon>202009300742476_OrderChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009300804265_OrderFix.resx">
+      <DependentUpon>202009300804265_OrderFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -22,6 +22,24 @@ namespace NikoMealBox.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        private string GetProviderkey(string UserID)
+        {
+            var _userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = _userManager.FindById(UserID);
+            var providerKey = "";
+
+            if (user != null)
+            {
+                var info = user.Logins.SingleOrDefault(u => u.UserId == UserID);
+                if (info != null)
+                {
+                providerKey = info.ProviderKey;
+                }
+            }
+
+            return providerKey;
+        }
+
         public AccountController()
         {
         }
@@ -71,6 +89,8 @@ namespace NikoMealBox.Controllers
                 Height = user.Height,
                 Weight = user.Weight
             };
+            var providerKey = GetProviderkey(User.Identity.GetUserId());
+            ViewData["ProviderKey"] = providerKey;
             return View(result);
 
         }
