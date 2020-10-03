@@ -214,6 +214,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartAllController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\FromPostECPayController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -446,6 +447,8 @@
     <Content Include="Views\CartAll\CreateOrder.cshtml" />
     <Content Include="Views\AdminProductTest\Index.cshtml" />
     <Content Include="Views\CartAll\OrderCollect.cshtml" />
+    <Content Include="Views\FromPostECPay\PostToECPay.cshtml" />
+    <Content Include="Views\FromPostECPay\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
