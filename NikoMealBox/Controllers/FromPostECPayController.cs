@@ -13,6 +13,7 @@ namespace NikoMealBox.Controllers
         // GET: FromPostECPay
         public ActionResult Index()
         {
+            var currentCart = NikoMealBox.DataAccess.Repository.CartRepository.GetCurrentCart();
             /*此部分由廠自行決定，自己成是價購流程，並非制定化*/
             ECPayModel model = new ECPayModel();
             model.MerchantTradeNo = DateTime.Now.ToString("yyyyMMddHHmmss"); //廠商訂單編號

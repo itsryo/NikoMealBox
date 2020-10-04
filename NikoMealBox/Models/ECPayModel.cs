@@ -20,7 +20,7 @@ namespace NikoMealBox.Models
         /// <summary>
         /// 交易金額
         /// </summary>
-        public int TotalAmount { get; set; }
+        public decimal TotalAmount { get; set; }
 
         /// <summary>
         /// 交易描述

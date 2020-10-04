@@ -263,6 +263,10 @@
     <Compile Include="Migrations\202009300951497_AddEcPayModel.Designer.cs">
       <DependentUpon>202009300951497_AddEcPayModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010041031260_ChangeEcPayModel_TotalAmount_DataType.cs" />
+    <Compile Include="Migrations\202010041031260_ChangeEcPayModel_TotalAmount_DataType.Designer.cs">
+      <DependentUpon>202010041031260_ChangeEcPayModel_TotalAmount_DataType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DataTable\BaseEntity.cs" />
@@ -491,6 +495,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009300951497_AddEcPayModel.resx">
       <DependentUpon>202009300951497_AddEcPayModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010041031260_ChangeEcPayModel_TotalAmount_DataType.resx">
+      <DependentUpon>202010041031260_ChangeEcPayModel_TotalAmount_DataType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
