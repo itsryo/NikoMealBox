@@ -70,6 +70,8 @@ namespace NikoMealBox.DataAccess.Repository
         public IEnumerable<Products> SelectAllProd()
         {
             var product = GetAll().ToList();
+            
+            product.Select(x => x.IsDelete == true ? "是" : "否");
             return product;
         }
 

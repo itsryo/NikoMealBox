@@ -215,6 +215,7 @@
 
                     </div>
                     <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="clearinput">清空</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
                         <button type="submit" class="btn btn-primary" data-dismiss="modal" id="AddBtn">建立</button>
                     </div>
@@ -308,7 +309,7 @@
                             </div>*@
                             <div class="col-sm-9 my-1">
                                 <label for="EdImagePath">產品圖片路徑</label>
-                                <input type="file" class="form-control EdimagePath" name="ImagePath" id="EdImagePath" placeholder="">@*v-model="product.ImagePath"*@
+                                <input type="file" class="form-control EdimagePath" name="ImagePath" id="EdImagePath" placeholder="" >@*v-model="product.ImagePath"*@
                             </div>
                             <div class="col-sm-3 my-1">
                                 <label for="EdPreviewImage">預覽圖片</label>
@@ -475,78 +476,89 @@
         //畫面載入後
         $(document).ready(function () {
             selectProd();//建立datatable
-
-            //Binding();
-
-            //爲我們生成的按鈕綁定方法，這裏是彈出姓名和職業的對話框
-            //刪除btn
-            $("#dataTable tbody").on("click", "#DeleteProduct", function () {
-                //獲取行
-                var row = $("table#dataTable tr").index($(this).closest("tr"));
-                //獲取某列（從0列開始計數）的值
-                var Id = $("table#dataTable").find("tr").eq(row).find("td").eq(0).text();//Id
-                //$("table#dataTable").find("tr").eq(row).find("td").eq(6).val(data.IsDelete);
-                var offer = $("table#dataTable").find("tr").eq(row).find("td").eq(5);//是否提供
-                var Delete = $("table#dataTable").find("tr").eq(row).find("td").eq(6).text();//是否刪除
-                alert("產品Id: " + Id);
-
-                //軟刪除
-                $.get('/api/Product/DeleteConfirmed' + '/' + Id)
-                    .done(function (data) {
-                        alert("刪除成功")
-                        console.log(data)
-                        selectProd();
-                    })
-                    .fail(function (jqXHR, textStatus, err) {
-                        alert(err);
-                        //$('#product').text('Error: ' + err);
-                    });
-            });
-
-            //編輯btn
-            $("#dataTable tbody").on('click', '#EditProductBtn', function () {
-                //獲取行
-                var Edrow = $("table#dataTable tr").index($(this).closest("tr"));
-                //獲取某列（從0列開始計數）的值
-                var Id = $("table#dataTable").find("tr").eq(Edrow).find("td").eq(0).text();//Id
-                var name = $("table#dataTable").find("tr").eq(Edrow).find("td").eq(1).text();//便當
-                alert("Id: " + Id + name);
-
-                //vue Binding
-                //編輯 取得資料
-                $.ajax({
-                    url: '/api/Product/SelectOneProduct',
-                    type: 'get', //請求方式，post/get。(預設為get)
-                    data: {
-                        id: Id
-                    },
-                    datatype: 'json',
-                    success: function (data) {//成功時dosomething (程式只要可以執行成功)
-                        jsonObject = data;
-                        console.log(jsonObject);
-                        globalThis.vm.product = jsonObject
-                        console.log(globalThis.vm.product);
-
-                        console.log(globalThis.vm.product.ImagePath);
-
-                        //Binding();
-                    },
-                    fail: function (data) {//失敗時dosomething(程式爆掉)
-                        alert("fail");
-                    }
-                });
-            });
         });
 
+        //清空欄位
+        let clearbtn = document.querySelector('#clearinput');
+        clearbtn.addEventListener('click', function () {
+            let imgpreview = document.querySelector('#PreviewImage');
+            imgpreview.src = '';
+            let addform = document.querySelector('#AddForm');
+            addform.reset();
+        })
+
+
+        //Binding();
+
+        //爲我們生成的按鈕綁定方法，這裏是彈出姓名和職業的對話框
+        //刪除btn
+        $("#dataTable tbody").on("click", "#DeleteProduct", function () {
+            //獲取行
+            var row = $("table#dataTable tr").index($(this).closest("tr"));
+            //獲取某列（從0列開始計數）的值
+            var Id = $("table#dataTable").find("tr").eq(row).find("td").eq(0).text();//Id
+            //$("table#dataTable").find("tr").eq(row).find("td").eq(6).val(data.IsDelete);
+            var offer = $("table#dataTable").find("tr").eq(row).find("td").eq(5);//是否提供
+            var Delete = $("table#dataTable").find("tr").eq(row).find("td").eq(6).text();//是否刪除
+            alert("產品Id: " + Id);
+
+            //軟刪除
+            $.get('/api/Product/DeleteConfirmed' + '/' + Id)
+                .done(function (data) {
+                    alert("刪除成功")
+                    console.log(data)
+                    selectProd();
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    alert(err);
+                    //$('#product').text('Error: ' + err);
+                });
+        });
+
+        //編輯btn
+        $("#dataTable tbody").on('click', '#EditProductBtn', function () {
+            //獲取行
+            var Edrow = $("table#dataTable tr").index($(this).closest("tr"));
+            //獲取某列（從0列開始計數）的值
+            var Id = $("table#dataTable").find("tr").eq(Edrow).find("td").eq(0).text();//Id
+            var name = $("table#dataTable").find("tr").eq(Edrow).find("td").eq(1).text();//便當
+            let Edfile = document.querySelector('#EdImagePath');
+            Edfile.value = "";//清空 input file欄位
+            alert("Id: " + Id + name);
+
+            //vue Binding
+            //編輯 取得資料
+            $.ajax({
+                url: '/api/Product/SelectOneProduct',
+                type: 'get', //請求方式，post/get。(預設為get)
+                data: {
+                    id: Id
+                },
+                datatype: 'json',
+                success: function (data) {//成功時dosomething (程式只要可以執行成功)
+                    jsonObject = data;
+                    console.log(jsonObject);
+                    globalThis.vm.product = jsonObject
+                    console.log(globalThis.vm.product);
+                    console.log(globalThis.vm.product.ImagePath);
+                    //Binding();
+                },
+                fail: function (data) {//失敗時dosomething(程式爆掉)
+                    alert("fail");
+                }
+            });
+        });
 
         ///確定編輯
         let EdBtn = document.getElementById("Editbtn");
         EdBtn.addEventListener('click', function (e) {
             alert("進來了");
-            //var prod = $('#EditForm').serialize();//表示將這個表單序列化
-
-            var table = document.getElementById('dataTable');
+            //var table = document.getElementById('dataTable');
+            let imagePreview = document.querySelector('#EdPreviewImage');//預覽圖片位置
+            vm.product.ImagePath = imagePreview.src;
             let prodjson = JSON.stringify(vm.product);
+            console.log(prodjson);
+            debugger;
 
             //確定編輯
             $.ajax({
@@ -606,24 +618,23 @@
         let AddImageUpload = document.querySelector('#ImagePath');
         AddImageUpload.addEventListener('change', function (e) {
             let add = "Add";
-            //新增
             var AddfileObj = document.querySelector('#ImagePath').files[0];
+            //let AddfileObj= document.querySelector('input[type=file]').files[0];
             ImgUpload(add, AddfileObj)
             
         })
 
         //上傳照片 /編輯
         let EdImageUpload = document.querySelector('#EdImagePath');
-        AddImageUpload.addEventListener('change', function (e) {
+        EdImageUpload.addEventListener('change', function (e) {
             let Ed = "Edit";
-            //編輯
-            var EdfileObj = document.querySelector('#EdImagePath').files[0];
+            let EdfileObj = document.querySelector('#EdImagePath').files[0];
             ImgUpload(Ed, EdfileObj)
 
         })
 
-        //API
-        function ImgUpload(choice,file) {
+        //圖片API
+        function ImgUpload(choice, file) {
             if (choice == "Add") {
                 //新增
                 function showPreviewImage(imgUrl) {
@@ -631,18 +642,25 @@
                     imagePreview.src = imgUrl;
                     alert(imgUrl);
                 }
+                
             } else {
                 //編輯
-                function showPreviewImage(imgUrl) {
-                    let EdimagePreview = document.querySelector('#EdPreviewImage');//預覽圖片位置
-                    EdimagePreview.src = imgUrl;
+                function showPreviewImage(imgUrl, prew) {
+                let imagePreview = document.querySelector('#EdPreviewImage');//預覽圖片位置
+
+                    imagePreview.src = imgUrl;
                     alert(imgUrl);
                 }
+                
             }
             
-
+            //function showPreviewImage(imgUrl) {
+            //    let imagePreview = document.querySelector('.ImgPreview');//預覽圖片位置
+            //    imagePreview.src = imgUrl;
+            //    alert(imgUrl);
+            //}
             //console.log(e.target.files);   #ImagePath
-            //var file = document.querySelector('input[type=file]').files[0];
+            //var file = document.querySelector('input[type=file]').files[0]; //新增
             
             //編輯
             //var file = document.querySelector('#EdImagePath').files[0];

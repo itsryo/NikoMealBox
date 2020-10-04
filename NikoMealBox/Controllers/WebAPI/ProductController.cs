@@ -27,7 +27,7 @@ namespace NikoMealBox.WebAPI
         public IEnumerable<Products> prcoducts { get; set; }
 
         /// <summary>
-        /// 後台查詢所有商品&單一商品
+        /// 後台查詢所有商品
         /// </summary>
         /// <returns></returns>
         [AcceptVerbs("GET","POST")]
@@ -37,6 +37,7 @@ namespace NikoMealBox.WebAPI
             //IEnumerable<Products> prcoducts =  _repository.SelectAllProducts();
 
             var products = _repository.SelectAllProd();
+
             return products;
 
             //return Json(CarSalesNumber,JsonRequestBehavior.AllowGet);
