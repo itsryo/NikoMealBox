@@ -5,55 +5,72 @@
     <div class="card-group">
         @foreach (var order in Model)
         {
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-title">
-                        <h4 class="order-id">#@order.Id</h4>
-                        <p class="order-status shipping">運送中</p>
-                    </div>
-                    <div class="order-date-group">
-                        <p class="order-date">訂單時間 @order.CreateTime</p>
-                        <p class="pick-up-date">預計取貨時間 @order.GetProductDate</p>
-                        <p class="finish-date hidden">結單時間 @order.FinishDate</p>
-                    </div>
-                    <div class="order-other-info">
-                        <ul>
-                            <li class="username">名字: @order.CreateUser</li>
-                            <li class="phone">連絡電話: @order.ContactPhone</li>
-                            <li class="address">地址: @order.PickUpCity@order.PickUpRegion@order.PickUpAddress</li>
-                            <li class="payment">付款方式: @order.Payment</li>
-                            <li class="remark">備註: @order.Remark</li>
-                        </ul>
-                    </div>
-                    <a href="#">檢視購買商品</a>
-                    <div class="order-detail-group">
-                        <hr />
-                        <div class="order-item">
-                            <img src="https://i.imgur.com/kJajggg.png" />
-                            <p class="productname">豬肉便當</p>
-                            <p class="count">x1</p>
-                            <p class="total-price">$150</p>
+            <div class="card-wrap">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h4 class="order-id">#@order.Id</h4>
+                            <p class="order-status shipping">運送中</p>
                         </div>
-                        <div class="order-item">
-                            <img src="https://i.imgur.com/kJajggg.png" />
-                            <p class="productname">豬肉便當</p>
-                            <p class="count">x1</p>
-                            <p class="total-price">$150</p>
+                        <div class="order-date-group">
+                            <p class="order-date">訂單時間 @order.CreateTime</p>
+                            <p class="pick-up-date">預計取貨時間 @order.GetProductDate</p>
+                            <p class="finish-date hidden">結單時間 @order.FinishDate</p>
                         </div>
-                        <hr />
-                        <div class="qrcode">
-                            <p>自取掃描結單</p>
-                            <img src="https://i.imgur.com/dPu4AKW.png" />
+                        <div class="order-other-info">
+                            <ul>
+                                <li class="username">名字: @order.CreateUser</li>
+                                <li class="phone">連絡電話: @order.ContactPhone</li>
+                                <li class="address">地址: @order.PickUpCity@order.PickUpRegion@order.PickUpAddress</li>
+                                <li class="payment">付款方式: @order.Payment</li>
+                                <li class="remark">備註: @order.Remark</li>
+                            </ul>
+                        </div>
+                        <p class="detail-show">檢視購買商品</p>
+                        <p class="detail-hide">取消檢視</p>
+                        <div class="order-detail-group">
+                            <hr />
+                            <div class="order-item">
+                                <img src="https://i.imgur.com/kJajggg.png" />
+                                <p class="productname">豬肉便當</p>
+                                <p class="count">x1</p>
+                                <p class="total-price">$150</p>
+                            </div>
+                            <div class="order-item">
+                                <img src="https://i.imgur.com/kJajggg.png" />
+                                <p class="productname">豬肉便當</p>
+                                <p class="count">x1</p>
+                                <p class="total-price">$150</p>
+                            </div>
+                            <hr />
+                            <div class="qrcode">
+                                <p>自取掃描結單</p>
+                                <img src="https://i.imgur.com/dPu4AKW.png" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         }
-
     </div>
 </div>
 
-@* 
-TODO:
-1. 建立Orders model的status，影響 finishdate    
-*@
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $('document').ready(function () {
+        $('.order-detail-group').hide();
+        $('.detail-hide').hide();
+    })
+
+    $('.detail-show').click(function (event) {
+        $(event.target).slideUp(300);
+        $(event.target.nextElementSibling).slideDown(300);
+        $(event.target.nextElementSibling.nextElementSibling).slideDown(500);
+    })
+
+    $('.detail-hide').click(function (e) {
+        $(e.target).slideUp(300);
+        $(e.target.previousElementSibling).slideDown(300);
+        $(e.target.nextElementSibling).slideUp(500);
+    })
+</script>

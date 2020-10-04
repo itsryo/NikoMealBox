@@ -22,10 +22,14 @@
 }
 
 /* card */
-.card{
-    margin: 15px;
-    box-shadow: 0 5px 5px 0 #aaa;
+.card-wrap{
+    width: 30%;
+    padding: 5px;
 }
+
+.card{
+    box-shadow: 0 5px 5px 0 #aaa;
+}   
 
 .card-title{
     display: flex;
@@ -41,7 +45,17 @@
     font-weight: bold;
 } /* 還會有其他狀態*/
 
-.order-date-group{
+.detail-show{
+    color: blue;
+    text-align: center;
+}
+
+.detail-hide {
+    color: blue;
+    text-align: center;
+}
+
+.order-date-group {
     color: #aaa;
     font-size: 14px;
 }
@@ -53,13 +67,6 @@
 
 .order-other-info li{
     list-style-type: disc;
-}
-
-.card-body a{
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    text-decoration: none;
 }
 
 /* order-item */
