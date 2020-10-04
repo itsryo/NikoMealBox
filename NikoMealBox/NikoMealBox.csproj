@@ -285,6 +285,7 @@
     <Compile Include="ViewModels\CartItemViewModels.cs" />
     <Compile Include="ViewModels\CartViewModels.cs" />
     <Compile Include="ViewModels\ChartViewModels.cs" />
+    <Compile Include="ViewModels\OrderCollectViewModels.cs" />
     <Compile Include="ViewModels\OrderViewModels.cs" />
     <Compile Include="ViewModels\ProductViewModels.cs" />
     <Compile Include="Controllers\WebAPI\ProductController.cs" />

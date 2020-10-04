@@ -1,29 +1,29 @@
-﻿@model IEnumerable<NikoMealBox.Models.DataTable.Orders>
+﻿@model IEnumerable<NikoMealBox.ViewModels.OrderCollectViewModels>
 <link href="~/Content/CartPage/OrderCollect.css" rel="stylesheet" />
 
 <div class="container">
     <div class="card-group">
-        @foreach (var order in Model)
+        @*@foreach (var orderCollect in Model)
         {
             <div class="card-wrap">
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">
-                            <h4 class="order-id">#@order.Id</h4>
-                            <p class="order-status shipping">運送中</p>
+                            <h4 class="order-id">#@orderCollect.Order.Id</h4>
+                            <p class="order-status shipping">@orderCollect.OrderStatus</p>
                         </div>
                         <div class="order-date-group">
-                            <p class="order-date">訂單時間 @order.CreateTime</p>
-                            <p class="pick-up-date">預計取貨時間 @order.GetProductDate</p>
-                            <p class="finish-date hidden">結單時間 @order.FinishDate</p>
+                            <p class="order-date">訂單時間 @orderCollect.Order.CreateTime</p>
+                            <p class="pick-up-date">預計取貨時間 @orderCollect.Order.GetProductDate</p>
+                            <p class="finish-date hidden">結單時間 @orderCollect.Order.FinishDate</p>
                         </div>
                         <div class="order-other-info">
                             <ul>
-                                <li class="username">名字: @order.CreateUser</li>
-                                <li class="phone">連絡電話: @order.ContactPhone</li>
-                                <li class="address">地址: @order.PickUpCity@order.PickUpRegion@order.PickUpAddress</li>
-                                <li class="payment">付款方式: @order.Payment</li>
-                                <li class="remark">備註: @order.Remark</li>
+                                <li class="username">名字: @orderCollect.Order.CreateUser</li>
+                                <li class="phone">連絡電話: @orderCollect.Order.ContactPhone</li>
+                                <li class="address">地址: @orderCollect.Order.PickUpRegion @orderCollect.Order.PickUpCity @orderCollect.Order.PickUpAddress</li>
+                                <li class="payment">付款方式: @orderCollect.Order.Payment</li>
+                                <li class="remark">備註: @orderCollect.Order.Remark</li>
                             </ul>
                         </div>
                         <p class="detail-show">檢視購買商品</p>
@@ -51,7 +51,7 @@
                     </div>
                 </div>
             </div>
-        }
+        }*@
     </div>
 </div>
 
