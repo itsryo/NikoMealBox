@@ -1,0 +1,22 @@
+﻿@model NikoMealBox.Models.ECPayModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>ECPay-AIO Sample Code</h2>
+@using (Html.BeginForm("PostToECPay", "FromPostECPay"))
+{
+    <div>@Html.LabelFor(model => model.MerchantTradeNo)</div>
+    <div>@Html.TextBoxFor(model => model.MerchantTradeNo)</div>
+    <div>@Html.LabelFor(model => model.MerchantTradeDate)</div>
+    <div>@Html.TextBoxFor(model => model.MerchantTradeDate)</div>
+    <div>@Html.LabelFor(model => model.TotalAmount)</div>
+    <div>@Html.TextBoxFor(model => model.TotalAmount)</div>
+    <div>@Html.LabelFor(model => model.TradeDesc)</div>
+    <div>@Html.TextBoxFor(model => model.TradeDesc)</div>
+    <div>@Html.LabelFor(model => model.ItemName)</div>
+    <div>@Html.TextBoxFor(model => model.ItemName)</div>
+    <div>@Html.LabelFor(model => model.ChoosePayment)</div>
+    <div>@Html.TextBoxFor(model => model.ChoosePayment)</div>
+    <input type="submit" value="送出" />
+}
