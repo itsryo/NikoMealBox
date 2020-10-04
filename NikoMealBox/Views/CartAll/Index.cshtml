@@ -83,7 +83,7 @@
                 <div id="order-sex" class="input-area">
                     <label for="Sex" class="required">性別</label>
                     <select class="form-control" name="Sex">
-                        @if (Model.Sex == "man")
+                        @if (Model.Sex =="男性"|| Model.Sex == "M" || Model.Sex == "男")
                         {
                             <option value="男" selected>男</option>
                             <option value="女">女</option>
@@ -111,23 +111,25 @@
                 <div id="order-city" class="input-area">
                     <label for="PickUpCity" class="required">地址</label>
                     <select class="form-control" name="PickUpCity">
-                        <option value="台中市">台中市</option>
+                        <option value="台北市">台北市</option>
                     </select>
                 </div>
 
                 <div id="order-region" class="input-area">
                     <label for="PickUpRegion" class="required">市區</label>
                     <select class="form-control" name="PickUpRegion">
-                        <option value="東區">東區</option>
-                        <option value="西區">西區</option>
-                        <option value="西屯區">西屯區</option>
-                        <option value="中區">中區</option>
-                        <option value="南區">南區</option>
-                        <option value="南屯區">南屯區</option>
-                        <option value="北區">北區</option>
-                        <option value="北屯區">北屯區</option>
-                        <option value="太平區">太平區</option>
-                        <option value="大里區">大里區</option>
+                        <option value="北投區">北投區</option>
+                        <option value="士林區">士林區</option>
+                        <option value="內湖區">內湖區</option>
+                        <option value="松山區">松山區</option>
+                        <option value="中山區">中山區</option>
+                        <option value="大同區">大同區</option>
+                        <option value="南港區">南港區</option>
+                        <option value="信義區">信義區</option>
+                        <option value="大安區">大安區</option>
+                        <option value="中正區">中正區</option>
+                        <option value="萬華區">萬華區</option>
+                        <option value="文山區">文山區</option>
                     </select>
                 </div>
 
@@ -172,7 +174,7 @@
             <div class="form-row" id="payment">
                 <div class="payment-checkbox-group">
                     <input type="radio" name="Payment" value="信用卡付款" /> 信用卡付款
-                    <input type="radio" name="Payment" value="Line Pay" /> LINE Pay
+                    @*<input type="radio" name="Payment" value="Line Pay" /> LINE Pay*@
                 </div>
             </div>
 
