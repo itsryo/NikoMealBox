@@ -14,6 +14,27 @@
     display: none;
 }
 
+/* button-group */
+#btn-group-container .btn-checked {
+    color: #fff;
+    background-color: #008A84;
+}
+
+.btn-group{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#btn-group-container button {
+    width: 15%;
+    background-color: #fff;
+    font-weight: 700;
+    border: 2px solid #008A84;
+    color: #008A84;
+    outline: none;
+}
+
 /* card-group */
 .card-group{
     display: flex;

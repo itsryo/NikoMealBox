@@ -1,21 +1,34 @@
-﻿@model IEnumerable<NikoMealBox.ViewModels.OrderCollectViewModels>
+﻿@model List<NikoMealBox.ViewModels.OrderCollectViewModels>
 <link href="~/Content/CartPage/OrderCollect.css" rel="stylesheet" />
+
+<div class="container" id="btn-group-container">
+    <div class="btn-group">
+        <button class="switch btn-checked" id="switch-all">全部</button>
+        <button class="switch">待入賬</button>
+        <button class="switch">製作中</button>
+        <button class="switch">運送中</button>
+        <button class="switch">已結單</button>
+    </div>
+</div>
 
 <div class="container">
     <div class="card-group">
-        @*@foreach (var orderCollect in Model)
+        @foreach (var orderCollect in Model)
         {
             <div class="card-wrap">
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">
                             <h4 class="order-id">#@orderCollect.Order.Id</h4>
-                            <p class="order-status shipping">@orderCollect.OrderStatus</p>
+                            <p class="order-status shipping">@orderCollect.Status</p>
                         </div>
                         <div class="order-date-group">
                             <p class="order-date">訂單時間 @orderCollect.Order.CreateTime</p>
                             <p class="pick-up-date">預計取貨時間 @orderCollect.Order.GetProductDate</p>
-                            <p class="finish-date hidden">結單時間 @orderCollect.Order.FinishDate</p>
+                            @if (orderCollect.Status == "已結單")
+                            {
+                                <p class="finish-date">結單時間 @orderCollect.Order.FinishDate</p>
+                            }
                         </div>
                         <div class="order-other-info">
                             <ul>
@@ -30,18 +43,15 @@
                         <p class="detail-hide">取消檢視</p>
                         <div class="order-detail-group">
                             <hr />
-                            <div class="order-item">
-                                <img src="https://i.imgur.com/kJajggg.png" />
-                                <p class="productname">豬肉便當</p>
-                                <p class="count">x1</p>
-                                <p class="total-price">$150</p>
-                            </div>
-                            <div class="order-item">
-                                <img src="https://i.imgur.com/kJajggg.png" />
-                                <p class="productname">豬肉便當</p>
-                                <p class="count">x1</p>
-                                <p class="total-price">$150</p>
-                            </div>
+                            @foreach (var product in orderCollect.products)
+                            {
+                                <div class="order-item">
+                                    <img src="@product.Product.ImagePath" />
+                                    <p class="productname">@product.Product.ProductName</p>
+                                    <p class="count">x @product.Quantity</p>
+                                    <p class="total-price">$@product.Product.UnitPrice</p>
+                                </div>
+                            }
                             <hr />
                             <div class="qrcode">
                                 <p>自取掃描結單</p>
@@ -51,12 +61,13 @@
                     </div>
                 </div>
             </div>
-        }*@
+        }
     </div>
 </div>
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script>
+    // 訂單詳細狀況隱藏
     $('document').ready(function () {
         $('.order-detail-group').hide();
         $('.detail-hide').hide();
@@ -73,4 +84,40 @@
         $(e.target.previousElementSibling).slideDown(300);
         $(e.target.nextElementSibling).slideUp(500);
     })
+
+    // 訂單切換顯示
+    let allOrderDom = $('.card-wrap').toArray();
+    let allSwitchDom = $('.switch').toArray();
+
+    $('.switch').click(function (e) {
+        let showDom = allOrderDom.filter(dom => dom.innerText.includes(e.target.innerText));
+        let hideDom = allOrderDom.filter(function (v) { return showDom.indexOf(v) == -1 })
+
+        showDom.forEach((item, index) => {
+            $(item).slideDown(300);
+        })
+
+        hideDom.forEach((item, index) => {
+            $(item).slideUp(300);
+        });
+
+        // 按鈕標籤切換
+        allSwitchDom.forEach((item, index) => {
+            $(item).removeClass('btn-checked');
+        });
+
+        $(e.target).addClass('btn-checked');
+    });
+
+    $('#switch-all').click(function (e) {
+        allOrderDom.forEach((item, index) => {
+            $(item).slideDown(300);
+        });
+
+        allSwitchDom.forEach((item, index) => {
+            $(item).removeClass('btn-checked');
+        });
+
+        $(e.target).addClass('btn-checked');
+    });
 </script>

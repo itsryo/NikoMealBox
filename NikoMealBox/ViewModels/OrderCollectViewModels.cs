@@ -12,17 +12,12 @@ namespace NikoMealBox.ViewModels
         public Orders Order { get; set; }
         public string Status { get; set; }
 
-        public IEnumerable<OrderDetailExtend> OrderDetailExtends { get; set; }
+        public List<OrderDetailExtend> products { get; set; }
     }
-
-    /// <summary>
-    /// 因為OrderDetail有參考到Product
-    /// 需要顯示 Quantity和Product部分屬性
-    /// </summary>
 
     public class OrderDetailExtend
     {
         public int Quantity { get; set; }
-        public Products product { get; set; }
+        public Products Product { get; set; }
     }
 }

@@ -84,39 +84,37 @@ namespace NikoMealBox.Controllers
         [Authorize]
         public ActionResult OrderCollect() 
         {
+            var statusRepo = new OrderStatusRepository();
+            var detailRepo = new OrderDetailsRepository();
+            var productRepo = new ProductRepository();
             var userId = User.Identity.GetUserId();
-            var orderCollects = new List<OrderCollectViewModels>();
-            var userAllOrders = _repository.GetAll().Where(x => x.Id.ToString() == userId && x.IsDelete == false).AsEnumerable<Orders>();
-            
-            foreach(var eachOrder in userAllOrders)
-            {
-                var statusRepo = new OrderStatusRepository();
-                var detailRepo = new OrderDetailsRepository();
-                var productRepo = new ProductRepository();
-                var orderDetailExtends = new List<OrderDetailExtend>();
-                var details = detailRepo.GetAll().Where(x => x.OrdersId == eachOrder.Id);
+            var allUserOrders = _repository.GetAll().Where(x => x.UserRefId.ToString() == userId).AsEnumerable<Orders>();
+            var orderCollectList = new List<OrderCollectViewModels>();
 
+            foreach(var order in allUserOrders)
+            {
+                var details = detailRepo.GetAll().Where(x => x.OrdersId == order.Id);
+                var products = new List<OrderDetailExtend>();
                 foreach(var detail in details)
                 {
-                    var extend = new OrderDetailExtend()
+                    var product = new OrderDetailExtend()
                     {
                         Quantity = detail.Quantity,
-                        product = productRepo.SelectOneProd(detail.ProductsId)
+                        Product = productRepo.Get(x => x.Id == detail.ProductsId),
                     };
-                    orderDetailExtends.Add(extend);
+                    products.Add(product);
                 }
 
                 var orderCollect = new OrderCollectViewModels()
                 {
-                    Order = eachOrder,
-                    Status = statusRepo.GetDescription(eachOrder.OrderStatusRefId),
-                    OrderDetailExtends = orderDetailExtends,
+                    Order = order,
+                    Status = statusRepo.GetDescription(order.OrderStatusRefId),
+                    products = products,
                 };
-
-                orderCollects.Add(orderCollect);
+                orderCollectList.Add(orderCollect);
             }
             
-            return View(orderCollects);
+            return View(orderCollectList);
         }
 
         public ActionResult RemoveFromCart(int id)
