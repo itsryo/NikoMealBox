@@ -13,7 +13,7 @@ using System.Net;
 
 namespace NikoMealBox.Controllers
 {
-    //[Authorize(Users = "Admin@gmail.com")]
+    [Authorize(Users = "Admin@gmail.com")]
     public class AdminController : Controller
     {
         private ApplicationSignInManager _signInManager;
