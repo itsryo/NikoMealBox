@@ -84,10 +84,37 @@ namespace NikoMealBox.Controllers
         [Authorize]
         public ActionResult OrderCollect() 
         {
+            var statusRepo = new OrderStatusRepository();
+            var detailRepo = new OrderDetailsRepository();
+            var productRepo = new ProductRepository();
             var userId = User.Identity.GetUserId();
-            var userAllOrders = _repository.GetAll().AsEnumerable<Orders>().Where(x => x.UserRefId == userId && x.IsDelete == false);
-          
-            return View(userAllOrders);
+            var allUserOrders = _repository.GetAll().Where(x => x.UserRefId.ToString() == userId).AsEnumerable<Orders>();
+            var orderCollectList = new List<OrderCollectViewModels>();
+
+            foreach(var order in allUserOrders)
+            {
+                var details = detailRepo.GetAll().Where(x => x.OrdersId == order.Id);
+                var products = new List<OrderDetailExtend>();
+                foreach(var detail in details)
+                {
+                    var product = new OrderDetailExtend()
+                    {
+                        Quantity = detail.Quantity,
+                        Product = productRepo.Get(x => x.Id == detail.ProductsId),
+                    };
+                    products.Add(product);
+                }
+
+                var orderCollect = new OrderCollectViewModels()
+                {
+                    Order = order,
+                    Status = statusRepo.GetDescription(order.OrderStatusRefId),
+                    products = products,
+                };
+                orderCollectList.Add(orderCollect);
+            }
+            
+            return View(orderCollectList);
         }
 
         public ActionResult RemoveFromCart(int id)

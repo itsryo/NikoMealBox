@@ -8,9 +8,9 @@ namespace NikoMealBox.DataAccess.Repository
 {
     public class OrderStatusRepository:GenericRepository<OrderStatus>
     {
-        public string GetDescription(int Id)
+        public string GetDescription(int statusRefId)
         {
-            return GetAll().Where(x => x.Id == Id).FirstOrDefault().Description;
+            return Get(x => x.Id == statusRefId).Description;
         }
     }
 }
