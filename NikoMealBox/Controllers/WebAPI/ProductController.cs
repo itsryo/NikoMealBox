@@ -12,7 +12,7 @@ using System.Web.Http;
 
 namespace NikoMealBox.WebAPI
 {
-    [RoutePrefix("api/[Controller]/[action]")]
+    //[RoutePrefix("api/[Controller]/[action]")]
     public class ProductController : ApiController
     {
         private ApplicationDbContext db;
@@ -86,12 +86,42 @@ namespace NikoMealBox.WebAPI
 
         }
 
+        [HttpPost]
+        public string DeleteBack(dynamic obj)
+        {
+            string result = "刪除欄位有誤";
+            if (obj.isdelete == "true")
+            {
+                string isdel = obj.isdelete;
+                bool res = _repository.BackDelete(obj,ref prod);
+
+                if(res== true)//救回成功
+                {
+                    result = $"{obj.id}:便當名稱: {prod.ProductName} 產品刪除欄位{isdel}改為{prod.IsDelete} 產品救回成功";
+                    return result;
+                }
+                else
+                {
+                    result = "產品救回刪除失敗";
+                    return result;
+                }
+
+            }
+            else
+            {
+
+                return result;
+            }
+            //dynamic isdel = obj.isdelete;
+
+        }
 
         /// <summary>
         /// 更新/編輯資料
         /// </summary>
         /// <param name="product">單一商品資料</param>
         /// <returns></returns>
+        [HttpPost]
         public Products Edit(Products product)//int id,
         {
             //product.Id = id;

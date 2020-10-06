@@ -54,8 +54,20 @@ namespace NikoMealBox.Controllers.WebAPI
 
         //    return result;
         //}
+        [HttpGet]
+        public List<YearSalesResult> MonthSalesResultChart()
+        {
+            var temp = from od in _orderDetailsRepository.GetAll().AsEnumerable()
+                       join p in db.Products
+                       on od.ProductsId equals p.Id
+                       select new ChartViewModels.YearSalesResult
+                       {
+                           Quantity = od.Quantity,
+                           ProductName = p.ProductName
+                       };
 
-
+            return temp.ToList();
+        }
        //[AcceptVerbs("GET","POST")]
        [HttpGet]
         public List<YearSalesResult> YearSalesResultChart()

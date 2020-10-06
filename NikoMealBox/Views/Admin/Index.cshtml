@@ -234,7 +234,60 @@
     //    });
     //});
 
+    $(document).ready(function () {
+        console.log('hi')
+        $.ajax({
+            type: "Get",
+            url: "/api/Chart/MonthSalesResultChart",
+            success: function (response) {
+                console.log(response[0].ProductName)
+                console.log(response.length)
+                var ary = [];
+                var quan = [];
+                for (let i = 0; i < response.length; i++) {
+                    productName = response[i].ProductName;
+                    quantity = response[i].Quantity;
+                    ary.push(productName)
+                    quan.push(quantity)
+                    console.log(productName)
+                }
+                console.log(ary)
 
+
+                var ctx = document.getElementById('myAreaChart').getContext('2d');
+                var chart = new Chart(ctx, {
+                    // The type of chart we want to create
+                    type: 'bar',
+                    // The data for our dataset
+                    data: {
+                        labels: ary,
+                        datasets: [{
+                            label: '年銷售圖表',
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: quan,
+
+                        }]
+                    },
+
+
+                    // Configuration options go here
+                    options: {
+                        scales: {
+
+                            yAxes: [{
+                                min: 1,
+                                max: 10,
+                                interval: 10
+                            }]
+
+                        }
+                    }
+
+                });
+            }
+        });
+    });
 
 
 

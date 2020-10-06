@@ -70,8 +70,15 @@ namespace NikoMealBox.DataAccess.Repository
         public IEnumerable<Products> SelectAllProd()
         {
             var product = GetAll().ToList();
-            
-            product.Select(x => x.IsDelete == true ? "是" : "否");
+            //List<Products> prodLsit = new List<Products>();
+            //for(int i =0; i< product.Count; i++)
+            //{
+            //    prodLsit.Add(new Products()
+            //    {
+            //        IsDelete.ToString() = product[i].IsDelete.ToString() =="true" ? "是":"否"
+            //    });
+            //}
+            //product.Select(x => x.IsDelete == true ? "是" : "否");
             return product;
         }
 
@@ -105,7 +112,7 @@ namespace NikoMealBox.DataAccess.Repository
                 product.IsDelete = true;//軟刪除
                 product.IsEnable = false;
                 oneProd = product;
-                SaveChanges();
+                SaveChanges();//將更新的欄位/資料儲存到DB
                 return true;
             }
             catch (Exception ex)
@@ -115,6 +122,34 @@ namespace NikoMealBox.DataAccess.Repository
             }
             
         }
+
+        /// <summary>
+        /// 救回產品
+        /// </summary>
+        /// <param name="prodobj">產品Id&刪除欄位值</param>
+        /// <param name="oneProd">回傳id一整筆資料</param>
+        /// <returns></returns>
+        public bool BackDelete(dynamic prodobj, ref Products oneProd)
+        {
+            int id = prodobj.id;
+            //string isdel = prodobj.isdelete;
+            try
+            {
+                var prod = Get(x => x.Id == id);
+                prod.IsDelete = false;//救回
+                prod.IsEnable = true;
+                oneProd = prod;
+                SaveChanges();//將更新的欄位/資料儲存到DB
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+                return false;
+            }
+        }
+
 
         /// <summary>
         /// 編輯資料
