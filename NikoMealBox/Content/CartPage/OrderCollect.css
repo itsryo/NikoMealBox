@@ -57,14 +57,11 @@
     justify-content: space-between;
 }
 
-.order-status{
+.order-status {
     margin-top: 5px;
-}
-
-.shipping {
+    font-weight: bolder;
     color: #008A84;
-    font-weight: bold;
-} /* 還會有其他狀態*/
+}
 
 .detail-show{
     color: blue;
@@ -108,6 +105,11 @@
     text-align: center;
 }
 
+.qrcode div{
+    display: flex;
+    justify-content: center;
+}
+
 .qrcode img{
-    width: 50%;
+    width: 35%;
 }

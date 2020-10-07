@@ -88,7 +88,7 @@ namespace NikoMealBox.Controllers
             var detailRepo = new OrderDetailsRepository();
             var productRepo = new ProductRepository();
             var userId = User.Identity.GetUserId();
-            var allUserOrders = _repository.GetAll().Where(x => x.UserRefId.ToString() == userId).AsEnumerable<Orders>();
+            var allUserOrders = _repository.GetAll().Where(x => x.UserRefId.ToString() == userId && !x.IsDelete).AsEnumerable<Orders>();
             var orderCollectList = new List<OrderCollectViewModels>();
 
             foreach(var order in allUserOrders)

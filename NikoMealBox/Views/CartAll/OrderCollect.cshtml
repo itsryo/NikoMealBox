@@ -20,14 +20,17 @@
                     <div class="card-body">
                         <div class="card-title">
                             <h4 class="order-id">#@orderCollect.Order.Id</h4>
-                            <p class="order-status shipping">@orderCollect.Status</p>
+                            <p class="order-status">@orderCollect.Status</p>
                         </div>
                         <div class="order-date-group">
                             <p class="order-date">訂單時間 @orderCollect.Order.CreateTime</p>
-                            <p class="pick-up-date">預計取貨時間 @orderCollect.Order.GetProductDate</p>
                             @if (orderCollect.Status == "已結單")
                             {
                                 <p class="finish-date">結單時間 @orderCollect.Order.FinishDate</p>
+                            }
+                            else
+                            {
+                                <p class="pick-up-date">預計取貨時間 @orderCollect.Order.GetProductDate</p>
                             }
                         </div>
                         <div class="order-other-info">
@@ -49,13 +52,16 @@
                                     <img src="@product.Product.ImagePath" />
                                     <p class="productname">@product.Product.ProductName</p>
                                     <p class="count">x @product.Quantity</p>
-                                    <p class="total-price">$@product.Product.UnitPrice</p>
+                                    @{ 
+                                        var totalprice = product.Quantity * product.Product.UnitPrice;
+                                    }
+                                    <p class="total-price">$@totalprice</p>
                                 </div>
                             }
                             <hr />
                             <div class="qrcode">
                                 <p>自取掃描結單</p>
-                                <img src="https://i.imgur.com/dPu4AKW.png" />
+                                <div id=@string.Concat("qr",orderCollect.Order.Id.ToString())></div>
                             </div>
                         </div>
                     </div>
@@ -66,6 +72,16 @@
 </div>
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/qrcode.js"></script>
+<script>
+    // qrcode
+    let idNodes = $('.order-id').toArray();
+    idNodes.forEach((item, index) => {
+        idText = item.innerText.replace('#', '');
+        new QRCode(document.getElementById("qr" + idText), "id" + idText);
+    })
+
+</script>
 <script>
     // 訂單詳細狀況隱藏
     $('document').ready(function () {
@@ -120,4 +136,5 @@
 
         $(e.target).addClass('btn-checked');
     });
+
 </script>
