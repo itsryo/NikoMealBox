@@ -7,13 +7,13 @@ namespace NikoMealBox.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ChangeEcPayModel_TotalAmount_DataType : IMigrationMetadata
+    public sealed partial class AddECpay : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeEcPayModel_TotalAmount_DataType));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddECpay));
         
         string IMigrationMetadata.Id
         {
-            get { return "202010041031260_ChangeEcPayModel_TotalAmount_DataType"; }
+            get { return "202010130715014_AddECpay"; }
         }
         
         string IMigrationMetadata.Source

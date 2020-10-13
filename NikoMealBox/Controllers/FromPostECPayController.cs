@@ -15,7 +15,7 @@ namespace NikoMealBox.Controllers
         {
             var currentCart = NikoMealBox.DataAccess.Repository.CartRepository.GetCurrentCart();
             /*此部分由廠自行決定，自己成是價購流程，並非制定化*/
-            ECPayModel model = new ECPayModel();
+            ECPay model = new ECPay();
             model.MerchantTradeNo = DateTime.Now.ToString("yyyyMMddHHmmss"); //廠商訂單編號
             model.MerchantTradeDate = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"); //廠商訂單日期           
             model.TotalAmount = 100;//交易金額
@@ -27,7 +27,7 @@ namespace NikoMealBox.Controllers
         }
 
         [HttpPost]
-        public ActionResult PostToECPay(ECPayModel model)
+        public ActionResult PostToECPay(ECPay model)
         {
             // ### 廠商應做基本的Model檢查
 

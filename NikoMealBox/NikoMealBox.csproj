@@ -260,13 +260,9 @@
     <Compile Include="Migrations\202009300804265_OrderFix.Designer.cs">
       <DependentUpon>202009300804265_OrderFix.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009300951497_AddEcPayModel.cs" />
-    <Compile Include="Migrations\202009300951497_AddEcPayModel.Designer.cs">
-      <DependentUpon>202009300951497_AddEcPayModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010041031260_ChangeEcPayModel_TotalAmount_DataType.cs" />
-    <Compile Include="Migrations\202010041031260_ChangeEcPayModel_TotalAmount_DataType.Designer.cs">
-      <DependentUpon>202010041031260_ChangeEcPayModel_TotalAmount_DataType.cs</DependentUpon>
+    <Compile Include="Migrations\202010130715014_AddECpay.cs" />
+    <Compile Include="Migrations\202010130715014_AddECpay.Designer.cs">
+      <DependentUpon>202010130715014_AddECpay.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -276,7 +272,7 @@
     <Compile Include="Models\DataTable\Orders.cs" />
     <Compile Include="Models\DataTable\OrderStatus.cs" />
     <Compile Include="Models\DataTable\Products.cs" />
-    <Compile Include="Models\ECPayModel.cs" />
+    <Compile Include="Models\DataTable\ECPay.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\OrderApiModels.cs" />
@@ -499,11 +495,8 @@
     <EmbeddedResource Include="Migrations\202009300804265_OrderFix.resx">
       <DependentUpon>202009300804265_OrderFix.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009300951497_AddEcPayModel.resx">
-      <DependentUpon>202009300951497_AddEcPayModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010041031260_ChangeEcPayModel_TotalAmount_DataType.resx">
-      <DependentUpon>202010041031260_ChangeEcPayModel_TotalAmount_DataType.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010130715014_AddECpay.resx">
+      <DependentUpon>202010130715014_AddECpay.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

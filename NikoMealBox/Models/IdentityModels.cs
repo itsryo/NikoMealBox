@@ -53,6 +53,9 @@ namespace NikoMealBox.Models
         public virtual DbSet<Products> Products { get; set; }
         public virtual DbSet<OrderStatus> OrderStatus { get; set; }
 
+        public virtual DbSet<ECPay> ECPays { get; set; }
+
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

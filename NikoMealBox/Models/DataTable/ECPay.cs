@@ -1,11 +1,12 @@
-﻿using System;
+﻿using NikoMealBox.Models.DataTable;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace NikoMealBox.Models
 {
-    public class ECPayModel
+    public class ECPay:BaseEntity
     {
         /// <summary>
         /// 特店交易編號
@@ -41,5 +42,10 @@ namespace NikoMealBox.Models
         /// 檢查碼
         /// </summary>
         public string CheckMacValue { get; set; }
+
+        /// <summary>
+        /// 屬於那張訂單
+        /// </summary>
+        public int OrderRefId { get; set; }
     }
 }
