@@ -54,10 +54,6 @@ namespace NikoMealBox.Models.DataTable
         /// </summary>
         public string Remark { get; set; }
 
-        /// <summary>
-        /// 付款方式
-        /// </summary>
-        public string Payment { get; set; }
 
         /// <summary>
         /// 運費

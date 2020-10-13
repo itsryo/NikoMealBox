@@ -264,6 +264,10 @@
     <Compile Include="Migrations\202010130715014_AddECpay.Designer.cs">
       <DependentUpon>202010130715014_AddECpay.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010131119515_CancelOrderPayment.cs" />
+    <Compile Include="Migrations\202010131119515_CancelOrderPayment.Designer.cs">
+      <DependentUpon>202010131119515_CancelOrderPayment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DataTable\BaseEntity.cs" />
@@ -497,6 +501,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010130715014_AddECpay.resx">
       <DependentUpon>202010130715014_AddECpay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010131119515_CancelOrderPayment.resx">
+      <DependentUpon>202010131119515_CancelOrderPayment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

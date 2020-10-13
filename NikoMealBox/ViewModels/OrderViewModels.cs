@@ -27,7 +27,6 @@ namespace NikoMealBox.ViewModels
         public string Remark { get; set; }
         [Required]
         public DateTime GetProductDate { get; set; }
-        public string Payment { get; set; }
     }
 }
 

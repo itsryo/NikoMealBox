@@ -39,7 +39,6 @@ namespace NikoMealBox.DataAccess.Repository
                 ContactPhone = OrderForm.ContactPhone,
                 ContactMail = OrderForm.ContactMail,
                 Remark = OrderForm.Remark,
-                Payment = OrderForm.Payment,
                 OrderDetails = OrderDetailList,
                 UserRefId = UserId,
                 OrderStatusRefId = 4,
