@@ -1,5 +1,5 @@
 # NikoMealBox
-Build School 專題，參考對象[光光盒餐](https://guang-guang.com.tw/)
+Build School 專題
 
 ## Member
 - [WayneLens](https://github.com/waynelens)
