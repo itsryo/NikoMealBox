@@ -5,7 +5,10 @@
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
-
+        if (User.Identity.Name == "Admin@gmail.com")
+        {
+            <a href="@Url.Action("Index","Admin")" class="text-decoration-none">進入後台管理</a>
+        }
 
         <a href="@Url.Action("MemeberCenter","Account")" class="text-decoration-none">
             <img src="~/Assets/Images/HomePage/Logged.jpg" alt="" width="8%">

@@ -374,9 +374,6 @@
                 "bAutoWidth": true,//自动计算每一列的宽度
                 "pageLength": 5,//分頁的資料總筆數
                 "destroy": true,//Cannot reinitialise DataTable,解决重新加载表格内容问题
-                //"fixedHeader": true,
-                //"scrollY": "200px",
-                //"scrollCollapse": "true",
                 "ajax": {
                     // url可以直接指定远程的json文件
                     //url: "api/Product/SelectProducts",
@@ -393,50 +390,17 @@
                     },
 
                 },
-                //"columnDefs": [
-                //    {
-                //        "data": "IsDelete",
-                //        // targets用於指定操作的列，從第0列開始，-1爲最後一列，這裏第六列
-                //        // return後邊是我們希望在指定列填入的按鈕代碼
-                //        "targets": -1,
-                //        "render": function (data, type, full, meta) {
-                //            console.log(data)
-                //            let btn = "";
-                //            if (data == false)
-                //            {
-                //                btn ="<button type = 'button' id = 'DeleteProduct' class='btn btn-danger' data-toggle='modal' data-target='#DeleteModal'>刪除</button>"
-                //            }
-                //            else
-                //            {
-                //                btn = "<button type = 'button' id = 'DeleteProduct' class='btn btn-info' data-toggle='modal' data-target='#DeleteModal'>救回</button>"
-                //            }
-
-                //            return btn + "<button type = 'button' id = 'EditProductBtn' class='btn btn-success my-2 mx-2' data-toggle='modal' data-target='#EditModal'>檢視/編輯</button>"
-                //        }
-                //    }
-                //],
                 "columns": [
                     { "title": '產品Id', "data": "Id" },
                     { "title": '產品名稱', "data": "ProductName" },
                     { "title": '產品種類', "data": "CategoryId" },
                     { "title": '產品單價', "data": "UnitPrice" },
                     { "title": '產品庫存', "data": "UnitsInStock" },
-                    //{ "title": '產品簡述', "data": "Description" },
-                    //{ "title": '產品材料', "data": "Materials" },
-                    //{ "title": '熱量', "data": "Calories" },
-                    //{ "title": '碳水化合物', "data": "Carbohydrate" },
-                    //{ "title": '蛋白質', "data": "Protein" },
-                    //{ "title": '脂肪', "data": "Fat" },
-                    //{ "title": '飽和脂肪', "data": "SaturatedFat" },
-                    //{ "title": '反式脂肪', "data": "TransFat" },
-                    //{ "title": '糖', "data": "Sugar" },
-                    //{ "title": '鈉', "data": "Sodium" },
                     {
                         "title": '產品圖片路徑', "data": "ImagePath", "render": function (data, type, full, meta) {
                             return "<img src = " + data + " width = 100 % />'"
                         }
                     },
-                    //{ "title": '蛋奶素', "data": "IsOvolacto" },
                     { "title": '產品/種類是否還有提供', "data": "IsEnable" },
                     { "title": '邏輯刪除', "data": "IsDelete" },
                     { "title": '資料建立者', "data": "CreateUser" },
@@ -711,18 +675,6 @@
                 }
                 
             }
-            
-            //function showPreviewImage(imgUrl) {
-            //    let imagePreview = document.querySelector('.ImgPreview');//預覽圖片位置
-            //    imagePreview.src = imgUrl;
-            //    alert(imgUrl);
-            //}
-            //console.log(e.target.files);   #ImagePath
-            //var file = document.querySelector('input[type=file]').files[0]; //新增
-            
-            //編輯
-            //var file = document.querySelector('#EdImagePath').files[0];
-
             var rawdata = { "base64": "default" };
 
             if (file) {
