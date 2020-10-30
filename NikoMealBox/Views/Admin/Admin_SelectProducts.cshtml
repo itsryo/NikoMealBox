@@ -10,12 +10,12 @@
     <meta name="viewport" content="width=device-width" />
     <title></title>
 
-    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    @*<script src="../Scripts/jquery-3.4.1.min.js"></script>*@
     <!-- Vue  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>*@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
 
     @*<style>
@@ -369,9 +369,12 @@
         //建立Products datatable
         function selectProd() {
             $('#dataTable').DataTable({
+                "lengthChange": true,
+                "ordering": true,
+                "info": true,
                 "searching": true,// 是否允许搜尋
                 "paging": true,//啟用分頁
-                "bAutoWidth": true,//自动计算每一列的宽度
+                "AutoWidth": true,//自动计算每一列的宽度
                 "pageLength": 5,//分頁的資料總筆數
                 "destroy": true,//Cannot reinitialise DataTable,解决重新加载表格内容问题
                 "ajax": {
@@ -577,7 +580,7 @@
         ///確定編輯
         let EdBtn = document.getElementById("Editbtn");
         EdBtn.addEventListener('click', function (e) {
-            alert("進來了");
+            //alert("進來了");
             //var table = document.getElementById('dataTable');
             let imagePreview = document.querySelector('#EdPreviewImage');//預覽圖片位置
             vm.product.ImagePath = imagePreview.src;
