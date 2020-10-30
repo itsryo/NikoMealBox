@@ -77,17 +77,6 @@
                                         <th></th>
                                         <th></th>
                                         <th></th>
-                                        @*<th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>*@
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -366,7 +355,7 @@
 
 
     <script>
-        //建立Products datatable
+        //產品查詢 建立Products datatable  
         function selectProd() {
             $('#dataTable').DataTable({
                 "lengthChange": true,
@@ -383,7 +372,7 @@
                     url: "/api/Product/SelectProducts",
                     type: 'Get',
                     dataType: 'json',
-                    data: {},
+                    //data: {},
                     // 传给服务器的数据，可以添加我们自己的查询参数
                     dataSrc: function (Prod) {
                         return Prod;
@@ -399,7 +388,8 @@
                     { "title": '產品種類', "data": "CategoryId" },
                     { "title": '產品單價', "data": "UnitPrice" },
                     { "title": '產品庫存', "data": "UnitsInStock" },
-                    {
+                    {//render 渲染(處理)資料顯示在表格中，可以操作從資料來源讀取到的資料  可以在表格添加想要的功能
+                       // render方法有四個參數，分別為data、type、row、meta，其中主要是使用data和row來進行操作，data是對應當前cell的值，row是對應當前行中的所有cell的值。
                         "title": '產品圖片路徑', "data": "ImagePath", "render": function (data, type, full, meta) {
                             return "<img src = " + data + " width = 100 % />'"
                         }
@@ -415,7 +405,8 @@
                         // return後邊是我們希望在指定列填入的按鈕代碼
                         //"targets": -1,
                         "render": function (data, type, full, meta) {
-                            console.log(data)
+                            //console.log(data)
+                            //回傳的資料是刪除顯示舊回btn，沒有刪除顯示刪除btn，且表格都加上檢視/編輯功能
                             let btn = "";
                             if (data == false)
                             {
@@ -435,6 +426,7 @@
         }
 
         //var jsonObject = {};
+        //編輯使用vue
         var jsonObject;
         var vm;
         //Vue Binding
@@ -473,7 +465,7 @@
             selectProd();//建立datatable
         });
 
-        //清空欄位
+        //新增 清空欄位
         let clearbtn = document.querySelector('#clearinput');
         clearbtn.addEventListener('click', function () {
             let imgpreview = document.querySelector('#PreviewImage');
@@ -519,9 +511,6 @@
             //$("table#dataTable").find("tr").eq(row).find("td").eq(6).val(data.IsDelete);
             var offer = $("table#dataTable").find("tr").eq(row).find("td").eq(6);//是否提供
             var Delete = $("table#dataTable").find("tr").eq(row).find("td").eq(7).text();//是否刪除
-            //alert("產品Id: " + Id);
-            //alert(Delete);
-            //alert(typeof (Delete));
             let object = {
                 isdelete: Delete,
                 id: Id
@@ -530,11 +519,13 @@
                 url: '/api/Product/DeleteBack', //資料要傳去的網址(controller/action)
                 type: 'POST', //請求方式，POST/GET。(預設為GET)
                 contentType: 'application/json; charset=UTF-8',
-                data: JSON.stringify(object),  //要傳入的參數NAME(KEY)&VALUE controller欄位(要對應到C的欄位(參數)名稱):值 傳送到server的資料  JSON.stringify()              
+                data: JSON.stringify(object), //物件轉Json //要傳入的參數NAME(KEY)&VALUE controller欄位(要對應到C的欄位(參數)名稱):值 傳送到server的資料  JSON.stringify()              
                 //data: object, 
                 dataType: 'json',//預期Server傳回的資料類型 若是html取得html的值 若是json會有個是json框架裡的值去取得
                 success: function (result) {//成功時Dosomething (程式只要可以執行成功)
                     alert(result);
+                    console.log(result)
+                    //var Delete = $("table#dataTable").find("tr").eq(row).find("td").eq(7).text("true");//是否刪除
                     selectProd();
                 },
                 fail: function (result) {//失敗時Dosomething(程式爆掉)
@@ -552,7 +543,7 @@
             var name = $("table#dataTable").find("tr").eq(Edrow).find("td").eq(1).text();//便當
             let Edfile = document.querySelector('#EdImagePath');
             Edfile.value = "";//清空 input file欄位
-            alert("Id: " + Id + name);
+            //alert("Id: " + Id + name);
 
             //vue Binding
             //編輯 取得資料
@@ -610,7 +601,7 @@
         //確定新增
         let AddBtn = document.getElementById("AddBtn");
         AddBtn.addEventListener('click', function () {
-            alert("進來新增");
+            //alert("進來新增");
             var Addprod = $('#AddForm').serializeArray(); //表示將這個表單序列化
             //var form = $('#AddForm');
             let imagePreview = document.querySelector('#PreviewImage');//預覽圖片位置

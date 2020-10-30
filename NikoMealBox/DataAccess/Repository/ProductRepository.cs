@@ -111,6 +111,7 @@ namespace NikoMealBox.DataAccess.Repository
                 var product = Get(x => x.Id == id);
                 product.IsDelete = true;//軟刪除
                 product.IsEnable = false;
+                product.EditTime = DateTime.Now;
                 oneProd = product;
                 SaveChanges();//將更新的欄位/資料儲存到DB
                 return true;
@@ -138,6 +139,7 @@ namespace NikoMealBox.DataAccess.Repository
                 var prod = Get(x => x.Id == id);
                 prod.IsDelete = false;//救回
                 prod.IsEnable = true;
+                prod.EditTime = DateTime.Now;
                 oneProd = prod;
                 SaveChanges();//將更新的欄位/資料儲存到DB
 

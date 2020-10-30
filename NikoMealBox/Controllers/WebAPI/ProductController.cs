@@ -86,6 +86,11 @@ namespace NikoMealBox.WebAPI
 
         }
 
+        /// <summary>
+        /// 救回產品
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         [HttpPost]
         public string DeleteBack(dynamic obj)
         {
@@ -98,11 +103,11 @@ namespace NikoMealBox.WebAPI
                 if(res== true)//救回成功
                 {
                     result = $"{obj.id}:便當名稱: {prod.ProductName} 產品刪除欄位{isdel}改為{prod.IsDelete} 產品救回成功";
-                    return result;
+                    return result; // 這邊可以試試使用取得欄位資料後傳到ajax，再把資料利用DOM塞到特定table位置
                 }
                 else
                 {
-                    result = "產品救回刪除失敗";
+                    result = "產品救回失敗";
                     return result;
                 }
 
