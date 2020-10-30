@@ -389,6 +389,7 @@
     <None Include="Properties\PublishProfiles\NikoMealBox0914 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\NikoMealBox2020 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\NikoMealBox20200914014627 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\NikoMealBoxYummy - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
