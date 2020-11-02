@@ -460,6 +460,8 @@
     <Content Include="Views\CartAll\OrderCollect.cshtml" />
     <Content Include="Views\FromPostECPay\PostToECPay.cshtml" />
     <Content Include="Views\FromPostECPay\Index.cshtml" />
+    <Content Include="Views\CartAll\PostToECPay.cshtml" />
+    <Content Include="Views\CartAll\page.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

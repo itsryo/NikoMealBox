@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity.Owin;
 using NikoMealBox.DataAccess.Repository;
 using NikoMealBox.Models;
 using NikoMealBox.Models.DataTable;
+using NikoMealBox.Services;
 using NikoMealBox.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -78,8 +79,99 @@ namespace NikoMealBox.Controllers
             var orderId = _repository.CreateOrder(OrderForm, userId);
             CartRepository.GetCurrentCart().ClearCart();
             ViewData["orderId"] = orderId;
+            return RedirectToAction("PostToECPay");
+        }
+
+        //串金流  createOrder
+        public ActionResult PostToECPay(OrderViewModels OVM)
+        {
+            ECPay model = new ECPay();
+            //### 廠商應做基本的Molde檢查(自行撰寫)
+            #region CreateOrder
+            var userId = User.Identity.GetUserId();
+            var orderId = _repository.CreateOrder(OVM, userId);
+            var currentCart =  CartRepository.GetCurrentCart();
+            //ViewData["orderId"] = orderId;
+            //取得產品名稱
+            var odProd = _repository.Get(x => x.Id == orderId); //orderId
+            decimal totalAmount = 0;
+            foreach (var prod in currentCart)
+            {
+                totalAmount += prod.UnitPrice * prod.Count;
+            }
+            //取產品名稱
+            //var prodName = from prodname in OrderDetails
+            //               join p in Products on p.Id equals 98
+            //               where Id equals 60
+            //               select new {p.ProductName}
+            var ordId = "Niko" + orderId.ToString();
+            model.MerchantTradeNo = ordId;//廠商訂單編號 
+            model.MerchantTradeDate = odProd.CreateTime.ToString("yyyy/MM/dd HH:mm:ss");//廠商訂單日期 odProd.CreateTime.ToString()    
+            model.TotalAmount = Math.Floor(totalAmount);//交易金額
+            model.TradeDesc = "Niko商店ECPay訂單測試";
+            model.ItemName = "商品名稱";
+            model.ChoosePayment = "ALL";//選擇預設付款方式    
+            
+            #endregion
+
+            //### 建立Service
+            EcPayService _CommonService = new EcPayService();
+
+            //### 組合檢查碼
+            string PostURL = "https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut";
+            string MerchantID = "2000132";
+            string HashKey = "5294y06JbISpM5x9";
+            string HashIV = "v77hoKGq4kWxNNIS";
+            SortedDictionary<string, string> PostCollection = new SortedDictionary<string, string>();
+            PostCollection.Add("MerchantID", MerchantID);
+            PostCollection.Add("MerchantTradeNo", model.MerchantTradeNo); //廠商訂單編號
+            PostCollection.Add("MerchantTradeDate", model.MerchantTradeDate);//廠商訂單日期      
+            PostCollection.Add("PaymentType", "aio");//固定帶aio
+            PostCollection.Add("TotalAmount", model.TotalAmount.ToString());
+            PostCollection.Add("TradeDesc", model.TradeDesc);
+            PostCollection.Add("ItemName", model.ItemName);
+            PostCollection.Add("ReturnURL", "http://localhost:1234");//廠商通知付款結果API
+            PostCollection.Add("ChoosePayment", model.ChoosePayment);
+            PostCollection.Add("EncryptType", "1");//固定
+
+            //壓碼
+            string str = string.Empty;
+            string str_pre = string.Empty;
+            foreach (var item in PostCollection)
+            {
+                str += string.Format("&{0}={1}", item.Key, item.Value);
+            }
+
+            str_pre += string.Format("HashKey={0}" + str + "&HashIV={1}", HashKey, HashIV);
+
+            string urlEncodeStrPost = HttpUtility.UrlEncode(str_pre);
+            string ToLower = urlEncodeStrPost.ToLower();
+            string sCheckMacValue = _CommonService.GetSHA256(ToLower);
+            PostCollection.Add("CheckMacValue", sCheckMacValue);
+
+            //### Form Post To ECPay
+            string ParameterString = string.Join("&", PostCollection.Select(p => p.Key + "=" + p.Value));
+
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.Append("<html><body>").AppendLine();
+            sb.Append("<form name='ECPayAIO'  id='ECPayAIO' action='" + PostURL + "' method='POST'>").AppendLine();
+            foreach (var item in PostCollection)
+            {
+                sb.Append("<input type='hidden' name='" + item.Key + "' value='" + item.Value + "'>").AppendLine();
+            }
+
+            sb.Append("</form>").AppendLine();
+            sb.Append("<script> var theForm = document.forms['ECPayAIO'];  if (!theForm) { theForm = document.ECPayAIO; } theForm.submit(); </script>").AppendLine();
+            sb.Append("<html><body>").AppendLine();
+
+            TempData["PostForm"] = sb.ToString();
+
+
+            CartRepository.GetCurrentCart().ClearCart();//訂單建立完移除購物車資料
             return View();
         }
+
+
 
         [Authorize]
         public ActionResult OrderCollect() 
